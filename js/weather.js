@@ -45,23 +45,7 @@ function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
 
 var url = apiURL + "serviceKey=" + apiKey + "&pageNo=1&numOfRows=1000&dataType=xml&base_date=" + todayFormat + "&base_time=" + time + "&nx=55&ny=125"
 
-window.onload = function() {
-	
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) { 
-			console.log("xml",this.responseXML);
-			console.log("xml",url);
-			parseXML(this.responseXML);
-			
-		}
-	};
-	
 
-	xhttp.open("GET", url, true);
-	xhttp.send();
-
-}
 	
 
 
