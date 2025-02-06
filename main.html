@@ -270,12 +270,15 @@
                 <p>프로그래밍 재밌(?)나</p>
             </div>
             <div id="detail">
-                <p>Incheon, Korea</p>
-                <p>suikari@naver.com</p>                                 
+                <p>Incheon, Korea / suikari@naver.com</p>                                 
             </div>
+
+            <div id="map" style="width:150px; height:150px;"></div>
+            <div id="clickLatlng"></div>
+
+
             <div id="sns">
-                <h2>SNS</h2>
-                <h3><a href="javascript:click_button();">클릭!</a></h3>
+                <h3><a href="javascript:click_button();"> SNS 클릭!</a></h3>
             </div>  
             
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
@@ -286,6 +289,7 @@
                 <div id = "sds" class="float-left"> </div>
                 <div id = "fds" class="float-left"> </div> 
             </div>
+            
 
         </div>
         <div id="pages" name="pages" class="pages">
@@ -556,6 +560,7 @@
 </script>
 <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
 <script src="js/weather.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery_ui.js"></script>
