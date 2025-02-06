@@ -16,9 +16,7 @@
 
       h1 {
         position: relative;
-
         margin-top: 150px;
-
         text-align: center;
       }
 
@@ -130,4 +128,32 @@
         });
       });
 	});
+
+
+        let scrollInterval;
+        let scrollStep = 3; 
+
+        function startAutoScroll() {
+            scrollInterval = setInterval(() => {
+                const currentScroll = window.scrollY;
+                const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+                if (currentScroll + scrollStep >= maxScroll) {
+                    clearInterval(scrollInterval);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setTimeout(startAutoScroll, 10000); 
+                } else {
+                    window.scrollBy(0, scrollStep);
+                }
+            }, 20); 
+        }
+
+        function stopAutoScroll() {
+            clearInterval(scrollInterval);
+        }
+
+        window.onload = startAutoScroll;
+
+        window.addEventListener('click', stopAutoScroll);
+
 </script>

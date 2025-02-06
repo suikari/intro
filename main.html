@@ -528,25 +528,22 @@
 		});
 	}
 
-    /* dropdown */
     $(function() {
-    /*gnb 오픈*/
     $(".dropdown .gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
         $(this).parent("li").addClass("on").find(".gnb_depth2").clearQueue().slideDown().parent("li").siblings("li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
     });
     $(".dropdown .gnb_wrap > .gnb_depth1").on("mouseleave", function() {
         $(".dropdown .gnb_wrap > .gnb_depth1 > li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
     });
-    /*//gnb 오픈*/
     
     
     $(document).focusin(function(e) {
-        // gnb 포커스
+
         var el01 = $(".dropdown .gnb_wrap > .gnb_depth1");
         if (el01.parents("#gnb").has(e.target).length === 0) {
         el01.find("li").removeClass("on").find(".gnb_depth2").hide();
         }
-        // 전체메뉴 포커스
+
         var el02 = $(".all_menu_wrap");
         if ($("#wrap").hasClass("all_menu")) {
         if (el02.parents("#header").has(e.target).length === 0) {
@@ -555,7 +552,6 @@
         }
     });
     
-    /*gnb 2뎁스 높이*/
     $(".gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
         var depth2_li = $(this).parent().find(".gnb_depth2_bg > ul > li");
         var li_h1 = [];
@@ -574,7 +570,7 @@
         depth2_li.eq(k + 5).height(Math.max.apply(null, li_h2));
         };
     });
-    /*//gnb 2뎁스 높이*/
+
     });
 </script>
 <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
