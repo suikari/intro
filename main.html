@@ -170,6 +170,98 @@
 
 <body>
     <div id="container">
+        <div id="header" class="dropdown">
+            <nav class="gnb_wrap" id="gnb">
+              <ul class="gnb_depth1">
+                <li>
+                  <a href="javascript:;">메뉴</a>
+                  <div class="gnb_depth2">
+                    <div class="gnb_depth2_bg">
+                      <div class="gnb_tit">
+                        <h2>depth1</h2>
+                      </div>
+                      <ul>
+                        <li class="row">
+                          <a href="javascript:;">개발중</a>
+                          <ul class="gnb_depth3">
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul class="gnb_depth1">
+                <li>
+                  <a href="javascript:;">테스트 중 </a>
+                  <div class="gnb_depth2">
+                    <div class="gnb_depth2_bg">
+                      <div class="gnb_tit">
+                        <h2>depth1</h2>
+                      </div>
+                      <ul>
+                        <li class="row">
+                          <a href="javascript:;">개발중</a>
+                          <ul class="gnb_depth3">
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul class="gnb_depth1">
+                <li>
+                  <a href="javascript:;"> etc </a>
+                  <div class="gnb_depth2">
+                    <div class="gnb_depth2_bg">
+                      <div class="gnb_tit">
+                        <h2>depth1</h2>
+                      </div>
+                      <ul>
+                        <li class="row">
+                          <a href="javascript:;">개발중</a>
+                          <ul class="gnb_depth3">
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul class="gnb_depth1">
+                <li>
+                  <a href="javascript:;">더보기.. </a>
+                  <div class="gnb_depth2">
+                    <div class="gnb_depth2_bg">
+                      <div class="gnb_tit">
+                        <h2>depth1</h2>
+                      </div>
+                      <ul>
+                        <li class="row">
+                          <a href="javascript:;">개발중</a>
+                          <ul class="gnb_depth3">
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                            <li><a href="javascript:;">depth3</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
         <!-- 사이드바 -->
         <div class="side">
             <div id="namecard">
@@ -413,9 +505,61 @@
 		});
 	}
 
+    /* dropdown */
+    $(function() {
+    /*gnb 오픈*/
+    $(".dropdown .gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
+        $(this).parent("li").addClass("on").find(".gnb_depth2").clearQueue().slideDown().parent("li").siblings("li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
+    });
+    $(".dropdown .gnb_wrap > .gnb_depth1").on("mouseleave", function() {
+        $(".dropdown .gnb_wrap > .gnb_depth1 > li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
+    });
+    /*//gnb 오픈*/
     
+    
+    $(document).focusin(function(e) {
+        // gnb 포커스
+        var el01 = $(".dropdown .gnb_wrap > .gnb_depth1");
+        if (el01.parents("#gnb").has(e.target).length === 0) {
+        el01.find("li").removeClass("on").find(".gnb_depth2").hide();
+        }
+        // 전체메뉴 포커스
+        var el02 = $(".all_menu_wrap");
+        if ($("#wrap").hasClass("all_menu")) {
+        if (el02.parents("#header").has(e.target).length === 0) {
+            $(".all_menu_btn a").focus();
+        }
+        }
+    });
+    
+    /*gnb 2뎁스 높이*/
+    $(".gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
+        var depth2_li = $(this).parent().find(".gnb_depth2_bg > ul > li");
+        var li_h1 = [];
+        var li_h2 = [];
+        for (var i = 0; i < depth2_li.length; i++) {
+        if (i <= 4) {
+            li_h1.push(depth2_li.eq(i).height());
+        } else {
+            li_h2.push(depth2_li.eq(i).height());
+        }
+        };
+        for (var j = 0; j < li_h1.length; j++) {
+        depth2_li.eq(j).height(Math.max.apply(null, li_h1));
+        };
+        for (var k = 0; k < li_h2.length; k++) {
+        depth2_li.eq(k + 5).height(Math.max.apply(null, li_h2));
+        };
+    });
+    /*//gnb 2뎁스 높이*/
+    });
 </script>
 <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
 <script src="js/weather.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery_ui.js"></script>
+
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery_ui.css" rel="stylesheet" type="text/css" />
+
