@@ -8,7 +8,7 @@ window.onload = () => {
     };
 
     var map = new kakao.maps.Map(container, options); 
-    var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+    var markerPosition  = new kakao.maps.LatLng(37.490920171395985, 126.72078754716765); 
 
     var marker = new kakao.maps.Marker({
         position: markerPosition
