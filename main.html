@@ -25,8 +25,13 @@
 </head>
 
 <body>
-  <div id= "draggable" class="main_popup draggable">
+  <div class="cursor">
+    <img src="image/cus_icon.png" width="55px" height="55px">
+  </div>
+  
+  <div id= "draggable" class="main_popup ">
     <div class="layer_cont">
+      <div class="title_wrap draggable"></div>
       <div class="img_wrap">
           팝업 냉무
       </div>
@@ -180,6 +185,15 @@
 
 
 <script>
+
+    document.addEventListener('mousemove', (e) => {
+        let mouseX = e.pageX; // document의 x좌표값
+        let mouseY = e.pageY; // document의 y좌표값
+
+        let cursor = document.querySelector('.cursor');
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    })
 
     function click_button () {
         Swal.fire({

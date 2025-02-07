@@ -239,6 +239,16 @@ table {
     display: block;
     background-color: #fff;
   }
+ 
+  .main_popup .title_wrap {
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: silver;
+  }
+
   .main_popup .img_wrap {
     width: 200px;
     height: 200px;
@@ -246,13 +256,14 @@ table {
     justify-content: center;
     align-items: center;
     background-color: white;
-}
+  }
+
   .main_popup .btn_close {
     width: 32px;
     height: 32px;
     position: absolute;
-    top: 17px;
-    right: 17px;
+    top: 5px;
+    right: 7px;
     font-size: 0;
     border: 0;
     background: none;
@@ -304,5 +315,9 @@ table {
     display: flex;
     justify-content: center;
   
+  }
+  
+  .cursor {
+    position: absolute;
   }
   
