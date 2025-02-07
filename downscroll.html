@@ -120,41 +120,41 @@
 
 <script>
     window.addEventListener('scroll', () => {
-      $(function () {
-        $(window).scroll(function () {
-          let scrTop = $(window).scrollTop();
+        $(function () {
+          $(window).scroll(function () {
+            let scrTop = $(window).scrollTop();
 
-          $("section").css("clip-path", "circle(" + scrTop + "px at 50% 50%)");
+            $("section").css("clip-path", "circle(" + scrTop + "px at 50% 50%)");
+          });
         });
-      });
-	});
+    });
 
 
-        let scrollInterval;
-        let scrollStep = 3; 
+    let scrollInterval;
+    let scrollStep = 3; 
 
-        function startAutoScroll() {
-            scrollInterval = setInterval(() => {
-                const currentScroll = window.scrollY;
-                const maxScroll = document.body.scrollHeight - window.innerHeight;
+    function startAutoScroll() {
+        scrollInterval = setInterval(() => {
+            const currentScroll = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
 
-                if (currentScroll + scrollStep >= maxScroll) {
-                    clearInterval(scrollInterval);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    setTimeout(startAutoScroll, 10000); 
-                } else {
-                    window.scrollBy(0, scrollStep);
-                }
-            }, 20); 
-        }
+            if (currentScroll + scrollStep >= maxScroll) {
+                clearInterval(scrollInterval);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(startAutoScroll, 10000); 
+            } else {
+                window.scrollBy(0, scrollStep);
+            }
+        }, 20); 
+    }
 
-        function stopAutoScroll() {
-            clearInterval(scrollInterval);
-        }
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
 
-        window.onload = startAutoScroll;
+    window.onload = startAutoScroll;
 
-        window.addEventListener('click', stopAutoScroll);
-        /* window.addEventListener('scroll', stopAutoScroll); */
+    window.addEventListener('click', stopAutoScroll);
+    /* window.addEventListener('scroll', stopAutoScroll); */
 
 </script>

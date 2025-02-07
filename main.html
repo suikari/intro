@@ -11,6 +11,7 @@
 
 <body>
     <div id="container">
+        <div id="test"></div>
         <div id="header" class="dropdown">
             <nav class="gnb_wrap" id="gnb">
               <ul class="gnb_depth1">
@@ -37,7 +38,7 @@
               </ul>
               <ul class="gnb_depth1">
                 <li>
-                  <a href="javascript:;">테스트 중 </a>
+                  <a href="main.html?content="> 자기소개 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
                       <div class="gnb_tit">
@@ -59,7 +60,7 @@
               </ul>
               <ul class="gnb_depth1">
                 <li>
-                  <a href="javascript:;"> etc </a>
+                  <a href="main.html?content=1"> 오늘할일 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
                       <div class="gnb_tit">
@@ -67,7 +68,7 @@
                       </div>
                       <ul>
                         <li class="row">
-                          <a href="javascript:;">개발중</a>
+                          <a href="#"> test </a>
                           <ul class="gnb_depth3">
                             <li><a href="javascript:;">depth3</a></li>
                             <li><a href="javascript:;">depth3</a></li>
@@ -81,7 +82,7 @@
               </ul>
               <ul class="gnb_depth1">
                 <li>
-                  <a href="javascript:;">더보기.. </a>
+                  <a href="main.html?content=a"> 사이트 둘러보기 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
                       <div class="gnb_tit">
@@ -123,10 +124,10 @@
             </div>  
             
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
-                현재 날씨 (부평) </div> </br>
+                현재 날씨 (부평) </div> 
 
             <div id = "wicon" class = "h5 mb-0 font-weight-bold text-gray-800 float-left">
-                <div id = "ods" class="float-left"> </div></br>
+                <div id = "ods" class="float-left"> </div>
                 <div id = "sds" class="float-left"> </div>
                 <div id = "fds" class="float-left"> </div> 
             </div>
@@ -135,127 +136,13 @@
         </div>
         
         <div id="pages" name="pages" class="pages">
-
-
-
-
-
-            <div class="first page">
-
-            <section>
-                <h2 class="subtitle">자기소개</h2>
-                <p><mark>프로그래밍</mark>에 관심이 많습니다. 
-                    <br>현재 열심히 공부하며 코딩 중</p>
-            </section>
-
-            <!-- 경력 -->
-            <section>
-                <h2 class="subtitle">Experience</h2>
-                <ul>
-                    <li>프론트엔드
-                        <ul>
-                            <li> HTML/CSS/JAVASCRIPT </li>
-                            <li> 웹 페이지 자주 건드림 </li>
-                            <li> 디자인관련이 파멸적임 </li> 
-                        </ul>
-                    </li>
-                    <li>백엔드
-                        <ul>
-                            <li>자바 잘함 / JSP는 공부 중 </li>
-                            <li>오라클 공부 중 </li>
-                            <li>VB, ASP를 주로 다뤄봄 </li>
-                        </ul>                        
-                    </li>
-                </ul>             
-            </section>
-            </div>
-            <div class="second page">
-            <!-- 숙련도 -->
-            <section>
-                <h2 class="subtitle">보유 기술</h2>
-                <li style="list-style: none;"> 
-                    <ul>
-                        <li>자바
-                            </br><progress class="progress" id="progress" value="75" min="0" max="100" ></progress>
-                        </li>
-                        <li>오라클
-                            </br><progress class="progress" id="progress" value="51" min="0" max="100" ></progress>
-                        </li>
-                        <li>VB
-                            </br><progress class="progress" id="progress" value="75" min="0" max="100" ></progress>
-                        </li>
-                        <li>MSSQL
-                            </br><progress class="progress" id="progress" value="74" min="0" max="100" ></progress>
-                        </li>
-                        <li>JQUERY
-                            </br><progress class="progress" id="progress" value="81" min="0" max="100" ></progress>
-                        </li>
-                        <li>Linux
-                            </br><progress class="progress" id="progress" value="41" min="0" max="100" ></progress>
-                        </li>
-                    </ul>                        
-                </li>
-            </section>
-            </div>
-            <div class="third page">
-            <!-- 학력 -->
-            <section>
-                <h2 class="subtitle">Education</h2>
-                <table>
-                  <caption>학력 사항</caption>
-                  <thead>
-                      <tr>
-                          <th>출신학교</th>
-                          <th>전공</th>
-                          <th>기간</th>
-                          <th>구분</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>동국대학교</td>
-                          <td>컴퓨터공학과</td>
-                          <td>2013.3 ~ 2019.7</td>
-                          <td>졸업</td>
-                      </tr>
-                      <tr>
-                          <td>선인고등학교</td>
-                          <td>컴퓨터동아리</td>
-                          <td>2010.3 ~ 2013.2</td>
-                          <td>졸업</td>
-                      </tr>
-                  </tbody>
-                </table>
- 
-                <table>
-                    <caption>경력 사항</caption>
-                    <thead>
-                        <tr>
-                            <th>회사명</th>
-                            <th>활동내역</th>
-                            <th>기간</th>
-                            <th>구분</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>주식회사 건강나눔</td>
-                            <td>SI, SM / 고객as관리 </td>
-                            <td>2019.8 ~ 2023.12</td>
-                            <td>퇴사</td>
-                        </tr>
-                    </tbody>
-                  </table>
-
-
-            </section>
-            </div>  
-
         </div> 
   
     </div>
-<ul class="pagination" style="display: none;">
-</ul>        
+
+    <ul class="pagination" style="display: none;">
+    </ul>    
+
 </body>
 
 
@@ -277,104 +164,17 @@
 			});
     }
 
+    $(document).ready(function(){
 
-	window.onload = () => {
+      if (getParameter("content") =="") {
+        $("#pages").load("content1.html");  
+      } else if ( getParameter("content") == "1" ) {
+        $("#pages").load("content2.html");  
+      } else {
+        $("#pages").load("test.html"); 
+      }
 
-    let container = document.getElementById('map');
-    let options = { 
-        center: new kakao.maps.LatLng(37.490920171395985, 126.72078754716765), 
-        level: 3 
-        // disableClickZoom: true //
-    };
-
-    let map = new kakao.maps.Map(container, options); 
-    let markerPosition  = new kakao.maps.LatLng(37.490920171395985, 126.72078754716765); 
-
-    let marker = new kakao.maps.Marker({
-        position: markerPosition ,
-        text: '더조은 컴퓨터 학원' 
     });
-
-
-    
-
-    marker.setMap(map);
-	
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) { 
-                console.log("xml",this.responseXML);
-                console.log("xml",url);
-                parseXML(this.responseXML);
-                
-            }
-        };
-        
-
-        xhttp.open("GET", url, true);
-        xhttp.send();
-
-    
-
-	  const Slider = function(pages, pagination) {
-		let slides = [],
-			btns = [],
-			count = 0,
-			current = 0,
-			touchstart = 0,
-			animation_state = false;
-
-		const init = () => {
-		  slides = pages.children;
-		  count = slides.length;
-		  for(let i = 0; i < count; i++) {
-			slides[i].style.bottom = -(i * 100) + '%';
-			let btn = document.createElement('li');
-			btn.dataset.slide = i;
-			btn.addEventListener('click', btnClick)
-			btns.push(btn);
-			pagination.appendChild(btn);
-		  }
-		  btns[0].classList.add('active');
-		}
-
-		const gotoNum = (index) => {
-		  if((index != current) && !animation_state) {
-			animation_state = true;
-			setTimeout(() => animation_state = false, 1000);
-			btns[current].classList.remove('active');
-			current = index;
-			btns[current].classList.add('active');
-			for(let i = 0; i < count; i++) {
-			  slides[i].style.bottom = (current - i) * 100 + '%';
-			}
-		  }
-		}
-
-		const gotoNext = () => current < count - 1 ? gotoNum(current + 1) : false;
-		const gotoPrev = () => current > 0 ? gotoNum(current - 1) : false;
-		const btnClick = (e) => gotoNum(parseInt(e.target.dataset.slide));
-		pages.ontouchstart = (e) => touchstart = e.touches[0].screenY;
-		pages.ontouchend = (e) => touchstart < e.changedTouches[0].screenY ? gotoPrev() : gotoNext();
-		pages.onmousewheel = pages.onwheel = (e) => e.deltaY < 0 ? gotoPrev() : gotoNext();
-
-		init();
-	  }
-
-	  let pages = document.querySelector('.pages');
-	  let pagination = document.querySelector('.pagination');
-	  let slider = new Slider(pages, pagination)
-	  
-		window.addEventListener('scroll', () => {
-			$(function () {
-				$(window).scroll(function () {
-					let scrTop = $(window).scrollTop();
-
-				$(".pages").css("clip-path", "circle(" + scrTop + "px at 50% 50%)");
-			});
-		  });
-		});
-	}
 
     $(function() {
     $(".dropdown .gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
@@ -425,6 +225,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
 <script src="js/weather.js"></script>
+<script src="js/main.js"></script>
 <script src="js/kakao.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery_ui.js"></script>
