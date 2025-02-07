@@ -332,13 +332,13 @@ caption {width: 100%;height: 1px;max-height: 1px; overflow: hidden}
 .tbl-list td.align-l {text-align: left;}
 
 /* List (photo) */
-.photo-wrap {border-bottom: 1px solid #E2E8EA;}
+/* .photo-wrap {border-bottom: 1px solid #E2E8EA;} */
 .photo-wrap::before {display: block; height: 8px; background: url(../images/content/bg_tbl-border.png); content: "";}
-.photoList {border-top: 2px solid #444}
+/* .photoList {border-top: 2px solid #444} */
 .photoList:after {content:''; display: block; clear: both;}
 .photoList * {transition: all 0.3s;}
 .photoList li {position: relative; float: left; width: calc((100% - (25px*2))/3); padding: 32px 0; padding-left: 24.9999px; box-sizing: content-box;}
-.photoList li::after {position: absolute; top: 0; left: 12.5px; height: 16px; border-left: 1px solid #E2E8EA; content: "";}
+.photoList li::after {position: absolute; top: 0; left: 12.5px; height: 16px; /*border-left: 1px solid #E2E8EA;*/ content: "";}
 .photoList li:nth-child(3n+1) {padding-left: 0;}
 .photoList li:nth-child(3n+1)::after {display: none;}
 .photoList li:nth-child(n+4) {border-top: 1px solid #E2E8EA;}

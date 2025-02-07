@@ -1,4 +1,8 @@
 <div id="atest">
+
+
+
+
     <a href="https://chonsa29.github.io/intro/intro.html" target="_blank"> 천상욱 </a>
     <a href="https://jonagyeong.github.io/intro/profil.html" target="_blank"> 조나경 </a>
     <a href="https://saebyeol5285.github.io/intro/intro2.html" target="_blank"> 박새별 </a>
@@ -36,5 +40,42 @@
         border: 1px solid aliceblue;
         border-radius: 15%;
     }
+
+
+/* list (photo) */
+.photo-wrap {border-bottom: 1px solid #E2E8EA;}
+.photo-wrap::before {display: block; height: 8px; background: url(../images/content/bg_tbl-border.png); content: "";}
+.photoList {border-top: 2px solid #444}
+.photoList:after {content:''; display: block; clear: both;}
+.photoList * {transition: all 0.3s;}
+.photoList li {position: relative; float: left; width: calc((100% - (25px*2))/3); padding: 32px 0; padding-left: 24.9999px; box-sizing: content-box;}
+.photoList li::after {position: absolute; top: 0; left: 12.5px; height: 16px; border-left: 1px solid #E2E8EA; content: "";}
+.photoList li:nth-child(3n+1) {padding-left: 0;}
+.photoList li:nth-child(3n+1)::after {display: none;}
+.photoList li:nth-child(n+4) {border-top: 1px solid #E2E8EA;}
+.photoList li > a {display: block; position: relative; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.1);}
+.photoList li > a::before {opacity: 0; position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px; z-index: 1; border: 2px solid #596BD7; border-radius: 8px; content: ""; transition: all 0.1s;}
+.photoList .infoTop {height: calc((((940px - (25px*2))/3)*1.2)*0.57); text-align: center;}
+.photoList .infoTop .thumb {display: block; position: relative; overflow: hidden; box-sizing: border-box; width: 100%; height: 100%; border-radius: 8px 8px 0 0; background: #eee;}
+.photoList .infoTop .thumb img {max-width: 100%; min-height: 100%;}
+.photoList .infoBottom {box-sizing: border-box; height: 43%; padding: 16px; border-radius: 0 0 8px 8px;}
+.photoList .infoBottom > span {display: block; margin-bottom: 8px; font-weight: 700; font-size: 14px; line-height: 1.4286;}
+.photoList .infoBottom > span.c1 {color: #009AFF;}
+.photoList .infoBottom > span.c2 {color: #01937F;}
+.photoList .infoBottom > span.c3 {color: #1366B6;}
+.photoList .infoBottom > p {height: 3.2em; font-weight: 700; font-size: 18px; line-height: 1.6; color: #212121;}
+.photoList .infoBottom > div {margin-top: 12px; font-weight: 300; font-size: 14px; line-height: 1.4286; color: #616161;}
+.photoList .infoBottom > div .date { font-weight: 400}
+.photoList .infoBottom > div .view {font-weight: 400}
+.photoList .infoBottom > div .view > span::after {display: inline-block; height: 9px; margin: 0 5px; border-left: 1px solid #C9D1D5; content: "";}
+.photoList .infoBottom > div .view > b {color: #596BD7;}
+.multi-clamp-txt {display: inline-block;}
+.photoList .infoBottom {position: relative;}
+ 
+.photoList li:hover > a::before {opacity: 1;}
+.photoList li:hover > a .infoBottom > p {text-decoration: underline;}
+.photoList li.empty {float: none; clear: both; width: 100%;}
+.photoList li.empty > p {box-sizing: border-box; height: 75px; text-align: center; font-weight: 300; font-size: 16px; line-height: 44px; color: #616161;}
+.photoList li.empty-image .infoTop .thumb span {position: absolute; top: 50%; right: 0; left: 0; margin-top: -8px; font-weight: 400; font-size: 16px; color: #616161;}
 
 </style>
