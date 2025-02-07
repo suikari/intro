@@ -289,7 +289,7 @@ table {
   .main_popup .btn_today_close span {
     display: block;
     line-height: 40px;
-    vertical-align: bottom;
+    /* vertical-align: bottom; */
     opacity: 0.8;
   }
 
