@@ -319,5 +319,5 @@ table {
   
   .cursor {
     position: absolute;
+    z-index: 200000;
   }
-  
