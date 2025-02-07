@@ -45,7 +45,7 @@
             </a>
             <nav class="gnb_wrap" id="gnb">
               <ul class="gnb_depth1">
-                <li>
+                <li id="gnb_tab1">
                   <a href="main.html?content="> 자기소개 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
@@ -67,7 +67,7 @@
                 </li>
               </ul>
               <ul class="gnb_depth1">
-                <li>
+                <li id="gnb_tab2">
                   <a href="main.html?content=1"> 오늘할일 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
@@ -89,7 +89,7 @@
                 </li>
               </ul>
               <ul class="gnb_depth1">
-                <li>
+                <li id="gnb_tab3">
                   <a href="main.html?content=a"> 사이트 둘러보기 </a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
@@ -111,7 +111,7 @@
                 </li>
               </ul>
               <ul class="gnb_depth1">
-                <li>
+                <li id="gnb_tab4">
                   <a href="downscroll.html">스크롤 테스트 페이지</a>
                   <div class="gnb_depth2">
                     <div class="gnb_depth2_bg">
@@ -197,10 +197,16 @@
 
       if (getParameter("content") =="") {
         $("#pages").load("content1.html");  
+        $("#gnb_tab1").css("background-color", "#333333");
+
       } else if ( getParameter("content") == "1" ) {
         $("#pages").load("content2.html");  
+        $("#gnb_tab2").css("background-color", "#333333");
+
       } else {
         $("#pages").load("test.html"); 
+        $("#gnb_tab3").css("background-color", "#333333");
+
       }
 
     });
@@ -216,12 +222,14 @@
     
     $(document).focusin(function(e) {
 
-        var el01 = $(".dropdown .gnb_wrap > .gnb_depth1");
+        let el01 = $(".dropdown .gnb_wrap > .gnb_depth1");
+        
         if (el01.parents("#gnb").has(e.target).length === 0) {
-        el01.find("li").removeClass("on").find(".gnb_depth2").hide();
+          el01.find("li").removeClass("on").find(".gnb_depth2").hide();
         }
 
-        var el02 = $(".all_menu_wrap");
+        let el02 = $(".all_menu_wrap");
+
         if ($("#wrap").hasClass("all_menu")) {
         if (el02.parents("#header").has(e.target).length === 0) {
             $(".all_menu_btn a").focus();
@@ -230,20 +238,20 @@
     });
     
     $(".gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
-        var depth2_li = $(this).parent().find(".gnb_depth2_bg > ul > li");
-        var li_h1 = [];
-        var li_h2 = [];
-        for (var i = 0; i < depth2_li.length; i++) {
+        let depth2_li = $(this).parent().find(".gnb_depth2_bg > ul > li");
+        let li_h1 = [];
+        let li_h2 = [];
+        for (let i = 0; i < depth2_li.length; i++) {
         if (i <= 4) {
             li_h1.push(depth2_li.eq(i).height());
         } else {
             li_h2.push(depth2_li.eq(i).height());
         }
         };
-        for (var j = 0; j < li_h1.length; j++) {
+        for (let j = 0; j < li_h1.length; j++) {
         depth2_li.eq(j).height(Math.max.apply(null, li_h1));
         };
-        for (var k = 0; k < li_h2.length; k++) {
+        for (let k = 0; k < li_h2.length; k++) {
         depth2_li.eq(k + 5).height(Math.max.apply(null, li_h2));
         };
     });
