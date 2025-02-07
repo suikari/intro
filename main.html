@@ -25,9 +25,9 @@
 </head>
 
 <body>
-  <div class="cursor">
+  <!-- <div class="cursor">
     <img src="image/cus_icon.png" width="55px" height="55px">
-  </div>
+  </div> -->
   
   <div id= "draggable" class="main_popup ">
     <div class="layer_cont">
@@ -186,14 +186,7 @@
 
 <script>
 
-    document.addEventListener('mousemove', (e) => {
-        let mouseX = e.pageX; // document의 x좌표값
-        let mouseY = e.pageY; // document의 y좌표값
 
-        let cursor = document.querySelector('.cursor');
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-    })
 
     function click_button () {
         Swal.fire({
