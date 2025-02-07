@@ -57,6 +57,23 @@ window.onload = () => {
 	xhttp.open("GET", url, true);
 	xhttp.send();
 
+
+	
+	if (getCookie("today") == "y") {
+		$(".main_popup").removeClass("on");
+	} else {
+		$(".main_popup").addClass("on");
+	}
+
+	$(".main_popup").on("click", ".btn_today_close", function () {
+		setCookie("today", "y", 1);
+		$(this).parents(".main_popup.on").removeClass("on");
+	});
+
+	$(".main_popup").on("click", ".btn_close", function () {
+		$(this).parents(".main_popup.on").removeClass("on");
+	});
+
 }
 
 
@@ -67,4 +84,20 @@ function getParameter(name) {
 	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+
+
+// 쿠키 관련 함수
+function setCookie(name, val, exp) {
+	var date = new Date();
+
+	date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+	console.log(name + "=" + val + ";expires=" + date.toUTCString() + ";path=/");
+
+	document.cookie = name + "=" + val + ";expires=" + date.toUTCString() + ";";
+}
+
+function getCookie (name) {
+      var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+      return value ? value[2] : null;
+}
 
