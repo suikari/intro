@@ -869,7 +869,11 @@ tr.expand-item.is-visible { display: table-row}
 .fulldown .gnb_wrap .gnb_depth1 > li .gnb_depth2 > li .gnb_depth3 li a:focus{text-decoration:underline;}
 
 /* GNB Dropdown */
-.dropdown .gnb_wrap{height:56px; background: #666; box-sizing:border-box;}
+.dropdown .gnb_wrap{height:56px; background: #666; box-sizing:border-box; 
+    word-break: break-all;
+    text-overflow : ellipsis;
+    overflow : hidden;
+}
 .dropdown .gnb_wrap .gnb_depth1{width:100%; margin:0 auto;box-sizing:border-box;}
 .dropdown .gnb_wrap .gnb_depth1 > li{float:left; width:20%;}
 .dropdown .gnb_wrap .gnb_depth1 > li > a{display:block; position:relative; text-align:center; font-size:20px; height:54px; line-height:54px; box-sizing:border-box; color:#fff;}

@@ -18,10 +18,10 @@ function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
 		if (category[i].childNodes[0].nodeValue == 'PTY' ) {
 			if (obsrValue[i].childNodes[0].nodeValue == 0 ) {
 				//table += "</br><image width='50px' height='50px' class="float-left" src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>";
-				document.getElementById('wicon').innerHTML = "</br><image width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>" +
+				document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>" +
 				document.getElementById('wicon').innerHTML;
 			} else {
-				document.getElementById('wicon').innerHTML = "</br><image width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
+				document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
 				document.getElementById('wicon').innerHTML;				
 			}
 		} else if (category[i].childNodes[0].nodeValue == 'REH' ) {
