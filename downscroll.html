@@ -139,9 +139,10 @@
             const maxScroll = document.body.scrollHeight - window.innerHeight;
 
             if (currentScroll + scrollStep >= maxScroll) {
-                clearInterval(scrollInterval);
+                /* clearInterval(scrollInterval);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                setTimeout(startAutoScroll, 10000); 
+                setTimeout(startAutoScroll, 10000);  */
+                location = "/main.html";
             } else {
                 window.scrollBy(0, scrollStep);
             }
@@ -156,5 +157,4 @@
 
     window.addEventListener('click', stopAutoScroll);
     /* window.addEventListener('scroll', stopAutoScroll); */
-    
 </script>
