@@ -214,3 +214,8 @@ table {
     border-radius: 50%;
     box-shadow: 0 0 3px 3px #ffc0cb;
   }
+
+  a {
+    text-decoration: none;
+  }
+  
