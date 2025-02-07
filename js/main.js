@@ -74,6 +74,8 @@ window.onload = () => {
 		$(this).parents(".main_popup.on").removeClass("on");
 	});
 
+
+	
 }
 
 
