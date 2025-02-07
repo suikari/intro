@@ -25,7 +25,7 @@ window.onload = () => {
 		snow.animate(keyframe, option);
 		document.body.appendChild(snow);
 	  }
-	  
+
     let container = document.getElementById('map');
     let options = { 
         center: new kakao.maps.LatLng(37.490920171395985, 126.72078754716765), 
@@ -41,33 +41,30 @@ window.onload = () => {
         text: '더조은 컴퓨터 학원' 
     });
 
-
-    
-
     marker.setMap(map);
 	
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) { 
-                console.log("xml",this.responseXML);
-                console.log("xml",url);
-                parseXML(this.responseXML);
-                
-            }
-        };
-        
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) { 
+			console.log("xml",this.responseXML);
+			console.log("xml",url);
+			parseXML(this.responseXML);
+			
+		}
+	};
+	
 
-        xhttp.open("GET", url, true);
-        xhttp.send();
+	xhttp.open("GET", url, true);
+	xhttp.send();
 
-	}
+}
 
 
-	function getParameter(name) {
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-			results = regex.exec(location.search);
-		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
+function getParameter(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 
