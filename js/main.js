@@ -103,3 +103,4 @@ function getCookie (name) {
       return value ? value[2] : null;
 }
 
+
