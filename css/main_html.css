@@ -315,6 +315,8 @@ table {
     display: flex;
     justify-content: center;
   
+    transition: transform 0.2s ease;
+
   }
   
   .cursor {
@@ -322,4 +324,5 @@ table {
     pointer-events: none; /* 클릭 방지 */
     z-index: 9999; /* 최상단 배치 */
     transition: transform 0.05s ease-out;
+
   }
