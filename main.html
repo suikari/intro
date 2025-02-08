@@ -223,28 +223,6 @@
         cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       });
 
-      // 드래그 가능한 div
-      const draggable = document.getElementById('draggable');
-      let isDragging = false; // 드래그 여부 확인
-      let offsetX = 0;
-      let offsetY = 0;
-
-      draggable.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        offsetX = e.clientX - draggable.offsetLeft;
-        offsetY = e.clientY - draggable.offsetTop;
-        draggable.style.cursor = 'grabbing';
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-          const x = e.clientX - offsetX;
-          const y = e.clientY - offsetY;
-          draggable.style.left = `${x}px`;
-          draggable.style.top = `${y}px`;
-        }
-      });
-
     });
 
     $(function() {
