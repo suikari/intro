@@ -42,6 +42,14 @@
     </div>
   </div>
 
+    <audio id="music" class="paly_list" controls >
+      <source src="common/san.m4a" type="audio/mpeg">
+    </audio>
+
+    <!-- <button id="play">재생</button>
+    <button id="pause">일시 중지</button>
+    <button id="skip">다음 곡</button> -->
+
     <div id="container">
         <div id="test"></div>
         <div id="header" class="dropdown">
@@ -175,6 +183,7 @@
     <ul class="pagination" style="display: none;">
     </ul>    
 
+    
 </body>
 
 
@@ -186,7 +195,30 @@
 
 <script>
 
+    // let audio = new Audio('common/san.m4a');
+    // audio.play();
 
+    const music = document.getElementById('music');
+    music.play();
+	
+
+    // const music = document.getElementById('music');
+    // const playButton = document.getElementById('play');
+    // const pauseButton = document.getElementById('pause');
+    // const skipButton = document.getElementById('skip');
+
+    // playButton.addEventListener('click', () => {
+    //      music.play();
+    // });
+    // pauseButton.addEventListener('click', () => {
+    //     music.pause();
+    // });
+
+    // skipButton.addEventListener('click', () => {
+    // });
+
+
+    
 
     function click_button () {
         Swal.fire({

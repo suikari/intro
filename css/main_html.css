@@ -326,3 +326,11 @@ table {
     transition: transform 0.05s ease-out;
 
   }
+
+  .paly_list {
+    position: absolute;
+    top: calc( 95% - 54px);
+    left: calc(95% - 300px);
+    z-index: 9999; /* 최상단 배치 */
+
+  }
