@@ -21,14 +21,12 @@
             <th class="col-view" scope="col">조회수</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: gray;">
 
         </tbody>
       </table>
     </div>
   </div>
-
-
   <script type="text/javascript">
     
       $.get('common/test.txt', function (data) {	
@@ -38,17 +36,32 @@
                 let html;
                 
                 html += '<tr>';
-                html += '<td>'+ datalen2[0] +'</td>';
-                html += '<td>'+ datalen2[1] +'</td>';
-                html += '<td>'+ datalen2[2] +'</td>';
-                html += '<td>'+ datalen2[3] +'</td>';
-                html += '<td>'+ datalen2[4] +'</td>';
+                html += '<td  class="col-number">'+ datalen2[0] +'</td>';
+                html += '<td  class="col-title align-l">'+ datalen2[1] +'</td>';
+                html += '<td  class="col-writer">'+ datalen2[2] +'</td>';
+                html += '<td  class="col-date">'+ datalen2[3] +'</td>';
+                html += '<td  class="col-view">'+ datalen2[4] +'</td>';
                 html += '</tr>';
             $("#btable").append(html);
             
         }
 
       });
+
+      fs.writeFile("common/test.txt", "Hello!", "utf8", (err, data) => {
+
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("File Saved");
+        }
+        });
+
+
+
+
+
+      
   </script>
 
   <style>
