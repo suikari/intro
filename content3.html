@@ -1,0 +1,56 @@
+<div class="tbl-group" style="margin: 30px;"> 
+    <div class="tbl tbl-list">
+      <table id=btable>
+        <caption>
+          <strong>게시판 목록</strong>
+          <p>이 표는 번호, 제목, 작성자, 작성일로 구성되었습니다.</p>
+        </caption>
+        <colgroup>
+          <col style="width:80px">
+          <col style="">
+          <col style="width:80px">
+          <col style="width:110px">
+          <col style="width:80px">
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="col-number" scope="col">번호</th>
+            <th class="col-title" scope="col">제목</th>
+            <th class="col-writer" scope="col">작성자</th>
+            <th class="col-date" scope="col">작성일</th>
+            <th class="col-view" scope="col">조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    
+      $.get('common/test.txt', function (data) {	
+        let datalen1 = data.split(",");
+        for (i=0;i<datalen1.length;i++) {
+            let datalen2 = datalen1[i].split(";");
+                let html;
+                
+                html += '<tr>';
+                html += '<td>'+ datalen2[0] +'</td>';
+                html += '<td>'+ datalen2[1] +'</td>';
+                html += '<td>'+ datalen2[2] +'</td>';
+                html += '<td>'+ datalen2[3] +'</td>';
+                html += '<td>'+ datalen2[4] +'</td>';
+                html += '</tr>';
+            $("#btable").append(html);
+            
+        }
+
+      });
+  </script>
+
+  <style>
+
+  </style>
