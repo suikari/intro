@@ -26,7 +26,7 @@
 
 <body>
   <div class="cursor">
-    <img src="image/cus_icon.png" width="45px" height="45px">
+    <img src="image/san_cuss.png" width="65x" height="65px">
   </div> 
   
   <div id= "draggable" class="main_popup ">
@@ -230,6 +230,15 @@
 			});
     }
 
+    function swal_msg (title, text) {
+      Swal.fire({
+				  title: title,
+				  text: text,
+				  icon: "error"	,
+				  background: "#ffffff"
+			}).then((result) => {
+			});
+    }
 
 
     $(document).ready(function(){

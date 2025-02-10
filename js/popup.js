@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // document.addEventListener('mousemove', (e) => {
 //   let mouseX = e.pageX; // document의 x좌표값
-//   let mouseY = e.pageY; // document의 y좌표값
+//   let mouseY = e.pageY; // document의 cursory좌표값
 
 //   let cursor = document.querySelector('.cursor');
 //   cursor.style.left = mouseX + 'px';
