@@ -537,7 +537,7 @@ caption {width: 100%;height: 1px;max-height: 1px; overflow: hidden}
 .bbs-wrap .result .read article .upr .info > span > span {display: inline-block; vertical-align: middle; font-weight: 400; font-size: 14px; line-height: 1.7143; letter-spacing: 0; color: #848484;}
 .bbs-wrap .result .read article .detail {box-sizing: border-box; font-weight: 400; font-size: 16px; line-height: 2; letter-spacing: 0; color: #616161;}
 .bbs-wrap .result .read article .detail * {font-weight: 400; font-size: 16px; line-height: 2; letter-spacing: 0; color: #616161;}
-.bbs-wrap .result .read article > .detail {min-height: 300px; padding: 80px 12px;}
+.bbs-wrap .result .read article > .detail {min-height: 200px; padding: 55px 12px;}
 
 .bbs-wrap .result .read article .answer {border: 2px solid #F36F20;}
 .bbs-wrap .result .read article .answer .upr {background: #FAFAFA;}
