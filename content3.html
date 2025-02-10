@@ -44,7 +44,7 @@
             let datalen2 = datalen1[i].split(";");
             let html;
 
-            html += '<tr  onClick="location.href=\'main.html?content=b&num='+i+'\'">';
+            html += '<tr  onClick="location.href=\'main.html?content=b&type=t&num='+i+'\'">';
             html += '<td  class="col-number">' + datalen2[0] + '</td>';
             html += '<td  class="col-title align-l">' + datalen2[1] + '</td>';
             html += '<td  class="col-writer">' + datalen2[2] + '</td>';
@@ -64,7 +64,7 @@
 
                     let html;
 
-                    html += '<tr  onClick="location.href=\'main.html?content=b&num='+i+'\'">';
+                    html += '<tr  onClick="location.href=\'main.html?content=b&type=l&num='+i+'\'">';
                     html += '<td  class="col-number">' + datalen2[0] + '</td>';
                     html += '<td  class="col-title align-l">' + datalen2[1] + '</td>';
                     html += '<td  class="col-writer">' + datalen2[2] + '</td>';
