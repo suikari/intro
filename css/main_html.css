@@ -336,3 +336,10 @@ table {
     z-index: 9999; /* 최상단 배치 */
 
   }
+
+
+  #smart_editor2 {
+    width: 100%;
+  }
+  
+  

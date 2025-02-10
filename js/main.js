@@ -105,3 +105,37 @@ function getCookie (name) {
 }
 
 
+
+function saveMemo(memo) {
+	let rev_locmem = loadMemo();
+	
+	if (typeof rev_locmem == "undefined" || rev_locmem == null || rev_locmem == ""){
+		localStorage.setItem("memo", memo);
+	} else {
+		rev_locmem = rev_locmem + "," + memo ; 
+		localStorage.setItem("memo", rev_locmem); 
+	}
+	alert("메모가 저장되었습니다.");
+}
+
+function loadMemo() {
+	let memo = localStorage.getItem("memo");
+	if (memo) {
+		return memo;
+	} else {
+		console.log("저장된 메모가 없습니다.");
+	}
+}
+
+
+function getDate() {
+	const today = new Date();
+  
+	const year = today.getFullYear(); 
+	const month = (today.getMonth() + 1).toString().padStart(2, '0'); 
+	const day = today.getDate().toString().padStart(2, '0'); 
+  
+	const dateString = year + '-' + month + '-' + day; 
+  
+	return dateString;
+  }

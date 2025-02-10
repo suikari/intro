@@ -54,7 +54,26 @@
             $("#btable").append(html);
 
         }
+        let localmem = loadMemo();
+        if (localmem != '') {
+            let localmem1 = localmem.split(",");
 
+            for (i = 0; i < localmem1.length; i++) {
+
+                    let datalen2 = localmem1[i].split(";");
+
+                    let html;
+
+                    html += '<tr  onClick="location.href=\'main.html?content=b&num='+i+'\'">';
+                    html += '<td  class="col-number">' + datalen2[0] + '</td>';
+                    html += '<td  class="col-title align-l">' + datalen2[1] + '</td>';
+                    html += '<td  class="col-writer">' + datalen2[2] + '</td>';
+                    html += '<td  class="col-date">' + datalen2[3] + '</td>';
+                    html += '<td  class="col-view">' + datalen2[4] + '</td>';
+                    html += '</tr>';
+                    $("#btable").append(html);            
+            }
+        }
     });
 
 

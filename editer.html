@@ -5,6 +5,8 @@
 
 <body>
     <h3>게시판 글작성</h3>
+    <div>제목 : <textarea name="title" id="title"></textarea> </div>
+    <div>글쓴이 : <textarea name="writer" id="writer"></textarea> </div>
     <form action="insertStudentInfoForm" method="post">
       <div id="smarteditor">
         <textarea name="editorTxt" id="editorTxt" 
@@ -12,9 +14,9 @@
                   placeholder="내용을 입력해주세요"
                   style="width: 500px"></textarea>
       </div>
-      <input type="button" value="저장"/>  
+      <input type="button" value="저장" onclick="submitPost();"/>  
     </form>
-  </body>
+</body>
 
 
 
@@ -39,15 +41,24 @@
 
     submitPost = function() {
         oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
-        let content = document.getElementById("editorTxt").value
+        let content = document.getElementById("editorTxt").value;
+        content = "5;"+ $('#title').val() + ";" + $('#writer').val() + ";" + getDate() + ";0;" + content + ";";
 
         if(content == '') {
             alert("내용을 입력해주세요.")
             oEditors.getById["editorTxt"].exec("FOCUS")
             return
         } else {
-            console.log(content)
+          saveMemo(content); 
+          location.href = "main.html?content=1";
+
+          //console.log(content)
         }
     }
 
   </script>
+
+
+<style>
+
+</style>
