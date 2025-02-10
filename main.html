@@ -31,9 +31,9 @@
   
   <div id= "draggable" class="main_popup ">
     <div class="layer_cont">
-      <div class="title_wrap draggable"></div>
+      <div class="title_wrap draggable"> 팝업 </div>
       <div class="img_wrap">
-          팝업 냉무
+        <img  id="ban_img" width="200px" height="180px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
       <div class="btn_wrap">
         <button class="btn_today_close"><span>오늘 하루 보지 않기</span></button>
@@ -162,7 +162,8 @@
             </div>  
             
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
-                현재 날씨 (부평) </div> 
+                현재 날씨 / <span id="now_time"></span>
+              </div> 
 
             <div id = "wicon" class = "h5 mb-0 font-weight-bold text-gray-800 float-left">
                 <div id = "ods" class="float-left"> </div>
@@ -194,6 +195,23 @@
 
 
 <script>
+
+  function clock() {
+    let time = new Date();
+
+    let now;
+
+    let hours = time.getHours().toString().padStart(2, '0'); ;
+    let minutes = time.getMinutes().toString().padStart(2, '0'); ;
+    let seconds = time.getSeconds().toString().padStart(2, '0'); ;
+
+    now = hours +" : "+ minutes +" : "+ seconds
+    $('#now_time').text(now);
+    //console.log(now);
+  }
+
+  clock();
+  setInterval(clock, 1000);
 
     // let audio = new Audio('common/san.m4a');
     // audio.play();

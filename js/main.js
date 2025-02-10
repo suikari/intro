@@ -2,6 +2,7 @@
 window.onload = () => {
 
 
+
 	for (let i = 0; i < 200; i++) {
 		const snow = document.createElement("div");
 		snow.className = "snow";
@@ -47,7 +48,7 @@ window.onload = () => {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) { 
-			//console.log("xml",this.responseXML);
+			console.log("xml",this.responseXML);
 			//console.log("xml",url);
 			parseXML(this.responseXML);
 			
@@ -76,7 +77,14 @@ window.onload = () => {
 	});
 
 
-	
+	$("#ban_img").hover(
+		function () { // mouseover
+			$(this).attr("src","image/san2.jfif");
+		},
+		function () { // mouseout
+			$(this).attr("src","image/san1.jfif");
+		}
+	);
 }
 
 
@@ -138,4 +146,11 @@ function getDate() {
 	const dateString = year + '-' + month + '-' + day; 
   
 	return dateString;
-  }
+}
+
+
+// function change_image() { 
+// 	document.getElementById('ban_img').src='image/san1.jfif'; 
+// 	alert('123');
+// }
+

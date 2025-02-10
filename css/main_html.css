@@ -342,4 +342,7 @@ table {
     width: 100%;
   }
   
+  #now_time {
+    color : green;
+  }
   
