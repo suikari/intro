@@ -81,9 +81,11 @@ table {
       line-height: 30px;
 
   }
-  
-  .pages div {
+  .page {
     margin : -20px 35px;
+  }
+  .pages div {
+    /* margin : -20px 35px; */
   }
   .page {
       height: 100%;
