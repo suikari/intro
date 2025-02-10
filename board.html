@@ -109,18 +109,18 @@
 
     if (type == 't') {
       $.get('common/test.txt', function (data) {
-          let datalen1 = data.split(",");
+        let datalen1 = data.split(",");
 
 
-          let b_num = getParameter("num");
-          
+        let b_num = getParameter("num");
+        
 
-              let datalen2 = datalen1[b_num].split(";");
+        let datalen2 = datalen1[b_num].split(";");
 
-              $('#title').text(datalen2[1]);
-              $('#wid').text(datalen2[2]);
-              $('#wday').text(datalen2[3]);
-              $('#b_content').text(datalen2[5]);
+        $('#title').text(datalen2[1]);
+        $('#wid').text(datalen2[2]);
+        $('#wday').text(datalen2[3]);
+        $('#b_content').text(datalen2[5]);
               
       });
     } else if (type == 'l')  {
