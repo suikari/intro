@@ -1,4 +1,5 @@
 
+
 window.onload = () => {
 
 
@@ -85,6 +86,9 @@ window.onload = () => {
 			$(this).attr("src","image/san1.jfif");
 		}
 	);
+
+
+
 }
 
 
