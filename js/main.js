@@ -61,14 +61,14 @@ window.onload = () => {
 
 
 	
-	if (getCookie("today") == "y") {
+	if (getCookie("today") == "yy") {
 		$(".main_popup").removeClass("on");
 	} else {
 		$(".main_popup").addClass("on");
 	}
 
 	$(".main_popup").on("click", ".btn_today_close", function () {
-		setCookie("today", "y", 1);
+		setCookie("today", "yy", 1);
 		$(this).parents(".main_popup.on").removeClass("on");
 	});
 
