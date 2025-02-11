@@ -2,8 +2,7 @@
 
 
 
-
-<body>
+<body onload="body_load();">
     <h3>게시판 글작성</h3>
     <div>제목 : <textarea name="title" id="title"></textarea> </div>
     <div>글쓴이 : <textarea name="writer" id="writer"></textarea> </div>
@@ -22,6 +21,10 @@
 
 
   <script>
+
+
+    let b_num = getParameter("num");
+
     let oEditors = []
 
     smartEditor = function() {
@@ -36,35 +39,95 @@
 
     $(document).ready(function() {
       smartEditor()
+
+
+      if (!(typeof b_num == "undefined" || b_num == null || b_num == "")) {
+        let localmem = loadMemo();
+
+        let datalen1 = localmem.split(",");
+
+        let datalen2 = datalen1[b_num].split(";");
+
+        $('#title').text(datalen2[1]);
+        $('#writer').text(datalen2[2]);
+      }
+      
     })
 
+    function body_load (){
+      if (!(typeof b_num == "undefined" || b_num == null || b_num == "")) {
+        let localmem = loadMemo();
+
+        let datalen1 = localmem.split(",");
+
+        let datalen2 = datalen1[b_num].split(";");
+
+        $('#title').text(datalen2[1]);
+        $('#writer').text(datalen2[2]);
+        $('#se2_inputarea').html(datalen2[5]);
+      }
+    }
 
     submitPost = function() {
         oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
         
         let data = loadMemo();
         let num = 5;
-        if (!(typeof data == "undefined" || data == null || data == "")) {
+        if (( !(typeof data == "undefined" || data == null || data == "") && (typeof b_num == "undefined" || b_num == null || b_num == "") )) {
           let datalen1 = data.split(",");
           let datalen2 = datalen1[datalen1.length-1].split(";");
           num = parseInt(datalen2[0]) + 1; 
-         }
+        } else if (b_num != '' ) {
+          num = 5 + parseInt(b_num);
+        }
 
         let content = document.getElementById("editorTxt").value;
         content = num + ";"+ $('#title').val() + ";" + $('#writer').val() + ";" + getDate() + ";0;" + content + ";";
 
-        if(content == '') {
-            alert("내용을 입력해주세요.")
-            oEditors.getById["editorTxt"].exec("FOCUS")
-            return
+        if (typeof b_num == "undefined" || b_num == null || b_num == "") {
+          if(content == '') {
+              alert("내용을 입력해주세요.")
+              oEditors.getById["editorTxt"].exec("FOCUS")
+              return
+          } else {
+            saveMemo(content); 
+            swal_msg("등록완료","해당 게시글 등록완료!");
+            location.href = "main.html?content=1";
+            //console.log(content)
+          }
         } else {
-          saveMemo(content); 
-          location.href = "main.html?content=1";
+          let data = loadMemo();
 
-          //console.log(content)
+          let localmem1 = data.split(",");
+          let memdata = '';
+
+          for (i = 0; i < localmem1.length; i++) {
+
+            if (i != b_num ) {
+              memdata += localmem1[i] + "," ;   
+            } else {
+              memdata += content + "," ;   
+            }         
+          
+          }
+          
+          memdata = memdata.slice(0, -1);
+
+          delMemo();
+          saveMemo(memdata); 
+          swal_msg("등록완료","해당 게시글 수정완료!");
+          location.href = "main.html?content=1";
         }
+
     }
 
+
+      
+
+
+
+
+    
   </script>
 
 

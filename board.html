@@ -51,7 +51,7 @@
         <div class="float-r">
           <a href="javascript:delete_doc();" class="btn-dark">삭제</a>
           <a href="javascript:location.href='main.html?content=1';" class="btn-outline">목록</a>
-          <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-outline">수정</a>
+          <a href="javascript:update_doc();" class="btn-outline">수정</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-fill">답변</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-fill">쓰기</a>
         </div>
@@ -169,4 +169,8 @@
 
     }
 
+    function update_doc() {
+      location.href = "main.html?content=e&"+"num="+ b_num;     
+    }
+    
 </script>
