@@ -1,0 +1,167 @@
+<div class="first page">
+
+    <section>
+        <h2 class="subtitle"> 오늘 할일 </h2>
+        <p><mark>프로그래밍 공부</mark> 
+        <br> 집가서 로아 숙제 </p>
+    </section>
+
+    <!-- 경력 -->
+    <section>
+        <h2 class="subtitle">알림글</h2>
+        <ul>
+            <li>
+                <ul>
+                    <li><mark> 궁금하신건 무엇이든 물어보셔도 환영합니다. (아는범위내에서 알려드리겠습니다. 모르면 찾아서라도..) </mark></li>
+                    <li><mark>결국 코딩은 구글링과 활용이 전부입니다. (주관과 날조 다량 들어가있음)</mark>  </li>
+                    <li>모두 열심히 공부해서 원하시는 바 이루시길 바랍니다!  </li>
+                </ul>                        
+            </li>
+        </ul>             
+    </section>
+    </div>
+    <div class="second page">
+    <!-- 숙련도 -->
+    <section>
+        <h2 class="subtitle">보유 기술</h2>
+        <li style="list-style: none;"> 
+            <ul>
+                <li>자바
+                    </br><progress class="progress" id="progress" value="75" min="0" max="100" ></progress>
+                </li>
+                <li>오라클
+                    </br><progress class="progress" id="progress" value="51" min="0" max="100" ></progress>
+                </li>
+                <li>VB
+                    </br><progress class="progress" id="progress" value="75" min="0" max="100" ></progress>
+                </li>
+                <li>MSSQL
+                    </br><progress class="progress" id="progress" value="74" min="0" max="100" ></progress>
+                </li>
+                <li>JQUERY
+                    </br><progress class="progress" id="progress" value="81" min="0" max="100" ></progress>
+                </li>
+                <li>Linux
+                    </br><progress class="progress" id="progress" value="41" min="0" max="100" ></progress>
+                </li>
+            </ul>                        
+        </li>
+    </section>
+    </div>
+    <div class="third page">
+    <!-- 학력 -->
+    <section>
+        <h2 class="subtitle">Education</h2>
+        <table>
+          <caption>학력 사항</caption>
+          <thead>
+              <tr>
+                  <th>출신학교</th>
+                  <th>전공</th>
+                  <th>기간</th>
+                  <th>구분</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>동국대학교</td>
+                  <td>컴퓨터공학과</td>
+                  <td>2013.3 ~ 2019.7</td>
+                  <td>졸업</td>
+              </tr>
+              <tr>
+                  <td>선인고등학교</td>
+                  <td>컴퓨터동아리</td>
+                  <td>2010.3 ~ 2013.2</td>
+                  <td>졸업</td>
+              </tr>
+          </tbody>
+        </table>
+
+        <table>
+            <caption>경력 사항</caption>
+            <thead>
+                <tr>
+                    <th>회사명</th>
+                    <th>활동내역</th>
+                    <th>기간</th>
+                    <th>구분</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>주식회사 건강나눔</td>
+                    <td>SI, SM / 고객as관리 </td>
+                    <td>2019.8 ~ 2023.12</td>
+                    <td>퇴사</td>
+                </tr>
+            </tbody>
+          </table>
+
+
+    </section>
+    </div>
+ 
+    <script>
+
+
+    const Slider = function(pages, pagination) {
+		let slides = [],
+			btns = [],
+			count = 0,
+			current = 0,
+			touchstart = 0,
+			animation_state = false;
+
+		const init = () => {
+		  slides = pages.children;
+		  count = slides.length;
+		  for(let i = 0; i < count; i++) {
+			slides[i].style.bottom = -(i * 100) + '%';
+			let btn = document.createElement('li');
+			btn.dataset.slide = i;
+			btn.addEventListener('click', btnClick)
+			btns.push(btn);
+			pagination.appendChild(btn);
+		  }
+		  btns[0].classList.add('active');
+		}
+
+		const gotoNum = (index) => {
+		  if((index != current) && !animation_state) {
+			animation_state = true;
+			setTimeout(() => animation_state = false, 1000);
+			btns[current].classList.remove('active');
+			current = index;
+			btns[current].classList.add('active');
+			for(let i = 0; i < count; i++) {
+			  slides[i].style.bottom = (current - i) * 100 + '%';
+			}
+		  }
+		}
+
+		const gotoNext = () => current < count - 1 ? gotoNum(current + 1) : false;
+		const gotoPrev = () => current > 0 ? gotoNum(current - 1) : false;
+		const btnClick = (e) => gotoNum(parseInt(e.target.dataset.slide));
+		pages.ontouchstart = (e) => touchstart = e.touches[0].screenY;
+		pages.ontouchend = (e) => touchstart < e.changedTouches[0].screenY ? gotoPrev() : gotoNext();
+		pages.onmousewheel = pages.onwheel = (e) => e.deltaY < 0 ? gotoPrev() : gotoNext();
+
+		init();
+	  }
+
+	  let pages = document.querySelector('.pages');
+	  let pagination = document.querySelector('.pagination');
+	  let slider = new Slider(pages, pagination)
+	  
+		window.addEventListener('scroll', () => {
+			$(function () {
+				$(window).scroll(function () {
+					let scrTop = $(window).scrollTop();
+
+				$(".pages").css("clip-path", "circle(" + scrTop + "px at 50% 50%)");
+			});
+		  });
+		});
+
+    </script>

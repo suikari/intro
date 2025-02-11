@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
+<script src="js/weather.js?ver=0.3"></script>
+<script src="js/main.js?ver=0.3"></script>
+<script src="js/popup.js?ver=0.3"></script>
+<script src="js/jquery.js?ver=0.3"></script>
+<script src="js/jquery_ui.js?ver=0.3"></script>
+
+<link href="css/main.css?ver=0.3" rel="stylesheet" type="text/css" />
+<link href="css/main_html.css?ver=0.4" rel="stylesheet" type="text/css" />
+<link href="css/jquery_ui.css?ver=0.3" rel="stylesheet" type="text/css" />
+
+
+<head>
+	<title> 자기만족 홈페이지 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+	  <meta charset="utf-8"/>
+  <style>
+ 
+  </style>
+</head>
+
+<body>
+  <div class="cursor">
+    <img class="cur_img" src="image/san_cuss.png" width="60x" height="60px">
+  </div> 
+  
+  <div id= "draggable" class="main_popup ">
+    <div class="layer_cont">
+      <div class="title_wrap draggable"> 팝업 </div>
+      <div class="img_wrap">
+        <img  id="ban_img" width="200px" height="180px" style="margin-top : 40px;" src="image/san1.jfif" />
+      </div>
+      <div class="btn_wrap">
+        <button class="btn_today_close"><span>오늘 하루 보지 않기</span></button>
+        <button class="btn_close">close</button>
+      </div>
+    </div>
+  </div>
+
+    <audio id="music" class="paly_list" controls autoplay controlsList="nodownload">
+      <source src="common/san.m4a" type="audio/mpeg">
+    </audio>
+
+    <!-- <button id="play">재생</button>
+    <button id="pause">일시 중지</button>
+    <button id="skip">다음 곡</button> -->
+
+    <div id="container">
+        <div id="test"></div>
+        <div id="header" class="dropdown">
+            <nav class="navbar">
+              <div class="navbar__logo">
+                <a href="main.html">
+                  <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
+                </a>
+              </div>
+              <ul class="navbar__menu">
+                  <li id="nav_1"> <a href="main.html?content="> 자기소개 </a>        </li>
+                  <li id="nav_2"> <a href="main.html?content=1"> 알림 게시판 </a>    </li>
+                  <li id="nav_3"> <a href="main.html?content=a"> 사이트 둘러보기 </a> </li>
+                  <li id="nav_4"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li>
+                </ul>
+              <ul class="navbar__links">
+                  <li> <i class="fab fa-facebook-square"></i></li>
+                  <li><i class="fab fa-instagram"></i></li>
+              </ul>
+      
+              <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
+              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu()">
+
+
+          </nav>
+
+
+          </div>
+        <!-- 사이드바 -->
+        <div class="side">
+            <div id="namecard">
+                <div id="p_img">  </div>
+                <h1>Bang DaeHan</h1>    
+                <p>프로그래밍 재밌(?)나</p>
+            </div>
+            <div id="detail">
+                <p>Incheon, Korea / suikari@naver.com</p>                                 
+            </div>
+            <div id="sns">
+                <h3><a href="javascript:click_button();"> SNS 클릭!</a></h3>
+            </div>  
+            
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
+                현재 날씨 / <span id="now_time"></span>
+              </div> 
+
+            <div id = "wicon" class = "h5 mb-0 font-weight-bold text-gray-800 float-left">
+                <div id = "ods" class="float-left"> </div>
+                <div id = "sds" class="float-left"> </div>
+                <div id = "fds" class="float-left"> </div> 
+            </div>
+            <br>
+            <div id="map" style="width:100%; height:150px;"></div>
+            <div id="clickLatlng"></div>           
+
+        </div>
+        
+        <div id="pages" name="pages" class="pages">
+        </div> 
+  
+    </div>
+
+    <ul class="pagination" style="display: none;">
+    </ul>    
+
+    
+</body>
+
+
+</html>
+
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+<script>
+
+  function clock() {
+    let time = new Date();
+
+    let now;
+
+    let hours = time.getHours().toString().padStart(2, '0'); ;
+    let minutes = time.getMinutes().toString().padStart(2, '0'); ;
+    let seconds = time.getSeconds().toString().padStart(2, '0'); ;
+
+    now = hours +" : "+ minutes +" : "+ seconds
+    $('#now_time').text(now);
+    //console.log(now);
+  }
+
+  clock();
+  setInterval(clock, 1000);
+
+    // let audio = new Audio('common/san.m4a');
+    // audio.play();
+
+    const music = document.getElementById('music');
+    music.play();
+	
+
+    // const music = document.getElementById('music');
+    // const playButton = document.getElementById('play');
+    // const pauseButton = document.getElementById('pause');
+    // const skipButton = document.getElementById('skip');
+
+    // playButton.addEventListener('click', () => {
+    //      music.play();
+    // });
+    // pauseButton.addEventListener('click', () => {
+    //     music.pause();
+    // });
+
+    // skipButton.addEventListener('click', () => {
+    // });
+
+
+    
+
+    function click_button () {
+        Swal.fire({
+				  title: "SNS는 없어요",
+				  text: "안써요.. ",
+				  icon: "error"	,
+				  background: "#ffffff"
+			}).then((result) => {
+			});
+    }
+
+    function swal_msg (title, text) {
+      Swal.fire({
+				  title: title,
+				  text: text,
+				  icon: "error"	,
+				  background: "#ffffff"
+			}).then((result) => {
+			});
+    }
+
+
+    $(document).ready(function(){
+
+      if (getParameter("content") =="") {
+        $("#pages").load("content1.html");  
+        $("#nav_1").addClass("active");
+
+      } else if ( getParameter("content") == "1" ) {
+        $("#pages").load("content3.html");  
+        $("#nav_2").addClass("active");
+
+      } else if ( getParameter("content") == "b"  ) {
+        $("#pages").load("board.html");  
+        $("#nav_2").addClass("active");
+      } else if ( getParameter("content") == "e"  ) {
+        $("#pages").load("editer.html");  
+        $("#nav_2").addClass("active");
+      } else {
+        $("#pages").load("test.html"); 
+        $("#nav_3").addClass("active");
+
+      }
+
+
+      const cursorIcon = document.querySelector('.cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+
+    });
+
+
+</script>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Responsive Banner</title>
+    <style>
+	    *{ 
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: montserrat, sans-serif;
+      }
+
+      h1 {
+        position: relative;
+        margin-top: 150px;
+        text-align: center;
+      }
+
+      section {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        /* clip-path: circle(100px at 50% 50%); */
+        /* clip-path: ellipse(100px 150px at 50% 50%); */
+        /* clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); */
+        clip-path: circle(0 at 50% 50%);
+
+        background: url(image/test.webp) no-repeat;
+        background-size: cover;
+      }
+
+      .container {
+        position: relative;
+        top: 200vh;
+        color: darkmagenta;
+        font-size: 20px;
+        padding: 30px;
+        text-align: center;
+        line-height: 50px;
+        background: none; /*#ddd*;/
+        
+      }
+	  
+	</style>
+</head>
+<body>
+    <h1> 스크롤 테스트 (아래로 스크롤) </h1>
+    <section></section>
+    <div class="container">
+      <h2>산나비ed - 끝났다는 것은 다시 시작된다는 것을 </h2>
+      <br />
+      <p>
+		아마도 우리는 모두 역할이 있을지 몰라 <br />
+
+		무대 위에 발을 맞출 때면 한 장은 또 넘겨가고 <br />
+
+		커튼콜은 내려와서 화톳불에 둘러앉고 <br />
+
+		먼지 쌓인 옛날 추억들이 갑자기 찾아오는걸 <br />
+		
+		아마도 그 이야기를 이어가고 싶었나봐 <br />
+
+		아직도 파란 불빛 앞에서 그때의 흔적을 찾고 <br />
+
+		다시 돌릴 수도 없는 태엽은 푹 잠들었어 <br />
+
+		희미해진 빛도 노랫말도 다시금 찾아오겠지 <br />
+		
+      </p>
+      <br />
+      <p>
+
+		다음 작품에 봄은 올까 기다렸고 기다렸지 <br />
+
+		막이 내리면 그리울까 후련했고 섭섭했지 <br />
+
+		끝났다는 것은 다시 시작된다는 것을 <br />
+
+		잊는다는 것도 역시 비워둔다는 것을 <br />
+
+		 
+
+		다음 열차는 오고 있고 방명록은 열어뒀어 <br />
+
+		잠궈놓았던 세상 속을 다시 어지럽힐 거야 <br />
+
+ 
+      </p>
+      <br />
+      <p>
+		다음 작품에 봄은 올까 기다렸고 기다렸지 <br />
+
+		막이 내리면 그리울까 후련했고 섭섭했지 <br />
+
+		물어본다면 답은 올까 불러봤고 또 불러봤지 <br />
+
+		길은 언제나 나로부터 찾을 수 밖에 없는 걸 <br />
+
+		 
+
+		끝났다는 것은 다시 시작된다는 것을 <br />
+
+		잊는다는 것도 역시 비워둔다는 것을 <br />
+
+		끝났다는 것은 다시 시작된다는 것을 <br />
+
+		잊는다는 것도 역시 비워둔다는 것을
+      </p>
+      <br />
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+    window.addEventListener('scroll', () => {
+        $(function () {
+          $(window).scroll(function () {
+            let scrTop = $(window).scrollTop();
+
+            $("section").css("clip-path", "circle(" + scrTop + "px at 50% 50%)");
+          });
+        });
+    });
+
+
+    let scrollInterval;
+    let scrollStep = 3; 
+
+    function startAutoScroll() {
+        scrollInterval = setInterval(() => {
+            const currentScroll = window.scrollY;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+            if (currentScroll + scrollStep >= maxScroll) {
+                /* clearInterval(scrollInterval);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(startAutoScroll, 10000);  */
+                history.back();
+            } else {
+                window.scrollBy(0, scrollStep);
+            }
+        }, 20); 
+    }
+
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    window.onload = startAutoScroll;
+
+    window.addEventListener('click', stopAutoScroll);
+    /* window.addEventListener('scroll', stopAutoScroll); */
+</script>
