@@ -2,7 +2,7 @@ const userCode = "imp08548453";
 
 
 function requestPay (){
-    swal_msg('주의사항','체크카드 결제하시면 안됩니다');
+    // swal_msg('주의사항','체크카드 결제하시면 안됩니다');
 
 
 
