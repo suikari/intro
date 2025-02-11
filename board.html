@@ -49,7 +49,7 @@
       <!-- btns -->
       <div class="btns ac clearfix">
         <div class="float-r">
-          <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-dark">삭제</a>
+          <a href="javascript:delete_doc();" class="btn-dark">삭제</a>
           <a href="javascript:location.href='main.html?content=1';" class="btn-outline">목록</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-outline">수정</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.');" class="btn-fill">답변</a>
@@ -106,14 +106,12 @@
  <script type="text/javascript">
 
     let type = getParameter("type");
+    let b_num = getParameter("num");
 
     if (type == 't') {
       $.get('common/test.txt', function (data) {
         let datalen1 = data.split(",");
 
-
-        let b_num = getParameter("num");
-        
 
         let datalen2 = datalen1[b_num].split(";");
 
@@ -129,10 +127,6 @@
 
       let datalen1 = localmem.split(",");
 
-
-      let b_num = getParameter("num");
-
-
       let datalen2 = datalen1[b_num].split(";");
 
       $('#title').text(datalen2[1]);
@@ -140,6 +134,33 @@
       $('#wday').text(datalen2[3]);
       $('#b_content').html(datalen2[5]);
     
+    }
+
+
+    function delete_doc() {
+      let data = loadMemo();
+
+      if (typeof data == "undefined" || data == null || data == "") {
+        alert("삭제할 게시글이 존재하지않습니다.");
+        return;
+      }
+
+      let localmem1 = data.split(",");
+      let memdata = '';
+
+      for (i = 0; i < localmem1.length; i++) {
+
+        if (i != b_num ) {
+          memdata += localmem1[i] + "," ;   
+        }          
+      }
+      
+      memdata = memdata.slice(0, -1);
+
+      delMemo();
+      saveMemo(memdata); 
+      location.href = "main.html?content=1";
+
     }
 
 </script>

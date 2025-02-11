@@ -41,8 +41,17 @@
 
     submitPost = function() {
         oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
+        
+        let data = loadMemo();
+        let num = 5;
+        if (!(typeof data == "undefined" || data == null || data == "")) {
+          let datalen1 = data.split(",");
+          let datalen2 = datalen1[datalen1.length-1].split(";");
+          num = parseInt(datalen2[0]) + 1; 
+         }
+
         let content = document.getElementById("editorTxt").value;
-        content = "5;"+ $('#title').val() + ";" + $('#writer').val() + ";" + getDate() + ";0;" + content + ";";
+        content = num + ";"+ $('#title').val() + ";" + $('#writer').val() + ";" + getDate() + ";0;" + content + ";";
 
         if(content == '') {
             alert("내용을 입력해주세요.")

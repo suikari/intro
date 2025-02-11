@@ -123,7 +123,7 @@ function saveMemo(memo) {
 		rev_locmem = rev_locmem + "," + memo ; 
 		localStorage.setItem("memo", rev_locmem); 
 	}
-	alert("메모가 저장되었습니다.");
+	console.log("메모가 저장되었습니다.");
 }
 
 function loadMemo() {
@@ -133,6 +133,10 @@ function loadMemo() {
 	} else {
 		console.log("저장된 메모가 없습니다.");
 	}
+}
+
+function delMemo() {
+	localStorage.removeItem("memo");
 }
 
 
