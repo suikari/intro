@@ -327,7 +327,30 @@ table {
     z-index: 9999; /* 최상단 배치 */
     transition: transform 0.05s ease-out;
 
+
+
   }
+
+  .cur_img {
+    -webkit-animation: head-move 1s ease-in-out infinite; 
+    /* animation: vibration 0.1s infinite; */
+  }
+    /**/
+  @-webkit-keyframes head-move {
+    50% { 
+      -webkit-transform: rotate(-15deg); 
+    }
+  }
+
+  @keyframes vibration {
+    from {
+      transform: rotate(1deg);
+    }
+    to {
+      transform: rotate(-1deg);
+    }
+  }
+  
 
   .paly_list {
     position: absolute;
@@ -346,3 +369,7 @@ table {
     color : green;
   }
   
+  #ban_img {
+    transition-property: all;
+    transition-duration: 1s;
+  }
