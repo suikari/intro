@@ -334,6 +334,23 @@ table {
 
   }
 
+  #logo {
+    -webkit-mask-image: linear-gradient(-90deg, rgba(0,0,0,0.3) 0%, #000 50%);
+    -webkit-mask-size: 200%;
+    animation: shine 3s ease-in-out infinite;
+
+    /* -webkit-animation: logo-eff  1s ease-in-out infinite;  */
+    /* animation: vibration 0.1s infinite; */
+  }
+
+  @keyframes shine {
+
+  
+    from { -webkit-mask-position: 200%; }
+     to { -webkit-mask-position: -100%; } 
+
+  }
+
   .cur_img {
     -webkit-animation: head-move 1s ease-in-out infinite; 
     /* animation: vibration 0.1s infinite; */

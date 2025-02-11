@@ -139,9 +139,15 @@
 
     function delete_doc() {
       let data = loadMemo();
+      
+
+      if ( type = "t" ) {
+        swal_msg( "삭제불가", "전체 공지 게시글은 삭제할 수 없습니다." );
+        return;
+      }
 
       if (typeof data == "undefined" || data == null || data == "") {
-        alert("삭제할 게시글이 존재하지않습니다.");
+        swal_msg( "삭제불가", "삭제할 게시글이 존재하지않습니다." );
         return;
       }
 
