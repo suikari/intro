@@ -489,8 +489,15 @@ table {
 }
 
 .navbar__menu li.active {
-  background-color: rgb(216, 127, 252);
+  background-color: rgba(216, 127, 252,0.7);
+  /* background: linear-gradient(90deg, rgba(238,222,255,0.1) 0%, rgba(255,172,234,0.7) 100%); */
+
   border-radius: 4px;
+}
+
+
+.navbar__menu a {
+  backdrop-filter: blur(2px);
 }
 
 .navbar__links {
@@ -540,7 +547,7 @@ table {
   .navbar__links.active {
       display: flex;
       z-index: 100;
-      background: linear-gradient(90deg, #eedeff 0%, #ffacea 100%);
+      /* background: linear-gradient(90deg, #eedeff 0%, #ffacea 100%); */
 
   }
 }
