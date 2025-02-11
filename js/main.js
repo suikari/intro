@@ -3,7 +3,7 @@ window.onload = () => {
 
 
 
-	for (let i = 0; i < 150; i++) {
+	for (let i = 0; i < 100; i++) {
 		const snow = document.createElement("div");
 		snow.className = "snow";
 		snow.style.opacity = Math.random(); 
