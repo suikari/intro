@@ -2,6 +2,10 @@ const userCode = "imp08548453";
 
 
 function requestPay (){
+    swal_msg('주의사항','체크카드 결제하시면 안됩니다');
+
+
+
     IMP.init(userCode); // 고객사 식별 코드를 넣어 모듈을 초기화해주세요.
 
     IMP.request_pay(
@@ -9,7 +13,7 @@ function requestPay (){
         channelKey: "channel-key-51c9145f-ddaa-4880-8839-4bf9cafab2e6",
         merchant_uid: "order_id_1667634130160",
         name: "산나비 DLC",
-        pay_method: "card",
+        pay_method: "EASY_PAY",
         escrow: false,
         amount: "109000",
         tax_free: 3000,
