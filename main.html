@@ -16,7 +16,7 @@
 
 
 <head>
-	<title>업데이트 예정</title>
+	<title> 자기만족 자기소개 홈페이지 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
 	  <meta charset="utf-8"/>
   <style>
@@ -53,99 +53,30 @@
     <div id="container">
         <div id="test"></div>
         <div id="header" class="dropdown">
-            <a href="main.html">
-              <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
-            </a>
-            <nav class="gnb_wrap" id="gnb">
-              <ul class="gnb_depth1">
-                <li id="gnb_tab1">
-                  <a href="main.html?content="> 자기소개 </a>
-                  <div class="gnb_depth2">
-                    <div class="gnb_depth2_bg">
-                      <div class="gnb_tit">
-                        <h2>depth1</h2>
-                      </div>
-                      <ul>
-                        <li class="row">
-                          <a href="javascript:;">개발중</a>
-                          <ul class="gnb_depth3">
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
+            <nav class="navbar">
+              <div class="navbar__logo">
+                <a href="main.html">
+                  <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
+                </a>
+              </div>
+              <ul class="navbar__menu">
+                  <li id="nav_1"> <a href="main.html?content="> 자기소개 </a>        </li>
+                  <li id="nav_2"> <a href="main.html?content=1"> 알림 게시판 </a>    </li>
+                  <li id="nav_3"> <a href="main.html?content=a"> 사이트 둘러보기 </a> </li>
+                  <li id="nav_4"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li>
+                </ul>
+              <ul class="navbar__links">
+                  <li> <i class="fab fa-facebook-square"></i></li>
+                  <li><i class="fab fa-instagram"></i></li>
               </ul>
-              <ul class="gnb_depth1">
-                <li id="gnb_tab2">
-                  <a href="main.html?content=1"> 알림 게시판 </a>
-                  <div class="gnb_depth2">
-                    <div class="gnb_depth2_bg">
-                      <div class="gnb_tit">
-                        <h2>depth1</h2>
-                      </div>
-                      <ul>
-                        <li class="row">
-                          <a href="#"> test </a>
-                          <ul class="gnb_depth3">
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="gnb_depth1">
-                <li id="gnb_tab3">
-                  <a href="main.html?content=a"> 사이트 둘러보기 </a>
-                  <div class="gnb_depth2">
-                    <div class="gnb_depth2_bg">
-                      <div class="gnb_tit">
-                        <h2>depth1</h2>
-                      </div>
-                      <ul>
-                        <li class="row">
-                          <a href="javascript:;">개발중</a>
-                          <ul class="gnb_depth3">
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                            <li><a href="javascript:;">depth3</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="gnb_depth1">
-                <li id="gnb_tab4">
-                  <a href="downscroll.html">스크롤 테스트 페이지</a>
-                  <div class="gnb_depth2">
-                    <div class="gnb_depth2_bg">
-                      <div class="gnb_tit">
-                        <h2>페이지 바로가기</h2>
-                      </div>
-                      <ul>
-                        <li class="row">
-                          <a href="javascript:location.href='downscroll.html';">페이지 바로가기</a>
-                          <ul class="gnb_depth3">
-                            <li><a href="javascript:;">...</a></li>
-                            <li><a href="javascript:;">...</a></li>
-                            <li><a href="javascript:;">...</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+      
+              <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
+              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu()">
+
+
+          </nav>
+
+
           </div>
         <!-- 사이드바 -->
         <div class="side">
@@ -263,21 +194,21 @@
 
       if (getParameter("content") =="") {
         $("#pages").load("content1.html");  
-        $("#gnb_tab1").css("background-color", "#333333");
+        $("#nav_1").addClass("active");
 
       } else if ( getParameter("content") == "1" ) {
         $("#pages").load("content3.html");  
-        $("#gnb_tab2").css("background-color", "#333333");
+        $("#nav_2").addClass("active");
 
       } else if ( getParameter("content") == "b"  ) {
         $("#pages").load("board.html");  
-        $("#gnb_tab2").css("background-color", "#333333");
+        $("#nav_2").addClass("active");
       } else if ( getParameter("content") == "e"  ) {
         $("#pages").load("editer.html");  
-        $("#gnb_tab2").css("background-color", "#333333");
+        $("#nav_2").addClass("active");
       } else {
         $("#pages").load("test.html"); 
-        $("#gnb_tab3").css("background-color", "#333333");
+        $("#nav_3").addClass("active");
 
       }
 
@@ -290,50 +221,5 @@
 
     });
 
-    $(function() {
-    $(".dropdown .gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
-        $(this).parent("li").addClass("on").find(".gnb_depth2").clearQueue().slideDown().parent("li").siblings("li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
-    });
-    $(".dropdown .gnb_wrap > .gnb_depth1").on("mouseleave", function() {
-        $(".dropdown .gnb_wrap > .gnb_depth1 > li").removeClass("on").find(".gnb_depth2").clearQueue().hide();
-    });
-    
-    
-    $(document).focusin(function(e) {
 
-        let el01 = $(".dropdown .gnb_wrap > .gnb_depth1");
-        
-        if (el01.parents("#gnb").has(e.target).length === 0) {
-          el01.find("li").removeClass("on").find(".gnb_depth2").hide();
-        }
-
-        let el02 = $(".all_menu_wrap");
-
-        if ($("#wrap").hasClass("all_menu")) {
-        if (el02.parents("#header").has(e.target).length === 0) {
-            $(".all_menu_btn a").focus();
-        }
-        }
-    });
-    
-    $(".gnb_wrap > .gnb_depth1 > li > a").on("mouseenter focusin", function() {
-        let depth2_li = $(this).parent().find(".gnb_depth2_bg > ul > li");
-        let li_h1 = [];
-        let li_h2 = [];
-        for (let i = 0; i < depth2_li.length; i++) {
-        if (i <= 4) {
-            li_h1.push(depth2_li.eq(i).height());
-        } else {
-            li_h2.push(depth2_li.eq(i).height());
-        }
-        };
-        for (let j = 0; j < li_h1.length; j++) {
-        depth2_li.eq(j).height(Math.max.apply(null, li_h1));
-        };
-        for (let k = 0; k < li_h2.length; k++) {
-        depth2_li.eq(k + 5).height(Math.max.apply(null, li_h2));
-        };
-    });
-
-    });
 </script>

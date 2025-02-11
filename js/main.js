@@ -154,3 +154,18 @@ function getDate() {
 // 	alert('123');
 // }
 
+
+
+
+
+function toggleMenu() {
+	const menu = document.querySelector('.navbar__menu');
+	const links = document.querySelector('.navbar__links');
+	const button = document.querySelector('.menu-toggle');
+
+	
+	
+    menu.classList.toggle('active');
+	button.classList.toggle('active');
+    // links.classList.toggle('active');
+}
