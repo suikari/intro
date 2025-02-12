@@ -665,3 +665,8 @@ table {
     bottom: 0%;
     margin: -20px 35px;
   }
+
+
+  .swal2-popup .dark-mode {
+    color : black;
+  }
