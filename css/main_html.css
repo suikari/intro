@@ -382,6 +382,17 @@ table {
 
   }
 
+  .btnBox {
+    position: absolute;
+    top: calc( 90% - 54px);
+    left: calc(100% - 300px);
+    z-index: 9999; /* 최상단 배치 */
+    background-color: white;
+    border-radius: 15px;
+
+
+  }
+  
 
   #smart_editor2 {
     width: 100%;
@@ -400,19 +411,39 @@ table {
   #menu_btn {
     width: 35px;
     height: 35px;
-    background-image: url('../image/menu.png');
+    background-image: url('../image/menu_black.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   #menu_btn:hover {
-    background-image: url('../image/menu_toggle.png');
+    background-image: url('../image/menu_active_black.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   #menu_btn.active {
-    background-image: url('../image/menu_toggle.png');
+    background-image: url('../image/menu_active_black.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #menu_btn.dark-mode {
+    width: 35px;
+    height: 35px;
+    background-image: url('../image/menu_white.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #menu_btn.dark-mode:hover {
+    background-image: url('../image/menu_active_white.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #menu_btn.dark-mode.active {
+    background-image: url('../image/menu_active_white.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -602,10 +633,6 @@ table {
       width: 32px;
       height: 32px;
 
-      display: flex;
-      left: calc(100% - 32px);
-      top: calc(0% + 10px);
-      position: absolute;
   }
 
   .fa-white {
@@ -614,11 +641,6 @@ table {
     background-size: cover;
     width: 32px;
     height: 32px;
-
-    display: flex;
-    left: calc(100% - 32px);
-    top: calc(0% + 10px);
-    position: absolute;
     
 }
 

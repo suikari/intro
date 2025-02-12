@@ -56,6 +56,12 @@
       <source src="common/san.m4a" type="audio/mpeg">
     </audio>
 
+    <div class="btnBox">
+      <button class="zoomOut"> - </button>
+      <button class="zoomIn"> + </button>
+      <button id='dark_btn' class="fa-black " onclick="dark_toggle();"> </button>
+    </div>
+
     <!-- <button id="play">재생</button>
     <button id="pause">일시 중지</button>
     <button id="skip">다음 곡</button> -->
@@ -82,10 +88,7 @@
               </ul>
       
               <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
-              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu();"> </div>
-              <div id='dark_btn' class="fa-black " onclick="dark_toggle();"> </div>
-
-                
+              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu();"> </div>                
 
           </nav>
 
@@ -278,6 +281,7 @@
           $('.pagination').removeClass('dark-mode');
           $('.navbar__menu').removeClass('dark-mode');
           $('.navbar').removeClass('dark-mode');
+          $('#menu_btn').removeClass('dark-mode');
 
           // $('div').removeClass('dark-mode');
           // $('nav').removeClass('dark-mode');
@@ -298,6 +302,7 @@
           $('.pagination').addClass('dark-mode');
           $('.navbar__menu').addClass('dark-mode');
           $('.navbar').addClass('dark-mode');
+          $('#menu_btn').addClass('dark-mode');
 
           
           
