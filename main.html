@@ -123,7 +123,7 @@
         <div id="pages" name="pages" class="pages">
         </div> 
   
-<ul class="pagination" style="">
+<ul id="pagination_main1" class="pagination" style="">
 </ul>    
 
     </div>
@@ -319,6 +319,7 @@
     
 
   function pagemove(val) {
+    $("#pagination_main1").empty();
 
     $("#nav_1").removeClass("active");
     $("#nav_2").removeClass("active");
