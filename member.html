@@ -56,7 +56,7 @@
             <input type="password" id="password_confirm" name="password_confirm" required>
             
             <label for="phone">핸드폰 번호:</label>
-            <input type="text" id="phone" name="phone" pattern="[0-9]{10,11}" placeholder="01012341234" required>
+            <input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="01012341234" required>
         </div>
 
         <div> 
@@ -87,17 +87,73 @@
 
 
 <script>
+var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
 
-    function mem_submit() {
+
+function mem_submit() {
         let id           = $('#userid').val();
         let password     = $('#password').val();
         let password_chk = $('#password_confirm').val();
         let phone        = $('#phone').val();
-        let language     = $('.language').val();
+        let language     = "";
+
+        $('input:checkbox[name="language"]').each(function() {
+            if(this.checked){
+                language += this.value + ";"
+            }
+        });
+
         let gender       = $("input:radio[name='gender']:checked").val();
 
         console.log(language);
         console.log(gender);
+
+        if ( id.length < 6  ) {
+            alert("아이디 6글자 이상으로 입력" );   
+            return;
+        }
+        
+        if ( password.length < 6  ) {
+            alert("6글자 이상으로 입력" );
+            return;
+        }
+
+        if ( password != password_chk ) {
+            alert("2개의 패스워드 일치하지 않음" );
+            return;
+        }
+        
+        if ( password != password_chk ) {
+            alert("2개의 패스워드 일치하지 않음" );
+            return;
+        }
+
+        if (password.search(special_pattern) < 0 ) {
+            alert("패스워드 특수문자 포함되지않음" );
+            return;
+        }
+
+        if ( phone.length != 11  ) {
+            alert("전화번호 반드시 11글자로 입력(010XXXXXXXX)" );
+            return;
+        }
+
+        if (typeof language == "undefined" || language == null || language == "") {
+            if(confirm("관심언어를 선택하지 않았습니다. 그대로 진행하시겠습니까?")){
+
+            }else{
+                return;
+            }
+        }
+
+
+
+        if (typeof gender == "undefined" || gender == null || gender == "") {
+            alert("성별 선택하지 않음" );
+            return;
+        }
+
+
 
     }
 
