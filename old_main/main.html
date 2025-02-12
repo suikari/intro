@@ -42,7 +42,7 @@
         <img  id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
       <div style="text-align: center;">
-        <button class="button" onclick="javascript:pagemove('s')"> 산나비 즉시구매 </button>
+        <button class="button" onclick="location.href='main.html?content=s'"> 산나비 즉시구매 </button>
       </div>
       
       <div class="btn_wrap">
@@ -65,15 +65,15 @@
         <div id="header" class="dropdown">
             <nav class="navbar">
               <div class="navbar__logo">
-                <a href="javascript:pagemove('');">
+                <a href="javascript:pagemove();">
                   <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
                 </a>
               </div>
               <ul class="navbar__menu">
-                  <li id="nav_1"> <a href="javascript:pagemove('');"> 자기소개 </a>        </li>
-                  <li id="nav_2"> <a href="javascript:pagemove('1');"> 알림 게시판 </a>    </li>
-                  <li id="nav_3"> <a href="javascript:pagemove('a');"> 사이트 둘러보기 </a> </li>
-                  <li id="nav_4"> <a href="javascript:pagemove('m');"> 회원가입 페이지 </a>  </li>
+                  <li id="nav_1"> <a href="main.html?content="> 자기소개 </a>        </li>
+                  <li id="nav_2"> <a href="main.html?content=1"> 알림 게시판 </a>    </li>
+                  <li id="nav_3"> <a href="main.html?content=a"> 사이트 둘러보기 </a> </li>
+                  <li id="nav_4"> <a href="main.html?content=m"> 회원가입 페이지 </a>  </li>
                   <li id="nav_5"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li>
                 </ul>
               <ul class="navbar__links">
@@ -318,41 +318,31 @@
 
     
 
-  function pagemove(val) {
+  function pagemove() {
+    $("#pages").load("content3.html");  
+    // if (getParameter("content") =="") {
+    //   $("#pages").load("content1.html");  
+    //   $("#nav_1").addClass("active");
 
-    $("#nav_1").removeClass("active");
-    $("#nav_2").removeClass("active");
-    $("#nav_3").removeClass("active");
-    $("#nav_4").removeClass("active");
-    $("#nav_5").removeClass("active");
+    // } else if ( getParameter("content") == "1" ) {
+    //   $("#pages").load("content3.html");  
+    //   $("#nav_2").addClass("active");
 
-    if ( val == "") {
-      $("#pages").load("content1.html");  
-      $("#nav_1").addClass("active");
-
-      
-    } else if ( val == "1" ) {
-      $("#pages").load("content3.html");  
-      $("#nav_2").addClass("active");
-
-    } else if ( val == "b"  ) {
-      $("#pages").load("board.html");  
-      $("#nav_2").addClass("active");
-    } else if ( val == "e"  ) {
-      $("#pages").load("editer.html");  
-      $("#nav_2").addClass("active");
-    } else if ( val == "s"  ) {
-      $("#pages").load("saler.html");  
-      $("#nav_2").addClass("active");
-    } else if ( val == "m"  ) {
-      $("#pages").load("member.html");  
-      $("#nav_4").addClass("active");
-    }  else {
-      $("#pages").load("test.html"); 
-      $("#nav_3").addClass("active");
-    }
-
-
+    // } else if ( getParameter("content") == "b"  ) {
+    //   $("#pages").load("board.html");  
+    //   $("#nav_2").addClass("active");
+    // } else if ( getParameter("content") == "e"  ) {
+    //   $("#pages").load("editer.html");  
+    //   $("#nav_2").addClass("active");
+    // } else if ( getParameter("content") == "s"  ) {
+    //   $("#pages").load("saler.html");  
+    //   $("#nav_2").addClass("active");
+    // } else if ( getParameter("content") == "m"  ) {
+    //   $("#pages").load("member.html");  
+    //   $("#nav_4").addClass("active");
+    // }  else {
+    //   $("#pages").load("test.html"); 
+    //   $("#nav_3").addClass("active");
   }
 
 </script>
