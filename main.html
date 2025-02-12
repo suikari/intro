@@ -270,14 +270,28 @@
     });
 
     let basicFont = 14; // 기본 폰트 크기를 12px로 지정
+    let minbasicFont = 10; // 기본 폰트 크기를 12px로 지정
+    let maxbasicFont = 24; // 기본 폰트 크기를 12px로 지정
+
     font_size(''); 
   
 
     function font_size(val) {
       if ( val == "p" ) {
+        if (basicFont == maxbasicFont) {
+          swal_msg('경고','24px 위로는 올릴수 없습니다.','error');
+          return;
+        }
+
         basicFont++;
         $("body").css("font-size", basicFont);
       } else if  ( val == "m" )  {
+        
+        if (basicFont == minbasicFont) {
+          swal_msg('경고','10px 밑으로는 내릴수 없습니다.','error');
+          return;
+        }
+
         basicFont--;
         $("body").css("font-size", basicFont);
       } else {
