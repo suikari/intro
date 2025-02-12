@@ -82,6 +82,7 @@ table {
       float: left;
       /* padding: 5px 0px 0px 25px; */
       line-height: 30px;
+      padding-top: 15px;
 
   }
   .page {
@@ -559,6 +560,17 @@ table {
     color: #ffffff;
     text-shadow : none;
   }
+  
+  .dark-mode * {
+    text-shadow : none;
+  }
+  
+  .contents.dark-mode * {
+    background : #121212;
+    background-color: #121212;
+    color: #ffffff;
+    text-shadow : none;
+  }
 
   .fa-black {
       background-image: url('../image/black.png');
@@ -586,3 +598,11 @@ table {
     position: absolute;
     
 }
+
+  .salep{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    margin: -20px 35px;
+  }
