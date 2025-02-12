@@ -109,32 +109,27 @@ function mem_submit() {
         console.log(gender);
 
         if ( id.length < 6  ) {
-            alert("아이디 6글자 이상으로 입력" );   
+            swal_msg("아이디 입력 에러","아이디 6글자 이상으로 입력","error");   
             return;
         }
         
         if ( password.length < 6  ) {
-            alert("6글자 이상으로 입력" );
-            return;
-        }
-
-        if ( password != password_chk ) {
-            alert("2개의 패스워드 일치하지 않음" );
+            swal_msg("패스워드 입력 에러"," 패스워드 6글자 이상으로 입력","error" );
             return;
         }
         
         if ( password != password_chk ) {
-            alert("2개의 패스워드 일치하지 않음" );
+            swal_msg("패스워드 입력 에러","2개의 패스워드 일치하지 않음","error" );
             return;
         }
 
         if (password.search(special_pattern) < 0 ) {
-            alert("패스워드 특수문자 포함되지않음" );
+            swal_msg("패스워드 입력 에러","패스워드 특수문자 포함되지않음","error" );
             return;
         }
 
         if ( phone.length != 11  ) {
-            alert("전화번호 반드시 11글자로 입력(010XXXXXXXX)" );
+           swal_msg("전화번호 입력 에러","전화번호 반드시 11글자로 입력(010XXXXXXXX)","error" );
             return;
         }
 
@@ -149,7 +144,7 @@ function mem_submit() {
 
 
         if (typeof gender == "undefined" || gender == null || gender == "") {
-            alert("성별 선택하지 않음" );
+            swal_msg("성별 입력 에러","성별 선택하지 않음" ,"error");
             return;
         }
 
