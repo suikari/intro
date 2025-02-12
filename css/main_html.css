@@ -385,12 +385,10 @@ table {
   .btnBox {
     position: absolute;
     top: calc( 90% - 54px);
-    left: calc(100% - 300px);
+    left: calc(100% - 185px);
     z-index: 9999; /* 최상단 배치 */
     background-color: white;
     border-radius: 15px;
-
-
   }
   
 
