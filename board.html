@@ -105,66 +105,27 @@
 
  <script type="text/javascript">
 
-    let type = getParameter("type");
-    let b_num = getParameter("num");
+    let id = getParameter("id");
 
-    if (type == 't') {
-      $.get('common/test.txt', function (data) {
-        let datalen1 = data.split(",");
+    async function useModule() {
+        // let count = await window.module.countdata();
 
+        let data = await window.module.getdata_p(id);
+        // console.log(data); // 모듈이 정상적으로 로드된 후 실행됨
+        
+        
+        $('#title').text(data.title);
+        $('#wid').text(data.writer);
+        $('#wday').text(data.sysdate);
+        $('#b_content').html(data.content);
 
-        let datalen2 = datalen1[b_num].split(";");
-
-        $('#title').text(datalen2[1]);
-        $('#wid').text(datalen2[2]);
-        $('#wday').text(datalen2[3]);
-        $('#b_content').html(datalen2[5]);
-              
-      });
-    } else if (type == 'l')  {
-      
-      let localmem = loadMemo();
-
-      let datalen1 = localmem.split(",");
-
-      let datalen2 = datalen1[b_num].split(";");
-
-      $('#title').text(datalen2[1]);
-      $('#wid').text(datalen2[2]);
-      $('#wday').text(datalen2[3]);
-      $('#b_content').html(datalen2[5]);
-    
     }
+
+    useModule();
 
 
     function delete_doc() {
-      let data = loadMemo();
       
-
-      if ( type = "t" ) {
-        swal_msg( "삭제불가", "전체 공지 게시글은 삭제할 수 없습니다." );
-        return;
-      }
-
-      if (typeof data == "undefined" || data == null || data == "") {
-        swal_msg( "삭제불가", "삭제할 게시글이 존재하지않습니다." );
-        return;
-      }
-
-      let localmem1 = data.split(",");
-      let memdata = '';
-
-      for (i = 0; i < localmem1.length; i++) {
-
-        if (i != b_num ) {
-          memdata += localmem1[i] + "," ;   
-        }          
-      }
-      
-      memdata = memdata.slice(0, -1);
-
-      delMemo();
-      saveMemo(memdata); 
       location.href = "main.html?content=1";
 
     }

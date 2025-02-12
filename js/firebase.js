@@ -6,7 +6,7 @@
 
   
   /// Export
-  export default { getdata , setdata , countdata }; 
+  export default { getdata , setdata , countdata , getdata_p }; 
   export { getdata , setdata }; 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -56,6 +56,15 @@
       }));
 
       return data;
+    }
+
+    async function getdata_p(col_name) {
+
+      const docRef2 = doc(db, "apptest", col_name);
+      const docSnap = await getDoc(docRef2);
+
+      const data = docSnap.data();
+      return  data;
     }
 
     //1; 공지사항입니다; 방대한 ; 2025-02-09 ; 0 ; 공지사항 게시글 내용 입니다 ,
