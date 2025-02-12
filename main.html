@@ -134,6 +134,18 @@
 
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
+<script type="module">
+  import { getdata } from "./js/firebase.js";
+  
+  if (getParameter("content") == 1) {
+    let data = getdata();
+    console.log(data);
+    console.log(data.data[0]);
+
+  }
+ 
+
+</script>
 
 <script>
 

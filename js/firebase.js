@@ -1,14 +1,17 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
   import { getFirestore  } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
-  import { collection, doc, setDoc , getDoc } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+  import { collection, doc, setDoc , getDoc , getDocs } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
+  /// Export
+  export { getdata }; 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 // <script type="module" src="https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js"></script>
 // <script type="module" src="https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js"></script>
   // Your web app's Firebase configuration
-    const firebaseConfig = {
+    
+  const firebaseConfig = {
         apiKey: "AIzaSyDp1Iv-E0rfxeRXwhh-_Z8fCEKghVJaYC4",
         authDomain: "testapp-c805d.firebaseapp.com",
         projectId: "testapp-c805d",
@@ -23,21 +26,31 @@
     const db =  getFirestore(app); // Get Firestore instance
 
 
-    //get
-    const docRef   = collection(db ,"apptest");
-    const docRef1  = doc(docRef,"test");
-    // console.log(docRef);
-    // console.log(docRef1);
-    
-    const docRef2 = doc(db, "apptest", "test");
-    const docSnap = await getDoc(docRef2);
 
 
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+    // const docRef2 = doc(db, "apptest", "test");
+    // const docSnap = await getDoc(docRef2);
+
+    // async function getdata() {
+
+    //   const usersCollectionRef = collection(db, 'apptest'); 
+    //   const userSnap = await getDocs(usersCollectionRef); 
+    //   const data = userSnap.docs.map(doc => ({
+    //       ...doc.data(),
+    //       id: doc.id
+    //   }));
+
+    //   return data;
+    // }
+
+    async function getdata() {
+      
+      const docRef2 = doc(db, "apptest", "test");
+      const docSnap = await getDoc(docRef2);
+
+      console.log(docSnap.id, " => ", docSnap.data());
+      const data = docSnap.data();
+      return data;
     }
 
     // docRef.get().then((doc) => {

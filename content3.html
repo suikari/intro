@@ -1,3 +1,5 @@
+
+
 <div class="tbl-group" style="margin: 30px;">
     <div class="tbl tbl-list"  style="margin: 0;">
         <table id=btable>
@@ -37,8 +39,10 @@
     </div>
 </div>
 
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+    
     $.get('common/test.txt', function (data) {
         let datalen1 = data.split(",");
         for (i = 0; i < datalen1.length; i++) {
@@ -56,7 +60,7 @@
 
         }
         let localmem = loadMemo();
-        if (localmem != '') {
+        if (!(typeof localmem == "undefined" || localmem == null || localmem == "")) {
             let localmem1 = localmem.split(",");
 
             for (i = 0; i < localmem1.length; i++) {
