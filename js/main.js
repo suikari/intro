@@ -3,6 +3,20 @@
 window.onload = () => {
 
 
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) { 
+			console.log("xml",this.responseXML);
+			console.log("xml",url);
+			parseXML(this.responseXML);
+			
+		}
+	};
+	
+
+	xhttp.open("GET", url, true);
+	xhttp.send();
+
 
 	for (let i = 0; i < 125; i++) {
 		const snow = document.createElement("div");
@@ -46,19 +60,7 @@ window.onload = () => {
 
     marker.setMap(map);
 	
-	let xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) { 
-			console.log("xml",this.responseXML);
-			//console.log("xml",url);
-			parseXML(this.responseXML);
-			
-		}
-	};
-	
 
-	xhttp.open("GET", url, true);
-	xhttp.send();
 
 
 	
