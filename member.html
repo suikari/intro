@@ -134,21 +134,21 @@ function mem_submit() {
         }
 
         if (typeof language == "undefined" || language == null || language == "") {
-            if(confirm("관심언어를 선택하지 않았습니다. 그대로 진행하시겠습니까?")){
-
+            // swal_confirm("관심언어를 선택하지 않았습니다 그대로 진행하시겠습니까?", "warning", "", "return;");
+            //warning
+            if(confirm("관심언어를 선택하지 않았습니다 그대로 진행하시겠습니까?")){
             }else{
                 return;
             }
+            
         }
-
-
 
         if (typeof gender == "undefined" || gender == null || gender == "") {
             swal_msg("성별 입력 에러","성별 선택하지 않음" ,"error");
             return;
         }
 
-
+        swal_msg("회원가입 완료","회원가입 감사합니다!" ,"info");
 
     }
 

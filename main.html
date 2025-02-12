@@ -209,6 +209,25 @@
 			});
     }
 
+    function swal_confirm (title,  image , y, n) {
+      
+      Swal.fire({
+        title: title,
+        showDenyButton: true,
+        icon: image	,
+        background: "#ffffff",
+        confirmButtonText: "예",
+        denyButtonText: "아니오"
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          
+        } else if (result.isDenied) {
+          
+        }
+      });
+
+    }
 
     $(document).ready(function(){
 
@@ -231,7 +250,7 @@
         $("#nav_2").addClass("active");
       } else if ( getParameter("content") == "m"  ) {
         $("#pages").load("member.html");  
-        $("#nav_2").addClass("active");
+        $("#nav_4").addClass("active");
       }  else {
         $("#pages").load("test.html"); 
         $("#nav_3").addClass("active");
