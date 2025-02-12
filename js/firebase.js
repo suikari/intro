@@ -81,7 +81,7 @@
       });
 
       //alert("등록 완료!");
-      location.href = "main.html?content=1";
+      pagemove('1');
     }
 
     // async function getdata() {

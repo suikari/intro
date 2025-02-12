@@ -42,7 +42,7 @@
         <img  id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
       <div style="text-align: center;">
-        <button class="button" onclick="javascript:pagemove('s')"> 산나비 즉시구매 </button>
+        <button class="button" onclick="javascript:pagemove('s');"> 산나비 즉시구매 </button>
       </div>
       
       <div class="btn_wrap">
@@ -353,7 +353,20 @@
       $("#nav_3").addClass("active");
     }
 
+  }
 
+  ajtest();
+
+  function ajtest (){
+    $.ajax({
+      url : "https://jsonplaceholder.typicode.com/users",
+      dataType : "json",
+      type  : "GET",
+      data : {} ,
+      success : function (data) {
+        console.log(data);
+      }
+    })
   }
 
 </script>
