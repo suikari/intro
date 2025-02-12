@@ -557,6 +557,7 @@ table {
     background : #121212;
     background-color: #121212;
     color: #ffffff;
+    text-shadow : none;
   }
 
   .fa-black {
