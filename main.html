@@ -247,6 +247,7 @@
         const classList = $('div').attr('class');
         console.log(classList);
         if  ( classList.search('dark-mode') > -1 ) {
+          $('body').removeClass('dark-mode');
           $('div').removeClass('dark-mode');
           $('nav').removeClass('dark-mode');
           $('ul').removeClass('dark-mode');
@@ -256,7 +257,10 @@
           $('.list-group-item').removeClass('dark-mode');
           $('.white-bg').removeClass('dark-mode');
           $('.btn').removeClass('dark-mode');
+
+          $('#dark_btn').removeClass('fa-white');
         } else {
+          $('body').addClass('dark-mode');
           $('div').addClass('dark-mode');
           $('nav').addClass('dark-mode');
           $('ul').addClass('dark-mode');
@@ -266,6 +270,8 @@
           $('.list-group-item').addClass('dark-mode');
           $('.white-bg').addClass('dark-mode');
           $('.btn').addClass('dark-mode');
+
+          $('#dark_btn').addClass('fa-white');
         }
 
 

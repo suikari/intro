@@ -571,3 +571,17 @@ table {
       top: calc(0% + 10px);
       position: absolute;
   }
+
+  .fa-white {
+    background-image: url('../image/white.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    left: calc(100% - 32px);
+    top: calc(0% + 10px);
+    position: absolute;
+    
+}
