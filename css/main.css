@@ -516,9 +516,9 @@ caption {width: 100%;height: 1px;max-height: 1px; overflow: hidden}
 
 .bbs-wrap .result .list table tbody tr td.col-status span {display: inline-block; vertical-align: middle; box-sizing: border-box; width: 55px; height: 25px; border: 2px solid transparent; border-radius: 13px; text-align: center; font-weight: 400; font-size: 13px; line-height: 21px; letter-spacing: 0;}
 .bbs-wrap .result .list table tbody tr td.col-status span.wait {border-color: #BDBDBD; background: #FAFAFA; color: #757575;}
-.bbs-wrap .result .list table tbody tr td.col-status span.ing {}
+/* .bbs-wrap .result .list table tbody tr td.col-status span.ing {} */
 .bbs-wrap .result .list table tbody tr td.col-status span.done {background: #FAA619; color: #fff;}
-.bbs-wrap .result .list table tbody tr td.col-status span.stop {}
+/* .bbs-wrap .result .list table tbody tr td.col-status span.stop {} */
 
 .bbs-wrap .result .read {}
 .bbs-wrap .result .read ~ .btns {margin-top: 32px; font-size: 0;}
