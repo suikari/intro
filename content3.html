@@ -33,7 +33,7 @@
     <div class="btns">
         <div class="btns ac clearfix">
             <div class="float-r">
-            <a href="main.html?content=e" class="btn-fill" style="margin: 0 90%;">글쓰기</a>
+            <a href="main.html?content=e" id="write_doc" class="btn-fill" style="margin: 0 90%;">글쓰기</a>
             </div>
         </div>
     </div>
@@ -43,62 +43,35 @@
 
 <script type="text/javascript">
     
-    $.get('common/test.txt', function (data) {
-        let datalen1 = data.split(",");
-        for (i = 0; i < datalen1.length; i++) {
-            let datalen2 = datalen1[i].split(";");
-            let html;
 
-            html += '<tr  onClick="location.href=\'main.html?content=b&type=t&num='+i+'\'">';
-            html += '<td  class="col-number">' + datalen2[0] + '</td>';
-            html += '<td  class="col-title align-l">' + datalen2[1] + '</td>';
-            html += '<td  class="col-writer">' + datalen2[2] + '</td>';
-            html += '<td  class="col-date">' + datalen2[3] + '</td>';
-            html += '<td  class="col-view">' + datalen2[4] + '</td>';
-            html += '</tr>';
-            $("#btable").append(html);
+    async function useModule() {
+        // let count = await window.module.countdata();
 
+        let data = await window.module.getdata();
+        console.log(data); // 모듈이 정상적으로 로드된 후 실행됨
+        
+        
+        for (let i = 0; i < data.length; i++) {
+
+        let html;
+
+        html += '<tr  onClick="location.href=\'main.html?content=b&type=l&num='+i+'\'">';
+        html += '<td  class="col-number">' + data[i].num + '</td>';
+        html += '<td  class="col-title align-l">' + data[i].title + '</td>';
+        html += '<td  class="col-writer">' + data[i].writer + '</td>';
+        html += '<td  class="col-date">' + data[i].sysdate + '</td>';
+        html += '<td  class="col-view">' + data[i].view + '</td>';
+        html += '</tr>';
+
+
+        $("#btable").append(html);            
         }
-        let localmem = loadMemo();
-        if (!(typeof localmem == "undefined" || localmem == null || localmem == "")) {
-            let localmem1 = localmem.split(",");
+        $("#write_doc").attr("name",data[data.length-1].num);
 
-            for (i = 0; i < localmem1.length; i++) {
+    }
 
-                    let datalen2 = localmem1[i].split(";");
-
-                    let html;
-
-                    html += '<tr  onClick="location.href=\'main.html?content=b&type=l&num='+i+'\'">';
-                    html += '<td  class="col-number">' + datalen2[0] + '</td>';
-                    html += '<td  class="col-title align-l">' + datalen2[1] + '</td>';
-                    html += '<td  class="col-writer">' + datalen2[2] + '</td>';
-                    html += '<td  class="col-date">' + datalen2[3] + '</td>';
-                    html += '<td  class="col-view">' + datalen2[4] + '</td>';
-                    html += '</tr>';
-                    $("#btable").append(html);            
-            }
-        }
-    });
-
-
-    // function writeFile(fileName, content) {
-    //     var blob = new Blob([content], { type: 'text/plain' });
-    //     objURL = window.URL.createObjectURL(blob);
-                
-    //     if (window.__Xr_objURL_forCreatingFile__) {
-    //         window.URL.revokeObjectURL(window.__Xr_objURL_forCreatingFile__);
-    //     }
-    //     window.__Xr_objURL_forCreatingFile__ = objURL;
-    //     var a = document.createElement('a');
-    //     a.download = fileName;
-    //     a.href = objURL;
-    //     a.click();
-    // }
-
-    // writeFile("test","test");
-
-
+    useModule();
+ 
 </script>
 
 <style>

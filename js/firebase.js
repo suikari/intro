@@ -1,10 +1,14 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
   import { getFirestore  } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
-  import { collection, doc, setDoc , getDoc , getDocs } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+  import { collection, doc, setDoc , getDoc , getDocs , addDoc , orderBy, query , getCountFromServer } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
+
+  
   /// Export
-  export { getdata }; 
+  export default { getdata , setdata , countdata }; 
+  export { getdata , setdata }; 
+
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 // <script type="module" src="https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js"></script>
@@ -27,31 +31,58 @@
 
 
 
+    async function countdata() {
+      
+      const coll = collection(db, "apptest");
+      const snapshot = await getCountFromServer(coll);
+      
+      console.log('count: ', snapshot.data().count);
+
+      return snapshot.data().count;
+    }
+
+
 
     // const docRef2 = doc(db, "apptest", "test");
     // const docSnap = await getDoc(docRef2);
 
-    // async function getdata() {
-
-    //   const usersCollectionRef = collection(db, 'apptest'); 
-    //   const userSnap = await getDocs(usersCollectionRef); 
-    //   const data = userSnap.docs.map(doc => ({
-    //       ...doc.data(),
-    //       id: doc.id
-    //   }));
-
-    //   return data;
-    // }
-
     async function getdata() {
-      
-      const docRef2 = doc(db, "apptest", "test");
-      const docSnap = await getDoc(docRef2);
 
-      console.log(docSnap.id, " => ", docSnap.data());
-      const data = docSnap.data();
+      const usersCollectionRef = collection(db, 'apptest'); 
+      const userSnap = await getDocs(query(usersCollectionRef, orderBy("num", "asc"))); 
+      const data = userSnap.docs.map(doc => ({
+          ...doc.data(),
+          id: doc.id
+      }));
+
       return data;
     }
+
+    //1; 공지사항입니다; 방대한 ; 2025-02-09 ; 0 ; 공지사항 게시글 내용 입니다 ,
+    
+    async function setdata(num,title,writer,sysdate,view,content) {
+      
+      const docRef = await addDoc(collection(db, "apptest"), {
+        num: num,
+        title: title ,
+        writer : writer ,
+        sysdate : sysdate,
+        view : view ,
+        content : content
+      });
+
+      //alert("등록 완료!");
+      location.href = "main.html?content=1";
+    }
+
+    // async function getdata() {
+      
+    //   const docRef2 = doc(db, "apptest", "test");
+    //   const docSnap = await getDoc(docRef2);
+
+    //   const data = docSnap.data();
+    //   return  data;
+    // }
 
     // docRef.get().then((doc) => {
     //     if (doc.exists) {

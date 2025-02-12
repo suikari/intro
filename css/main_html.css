@@ -551,3 +551,23 @@ table {
 
   }
 }
+
+
+  .dark-mode {
+    background : #121212;
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  .fa-black {
+      background-image: url('../image/black.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      left: calc(100% - 32px);
+      top: calc(0% + 10px);
+      position: absolute;
+  }

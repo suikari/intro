@@ -68,54 +68,35 @@
       }
     }
 
-    async function number_chk(title,writer,sysdate,content) {
-        let num = await window.module.countdata();
-
-        console.log(num);
-        console.log(title);
-        console.log(writer);
-        console.log(sysdate);
-        console.log(content);
-        //window.module.setdata(4,"234","writer","2025-02-12",0,"test"); 
-        window.module.setdata(parseInt(num+1),title,writer,sysdate,0,content); 
-        //insert_doc(num,title,writer,sysdate,0,content);
-        //swal_msg("등록완료","해당 게시글 등록완료!");
-        //location.href = "main.html?content=1";
-
-    }   
-
-    // async function insert_doc(num,title,writer,sysdate,count,content) {
-    //     let num = await window.module.countdata();
-    //     //window.module.setdata(4,"234","writer","2025-02-12",0,"test"); 
-    //     alert('123/'+ num);
-    //     window.module.setdata(num,title,writer,sysdate,count,content);
-    //     //swal_msg("등록완료","해당 게시글 등록완료!");
-    //     location.href = "main.html?content=1";
-    
-    // }   
-
-
-
-
     submitPost = function() {
         oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
-       
+        
+        let data = loadMemo();
+        let num = 5;
+        if (( !(typeof data == "undefined" || data == null || data == "") && (typeof b_num == "undefined" || b_num == null || b_num == "") )) {
+          let datalen1 = data.split(",");
+          let datalen2 = datalen1[datalen1.length-1].split(";");
+          num = parseInt(datalen2[0]) + 1; 
+        } else if (b_num != '' ) {
+          num = 5 + parseInt(b_num);
+        }
 
         let content = document.getElementById("editorTxt").value;
-        let title = $('#title').val();
-        let writer = $('#writer').val();
-        let sysdate = getDate();
+        content = num + ";"+ $('#title').val() + ";" + $('#writer').val() + ";" + getDate() + ";0;" + content + ";";
 
-        content = content.replace("<p>","").replace("</p>","");
         if (typeof b_num == "undefined" || b_num == null || b_num == "") {
           if(content == '') {
               alert("내용을 입력해주세요.")
               oEditors.getById["editorTxt"].exec("FOCUS")
-              return;
+              return
           } else {
-            number_chk(title,writer,sysdate,content);            
+            saveMemo(content); 
+            swal_msg("등록완료","해당 게시글 등록완료!");
+            location.href = "main.html?content=1";
+            //console.log(content)
           }
 
+          // window.module.setdata(2,"test1","bang","2025-02-12",0,"냉무");
         } else {
           let data = loadMemo();
 
@@ -141,6 +122,13 @@
         }
 
     }
+
+
+      
+
+
+
+
     
   </script>
 

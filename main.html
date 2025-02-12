@@ -65,7 +65,7 @@
         <div id="header" class="dropdown">
             <nav class="navbar">
               <div class="navbar__logo">
-                <a href="main.html">
+                <a href="javascript:dark_toggle();">
                   <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
                 </a>
               </div>
@@ -76,13 +76,15 @@
                   <li id="nav_4"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li>
                 </ul>
               <ul class="navbar__links">
-                  <li> <i class="fab fa-facebook-square"></i></li>
+                  <li><i class="fab fa-facebook-square"></i></li>
                   <li><i class="fab fa-instagram"></i></li>
               </ul>
       
               <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
-              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu()">
+              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu();"> </div>
+              <div id='dark_btn' class="fa-black " onclick="dark_toggle();"> </div>
 
+                
 
           </nav>
 
@@ -135,15 +137,10 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <script type="module">
-  import { getdata } from "./js/firebase.js";
-  
-  if (getParameter("content") == 1) {
-    let data = getdata();
-    console.log(data);
-    console.log(data.data[0]);
+  import { getdata , setdata } from "./js/firebase.js";
+  import common from "./js/firebase.js";
 
-  }
- 
+  window.module = common;
 
 </script>
 
@@ -243,8 +240,34 @@
       document.addEventListener('mousemove', (e) => {
         cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       });
-
     });
 
 
+    function dark_toggle() {
+        const classList = $('div').attr('class');
+        console.log(classList);
+        if  ( classList.search('dark-mode') > -1 ) {
+          $('div').removeClass('dark-mode');
+          $('nav').removeClass('dark-mode');
+          $('ul').removeClass('dark-mode');
+          $('li').removeClass('dark-mode');
+          $('p').removeClass('dark-mode');
+          $('h1').removeClass('dark-mode');
+          $('.list-group-item').removeClass('dark-mode');
+          $('.white-bg').removeClass('dark-mode');
+          $('.btn').removeClass('dark-mode');
+        } else {
+          $('div').addClass('dark-mode');
+          $('nav').addClass('dark-mode');
+          $('ul').addClass('dark-mode');
+          $('li').addClass('dark-mode');
+          $('p').addClass('dark-mode');
+          $('h1').addClass('dark-mode');
+          $('.list-group-item').addClass('dark-mode');
+          $('.white-bg').addClass('dark-mode');
+          $('.btn').addClass('dark-mode');
+        }
+
+
+    }
 </script>
