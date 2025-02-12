@@ -81,7 +81,7 @@ table {
       
       float: left;
       /* padding: 5px 0px 0px 25px; */
-      line-height: 30px;
+      line-height: 25px;
       padding-top: 15px;
 
   }
@@ -138,13 +138,13 @@ table {
 
   .nav_main {
     width:100%;
-  } */
+  } 
 
   .pagination {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .pagination>li {
