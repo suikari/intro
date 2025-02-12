@@ -564,13 +564,24 @@ table {
   .dark-mode * {
     text-shadow : none;
   }
+
+  .dark-mode.pagination>li {
+    background : #fff;
+  }
+
   
+  .dark-mode.pagination>li.active {
+    background: #ff8373;
+  }
+
   .contents.dark-mode * {
     background : #121212;
     background-color: #121212;
     color: #ffffff;
     text-shadow : none;
   }
+
+
 
   .fa-black {
       background-image: url('../image/black.png');
