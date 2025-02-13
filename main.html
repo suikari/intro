@@ -329,7 +329,7 @@
 
     function dark_toggle() {
         const classList = $('.side').attr('class');
-        console.log(classList);
+        //console.log(classList);
         if  ( classList.search('dark-mode') > -1 ) {
           $('body').removeClass('dark-mode');
           $('.side').removeClass('dark-mode');
@@ -417,20 +417,6 @@
       $("#nav_3").addClass("active");
     }
 
-  }
-
-  ajtest();
-
-  function ajtest (){
-    $.ajax({
-      url : "https://jsonplaceholder.typicode.com/users",
-      dataType : "json",
-      type  : "GET",
-      data : {} ,
-      success : function (data) {
-        console.log(data);
-      }
-    })
   }
 
 </script>
