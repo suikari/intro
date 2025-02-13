@@ -376,7 +376,7 @@ table {
 
   .paly_list {
     position: absolute;
-    top: calc( 95% - 300px);
+    top: calc( 95% - 400px);
     left: 25%; /*calc(95% - 200px);*/
     z-index: 9999; /* 최상단 배치 */
 
@@ -387,7 +387,7 @@ table {
     top: calc( 90% - 54px);
     left: calc(100% - 185px);
     z-index: 9999; /* 최상단 배치 */
-    background-color: white;
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
   }
   
