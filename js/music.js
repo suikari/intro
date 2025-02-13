@@ -98,7 +98,7 @@ const loadMusic = (num) => {
     musicArtist.innerText = allMusic[num-1].artist; // 가수 이름
     musicView.src = `${allMusic[num-1].img}`; //`img/${allMusic[num-1].img}.png`;   // 노래 이미지
     musicView.alt = allMusic[num-1].name;   // 노래 이미지 정보
-    musicAudio.src = `../common/${allMusic[num-1].audio}.mp3`;  //`audio/${allMusic[num-1].audio}.mp3`; // 노래 파일
+    musicAudio.src = `common/${allMusic[num-1].audio}.mp3`;  //`audio/${allMusic[num-1].audio}.mp3`; // 노래 파일
 };
 
 
