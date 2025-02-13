@@ -387,15 +387,15 @@ table {
 
   .paly_list {
     position: absolute;
-    top: calc( 95% - 400px);
-    left: 25%; /*calc(95% - 200px);*/
+    top: calc( 93% - 300px);
+    left: 83%; /*calc(95% - 200px);*/
     z-index: 9999; /* 최상단 배치 */
 
   }
 
   .btnBox {
     position: absolute;
-    top: calc( 90% - 54px);
+    top: calc( 95% - 54px);
     left: calc(100% - 185px);
     z-index: 9999; /* 최상단 배치 */
     background: rgba(255, 255, 255, 0.6);
