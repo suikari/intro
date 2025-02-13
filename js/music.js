@@ -302,7 +302,7 @@ function music_con () {
                 <div class="list__title">
                     <strong>${allMusic[i].name}</strong>
                     <em>${allMusic[i].artist}</em>
-                    <audio class="${allMusic[i].audio}" src="audio/${allMusic[i].audio}.mp3"></audio>
+                    <audio class="${allMusic[i].audio}" src="common/${allMusic[i].audio}.mp3"></audio>
                 </div>
                 <span class="audio-duration" id="${allMusic[i].audio}"></span>
             </li>
