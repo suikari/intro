@@ -260,11 +260,6 @@ function music_con () {
 
     // 이전 곡 버튼 클릭
     musicPrevBtn.addEventListener("click", () => {
-        prevMusic();
-    });
-
-    // 이전 곡 버튼 클릭
-    musicPrevBtn.addEventListener("click", () => {
         let getArr = musicRepeat.getAttribute("class");
         if(getArr == "shuffle"){
             let randomIndex = Math.floor(Math.random() * allMusic.length + 1); // 랜덤 인덱스 생성
