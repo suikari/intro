@@ -376,7 +376,7 @@ table {
 
   .paly_list {
     position: absolute;
-    top: calc( 95% - 54px);
+    top: calc( 95% - 500px);
     left: calc(95% - 300px);
     z-index: 9999; /* 최상단 배치 */
 
@@ -680,4 +680,20 @@ table {
 
   .swal2-popup .dark-mode {
     color : black;
+  }
+
+
+  @keyframes flowText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .flowing-text {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: flowText 8s linear infinite;
   }

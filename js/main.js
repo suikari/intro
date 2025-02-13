@@ -1,5 +1,3 @@
-
-
 window.onload = () => {
 
 	ajtest();
@@ -93,8 +91,7 @@ window.onload = () => {
 		}
 	);
 
-
-
+	music_con();
 }
 
 

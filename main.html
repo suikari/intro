@@ -15,8 +15,10 @@
 <script src="js/jquery_ui.js?ver=0.4"></script>
 <script src="js/import.js?ver=0.4"></script>
 <script src="js/main.js?ver=0.4"></script>
+<script src="js/music.js?ver=0.2"></script>
 
 <link href="css/main.css?ver=0.6" rel="stylesheet" type="text/css" />
+<link href="css/music.css?ver=0.1" rel="stylesheet" type="text/css" />
 <link href="css/main_html.css?ver=1.0" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.5" rel="stylesheet" type="text/css" />
 
@@ -52,10 +54,117 @@
     </div>
   </div>
 
-    <audio id="music" class="paly_list" controls autoplay controlsList="nodownload">
-      <source src="common/san.m4a" type="audio/mpeg">
-    </audio>
 
+    <!-- <audio controls id="music"  class="paly_list" controls autoplay controlsList="nodownload">
+      <source id="source-audio"  src="common/san.m4a" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio> -->
+    <!-- 기존코드 절취선-->
+
+
+            <!-- 뮤직 플레이어 -->
+            <div class="music__wrap paly_list">
+              <div class="music__inner">
+                  <div class="music__header">
+                      <span class="left"></span>
+                      <h2 class="font-shadow" >MUSIC PLAYER</h2>
+                      <span class="right"></span>
+                  </div>
+                  <div class="music__contents">
+                      <div class="music__view">
+                          <div class="image" >
+                              <img src="" width="350px" height="180px" alt="음악">
+                          </div>
+                      </div>
+                      <div class="music__control">
+                          <div class="m_title">
+                              <h3 >노래 제목</h3>
+                              <p>가수 이름</p>
+                          </div>
+                          <div class="progress">
+                              <div class="bar">
+                                <audio controls id="main_audio" style="display: none;" controls autoplay controlsList="nodownload">
+                                  <source id="source-audio"  src="common/san.m4a" type="audio/mpeg">
+                                  Your browser does not support the audio element.
+                                </audio>                              </div>
+                              <div class="timer">
+                                  <span class="current"></span>
+                                  <span class="duration"></span>
+                              </div>
+                          </div>
+                          <div class="control">
+                              <span>
+                                  <i class="repeat" id="control-repeat" title="전체 반복"></i>
+                              </span>
+                              <span>
+                                  <i class="prev" id="control-prev" title="이전 곡"></i>
+                                  <!-- <span class="repeat_one">한 곡 반복</span>-->
+                                  <!-- <span class="shuffle">랜덤 반복</span> -->
+                              </span>
+                              <span>
+                                  <i class="play" id="control-play" title="재생"></i>
+                                  <!-- <span class="stop">정지</span> -->
+                              </span>
+                              <span>
+                                  <i class="next" id="control-next" title="다음 곡"></i>
+                              </span>
+                              <span>
+                                  <i class="list" id="control-list" title="재생 목록"></i>
+                              </span>
+                          </div>
+                      </div>
+                      <div class="music__list">
+                          <h3>뮤직 리스트 <a href="#" class="close"></a></h3>
+                          <ul>
+                              <!-- <li class="active">
+                                  <div class="list__img">
+                                      <img src="img/music_view01.png" alt="음악">
+                                  </div>
+                                  <div class="list__title">
+                                      <strong>1. 골드 로저의 죽음</strong>
+                                      <em>아티스트</em>
+                                  </div>
+                                  <span>04:00</span>
+                              </li>
+                              <li>
+                                  <div class="list__img">
+                                      <img src="img/music_view01.png" alt="음악">
+                                  </div>
+                                  <div class="list__title">
+                                      <strong>1. 골드 로저의 죽음</strong>
+                                      <em>아티스트</em>
+                                  </div>
+                                  <span>04:00</span>
+                              </li>
+                              <li>
+                                  <div class="list__img">
+                                      <img src="img/music_view01.png" alt="음악">
+                                  </div>
+                                  <div class="list__title">
+                                      <strong>1. 골드 로저의 죽음</strong>
+                                      <em>아티스트</em>
+                                  </div>
+                                  <span>04:00</span>
+                              </li>
+                              <li>
+                                  <div class="list__img">
+                                      <img src="img/music_view01.png" alt="음악">
+                                  </div>
+                                  <div class="list__title">
+                                      <strong>1. 골드 로저의 죽음</strong>
+                                      <em>아티스트</em>
+                                  </div>
+                                  <span>04:00</span>
+                              </li> -->
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- //뮤직 플레이어 -->
+
+  
+    <!-- 기존코드 절취선-->
     <div class="btnBox">
       <button class="zoomOut fa-min" onclick="font_size('m');"></button>
       <button class="zoomIn fa-plus" onclick="font_size('p');"></button>
@@ -171,8 +280,8 @@
     // let audio = new Audio('common/san.m4a');
     // audio.play();
 
-    const music = document.getElementById('music');
-    music.play();
+    const main_audio = document.getElementById('main_audio');
+    main_audio.play();
 	
 
     // const music = document.getElementById('music');
