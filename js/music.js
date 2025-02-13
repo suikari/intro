@@ -47,8 +47,8 @@ const allMusic = [
     {
         name : "5. 사랑을 주세요",
         artist : "투니버스 주제가 / vocal : 타이푼",
-        img : "image/wind.webp",
-        audio: "wind"
+        img : "image/kero.jpg",
+        audio: "kero"
     }
 
     // {
