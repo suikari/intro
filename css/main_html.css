@@ -683,17 +683,3 @@ table {
   }
 
 
-  @keyframes flowText {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
-  .flowing-text {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: flowText 8s linear infinite;
-  }

@@ -288,7 +288,7 @@ function music_con () {
         let li = `
             <li data-index="${i+1}">
                 <div class="list__img">
-                    <img src="img/${allMusic[i].img}.gif" alt="${allMusic[i].name}">
+                    <img src="${allMusic[i].img}" alt="${allMusic[i].name}">
                 </div>
                 <div class="list__title">
                     <strong>${allMusic[i].name}</strong>
