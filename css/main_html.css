@@ -594,7 +594,6 @@ table {
   }
 }
 
-
   .dark-mode {
     background : #121212;
     background-color: #121212;
@@ -622,8 +621,20 @@ table {
     text-shadow : none;
   }
 
+  .dark-mode .side {
+    border: 1px solid white;
 
+  }
 
+  .dark-mode .pages {
+    border: 1px solid white;
+
+  } 
+
+  .dark-mode .nav_menu  {
+    border: 1px solid white;
+
+  }
   .fa-black {
       background-image: url('../image/black.png');
       background-repeat: no-repeat;
