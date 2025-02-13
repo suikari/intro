@@ -27,17 +27,29 @@ const allMusic = [
         audio: "san"
     },
     {
-        name : "2. Sweet Dreams, My Dear",
+        name : "2. 사랑의 구조 신호 LOVE S.O.S",
+        artist : "We 3 (투니버스 주제가 Best) / vocal : 토리",
+        img : "image/sos.jpg",
+        audio: "sos"
+    },
+    {
+        name : "3. Sweet Dreams, My Dear",
         artist : " LostArk / vocal : 소향",
         img : "image/sweetd.jpg",
         audio: "sweetd"
     },
     {
-        name : "3. 바람에게 부탁해",
+        name : "4. 바람에게 부탁해",
         artist : "Forte Escape / vocal : Miya",
         img : "image/wind.webp",
         audio: "wind"
     },
+    {
+        name : "5. 사랑을 주세요",
+        artist : "투니버스 주제가 / vocal : 타이푼",
+        img : "image/wind.webp",
+        audio: "wind"
+    }
 
     // {
     //     name : "1. Ice & Fire",
