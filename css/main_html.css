@@ -140,14 +140,14 @@ table {
     width:100%;
   } 
 
-  .pagination {
+  .b_pagination {
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .pagination>li {
+  .b_pagination>li {
       list-style: none;
       height: 20px;
       width: 20px;
@@ -157,7 +157,7 @@ table {
       transition: background .7s;
   }
 
-  .pagination>li.active {
+  .b_pagination>li.active {
       background: #ff8373;
   }
 
