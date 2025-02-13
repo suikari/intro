@@ -27,13 +27,19 @@ const allMusic = [
         audio: "san"
     },
     {
-        name : "2. 호랑수월가",
+        name : "2. 한 페이지가 될 수 있게 ",
+        artist : " Young K / vocal : DAY6 ",
+        img : "image/day6one.webp",
+        audio: "day6one"
+    },
+    {
+        name : "3. 호랑수월가",
         artist : " 상록수 / vocal : 나래",
         img : "image/tiger.webp",
         audio: "tiger"
     },
     {
-        name : "3. 바람에게 부탁해",
+        name : "4. 바람에게 부탁해",
         artist : "Forte Escape / vocal : Miya",
         img : "image/wind.webp",
         audio: "wind"
