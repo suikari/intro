@@ -1,6 +1,7 @@
 
 let musicWrap = null;
 let musicWrapClose = null;
+let musicWrapOpen = null;
 let musicName = null;
 let musicArtist = null;
 let musicView = null;
@@ -138,6 +139,7 @@ function music_con () {
 
     musicWrap = document.querySelector(".music__wrap");
     musicWrapClose = musicWrap.querySelector(".music__wrap h2 .close");
+    musicWrapOpen = document.querySelector(".music-black");
     musicName = musicWrap.querySelector(".music__control .m_title h3");
     musicArtist = musicWrap.querySelector(".music__control .m_title p");
     musicView = musicWrap.querySelector(".music__contents .image img");
@@ -286,6 +288,19 @@ function music_con () {
 
     musicListClose.addEventListener("click", () => {
         musicList.classList.remove("show");
+    });
+
+
+    musicWrapOpen.addEventListener("click", () => {
+
+        let classtype = $('.music__wrap').attr('class');
+        //console.log(classList);
+        if  ( classtype.search('close') > -1 ) {
+            musicWrap.classList.remove("close");
+        } else {
+            musicWrap.classList.add("close");
+        }
+
     });
 
     musicWrapClose.addEventListener("click", () => {
