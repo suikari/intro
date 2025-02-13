@@ -12,6 +12,8 @@
 
 
 .music__wrap {
+    -webkit-animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .music__wrap h2 .close {
@@ -22,6 +24,7 @@
     background-position: -120px -40px;
     width: 40px;
     height: 40px;
+    
 }
 
 .music__wrap.close {
