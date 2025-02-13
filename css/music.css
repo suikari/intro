@@ -85,7 +85,7 @@
     color: #000;
     font-size: 20px;
     white-space:nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .music__control .m_title p {
     color: #666;

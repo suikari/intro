@@ -13,13 +13,13 @@
 <script src="js/popup.js?ver=0.3"></script>
 <script src="js/jquery.js?ver=0.3"></script>
 <script src="js/jquery_ui.js?ver=0.4"></script>
-<script src="js/import.js?ver=0.4"></script>
-<script src="js/main.js?ver=0.6"></script>
-<script src="js/music.js?ver=0.5"></script>
+<script src="js/import.js?ver=0.5"></script>
+<script src="js/main.js?ver=0.7"></script>
+<script src="js/music.js?ver=0.6"></script>
 
-<link href="css/main.css?ver=1.0" rel="stylesheet" type="text/css" />
-<link href="css/music.css?ver=0.5" rel="stylesheet" type="text/css" />
-<link href="css/main_html.css?ver=1.3" rel="stylesheet" type="text/css" />
+<link href="css/main.css?ver=1.1" rel="stylesheet" type="text/css" />
+<link href="css/music.css?ver=0.6" rel="stylesheet" type="text/css" />
+<link href="css/main_html.css?ver=1.4" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.5" rel="stylesheet" type="text/css" />
 
 
@@ -79,7 +79,7 @@
                       </div>
                       <div class="music__control">
                           <div class="m_title">
-                              <h3 >노래 제목</h3>
+                            <marquee  behavior="scroll"><h3 >노래 제목</h3></marquee>
                               <p>가수 이름</p>
                           </div>
                           <div class="progress">
@@ -87,7 +87,8 @@
                                 <audio controls id="main_audio" style="display: none;" controls autoplay controlsList="nodownload">
                                   <source id="source-audio"  src="common/san.m4a" type="audio/mpeg">
                                   Your browser does not support the audio element.
-                                </audio>                              </div>
+                                </audio>                              
+                              </div>
                               <div class="timer">
                                   <span class="current"></span>
                                   <span class="duration"></span>
