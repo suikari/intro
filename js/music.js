@@ -1,5 +1,6 @@
 
 let musicWrap = null;
+let musicWrapClose = null;
 let musicName = null;
 let musicArtist = null;
 let musicView = null;
@@ -136,6 +137,7 @@ const nextMusic = () => {
 function music_con () {
 
     musicWrap = document.querySelector(".music__wrap");
+    musicWrapClose = musicWrap.querySelector(".music__wrap h2 .close");
     musicName = musicWrap.querySelector(".music__control .m_title h3");
     musicArtist = musicWrap.querySelector(".music__control .m_title p");
     musicView = musicWrap.querySelector(".music__contents .image img");
@@ -152,6 +154,8 @@ function music_con () {
     musicList = musicWrap.querySelector(".music__list");
     musicListUl = musicWrap.querySelector(".music__list ul");
     musicListClose = musicWrap.querySelector(".music__list h3 .close");
+
+    
 
 // 뮤직 진행바
     musicAudio.addEventListener("timeupdate", e => {
@@ -279,8 +283,13 @@ function music_con () {
     musicListBtn.addEventListener("click", () => {
         musicList.classList.add("show");
     });
+
     musicListClose.addEventListener("click", () => {
         musicList.classList.remove("show");
+    });
+
+    musicWrapClose.addEventListener("click", () => {
+        musicWrap.classList.add("close");
     });
 
     // 뮤직 리스트 구현하기
@@ -314,6 +323,8 @@ function music_con () {
             liAudioDuration.setAttribute("data-duration", `${totalMin}:${totalSec}`);
         });
     }
+
+    palyMusic();
 }
     
 
