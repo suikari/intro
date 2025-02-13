@@ -1,0 +1,107 @@
+.search-container {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.search-container input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-container select, .search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover, .search-container select:hover {
+    background-color: #45a049;
+}
+
+.board {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.board th, .board td {
+    padding: 12px;
+    /* text-align: left; */
+    border-bottom: 1px solid #ddd;
+}
+
+.board th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.board td {
+    background-color: #f9f9f9;
+}
+
+.board td a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.board td a:hover {
+    text-decoration: underline;
+}
+
+.write-btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.write-btn:hover {
+    background-color: #45a049;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #333;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.b_container {
+    width:100%;
+}
