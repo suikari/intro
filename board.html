@@ -47,7 +47,7 @@
       <div class="btns ac clearfix" style=" padding: 10px;">
         <div class="float-r">
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error')" class="btn-dark">삭제</a>
-          <a href="javascript:pagemove('1');" class="btn-outline">목록</a>
+          <a href="javascript:pagemove('1;');" class="btn-outline">목록</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-outline">수정</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-fill">답변</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-fill">쓰기</a>
@@ -105,12 +105,12 @@
     dark_toggle();
     dark_toggle();
 
-    let id = getParameter("id");
+    //alert(board_id);
 
     async function useModule() {
         // let count = await window.module.countdata();
 
-        let data = await window.module.getdata_p(id);
+        let data = await window.module.getdata_p(board_id);
         // console.log(data); // 모듈이 정상적으로 로드된 후 실행됨
         
         

@@ -42,7 +42,7 @@
         <img  id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
       <div style="text-align: center;">
-        <button class="button" onclick="javascript:pagemove('s');"> 산나비 즉시구매 </button>
+        <button class="button" onclick="javascript:pagemove('s;');"> 산나비 즉시구매 </button>
       </div>
       
       <div class="btn_wrap">
@@ -71,15 +71,15 @@
         <div id="header" class="dropdown">
             <nav class="navbar">
               <div class="navbar__logo">
-                <a href="javascript:pagemove('');">
+                <a href="javascript:pagemove(';');">
                   <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
                 </a>
               </div>
               <ul class="navbar__menu">
-                  <li id="nav_1" class="nav_menu"> <a href="javascript:pagemove('');"> 자기소개 </a>        </li>
-                  <li id="nav_2" class="nav_menu"> <a href="javascript:pagemove('1');"> 알림 게시판 </a>    </li>
-                  <li id="nav_3" class="nav_menu"> <a href="javascript:pagemove('a');"> 사이트 둘러보기 </a> </li>
-                  <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m');"> 회원가입 페이지 </a>  </li>
+                  <li id="nav_1" class="nav_menu"> <a href="javascript:pagemove(';');"> 자기소개 </a>        </li>
+                  <li id="nav_2" class="nav_menu"> <a href="javascript:pagemove('1;');"> 알림 게시판 </a>    </li>
+                  <li id="nav_3" class="nav_menu"> <a href="javascript:pagemove('a;');"> 사이트 둘러보기 </a> </li>
+                  <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m;');"> 회원가입 페이지 </a>  </li>
                   <li id="nav_5" class="nav_menu"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li>
                 </ul>
               <ul class="navbar__links">
@@ -378,11 +378,29 @@
 
 
     }
+  
 
+  //페이지 전환용 전변수 
+  let board_id = '';
 
+  //페이지 전환시 변수 클리어
+  function claerPage() {
+    board_id = '';
+  } 
+ 
     
-
+  // val >> 이동주소;전달변수1;전달변수2;.. 추가예정 
   function pagemove(val) {
+    claerPage()
+    let index = val.split(";");
+
+    if (!(typeof index[1] == "undefined" || index[1] == null || index[1] == "")) {
+       
+       if ( index[0] == 'b' ) {
+         board_id =  index[1] ; 
+       } 
+    }
+
     $("#pagination_main1").empty();
 
     $("#nav_1").removeClass("active");
@@ -391,25 +409,24 @@
     $("#nav_4").removeClass("active");
     $("#nav_5").removeClass("active");
 
-    if ( val == "") {
+    if ( index[0] == "") {
       $("#pages").load("content1.html");  
       $("#nav_1").addClass("active");
-
       
-    } else if ( val == "1" ) {
+    } else if ( index[0] == "1" ) {
       $("#pages").load("content3.html");  
       $("#nav_2").addClass("active");
 
-    } else if ( val == "b"  ) {
+    } else if ( index[0] == "b"  ) {
       $("#pages").load("board.html");  
       $("#nav_2").addClass("active");
-    } else if ( val == "e"  ) {
+    } else if ( index[0] == "e"  ) {
       $("#pages").load("editer.html");  
       $("#nav_2").addClass("active");
-    } else if ( val == "s"  ) {
+    } else if ( index[0] == "s"  ) {
       $("#pages").load("saler.html");  
       $("#nav_2").addClass("active");
-    } else if ( val == "m"  ) {
+    } else if ( index[0] == "m"  ) {
       $("#pages").load("member.html");  
       $("#nav_4").addClass("active");
     }  else {

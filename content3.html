@@ -33,7 +33,7 @@
     <div class="btns">
         <div class="btns ac clearfix">
             <div class="float-r">
-            <a href="javascript:pagemove('e');" id="write_doc" class="btn-fill" style="margin: 0 90%;">글쓰기</a>
+            <a href="javascript:pagemove('e;');" id="write_doc" class="btn-fill" style="margin: 0 90%;">글쓰기</a>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
 
         let html;
 
-        html += '<tr  onClick="location.href=\'main.html?content=b&id='+ data[i].id +'\'">';
+        html += '<tr  onClick="pagemove(\'b;'+ data[i].id +'\');">';
         html += '<td  class="col-number">' + data[i].num + '</td>';
         html += '<td  class="col-title align-l">' + data[i].title + '</td>';
         html += '<td  class="col-writer">' + data[i].writer + '</td>';
