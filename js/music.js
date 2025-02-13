@@ -21,19 +21,19 @@ const allMusic = [
     {
         name : "1. 끝났다는 것은 다시 시작된다는 것을",
         artist : "Warak / vocal : 강아윤",
-        img : "../image/san1.jfif",
+        img : "image/san1.jfif",
         audio: "san"
     },
     {
         name : "2. 호랑수월가",
         artist : " 상록수 / vocal : 나래",
-        img : "../image/tiger.webp",
+        img : "image/tiger.webp",
         audio: "tiger"
     },
     {
         name : "3. 바람에게 부탁해",
         artist : "Forte Escape / vocal : Miya",
-        img : "../image/wind.webp",
+        img : "image/wind.webp",
         audio: "wind"
     },
 
