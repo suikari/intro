@@ -29,10 +29,18 @@
     background-color: #45a049;
 }
 
+.listpaging * {
+    margin: 10px 10px;
+}
+
+.search-container * {
+    margin: 10px 10px;
+}
+
 .board {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .board th, .board td {

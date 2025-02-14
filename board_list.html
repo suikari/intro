@@ -33,12 +33,12 @@
         </tbody>
     </table>
 
-    <div class="pagination">
+    <div class="pagination listpaging">
         <a v-if="currentPage > 1" @click="currentPage--">«</a>
-        <template  v-for="pagenum in totalPages ">
+        <Template  v-for="pagenum in totalPages ">
             <a v-if="pagenum == currentPage " @click="currentPage = pagenum" class="active">{{pagenum}}</a>
             <a v-else="pagenum == currentPage " @click="currentPage = pagenum">{{pagenum}}</a>
-        </template>
+        </Template>
         <a v-if="currentPage < totalPages" @click="currentPage++">»</a>
     </div>
 
@@ -48,8 +48,8 @@
             <option value="title">제목</option>
             <option value="author">작성자</option>
         </select>
-        <input type="text" id="searchInput" placeholder="검색어를 입력하세요..." />
-        <button onclick="searchBoard()">검색</button>
+        <input v-model="searchText" type="text" @keyup.enter="searchBoard" id="searchInput" placeholder="검색어를 입력하세요..."  />
+        <button @click="searchBoard" >검색</button>
         <a href="javascript:pagemove('e;');" id="write_doc" class="write-btn" style="float: right;" >글쓰기</a>
     </div>
 
@@ -79,7 +79,8 @@
                 current_list : [],
                 currentPage: 1,
                 postsPerPage: 8, 
-                search_key : "",
+                search_key : "number",
+                searchText : "",
             };
         },
         methods: {
@@ -97,7 +98,34 @@
             } , 
             fnClick : function (id) {
                 pagemove("b;"+ id);
-            }
+            } ,
+            searchBoard : function () {
+                var self =  this;
+
+
+                if (self.searchText == '' ){
+                    self.current_list = self.list;
+                } else {
+                    self.current_list = [];
+                }          
+
+                for (i=0;i<self.list.length-1;i++) {
+                    if ( self.search_key == "number") {
+                        if (self.list[i].num == self.searchText) {
+                            self.current_list.push(self.list[i]);
+                        }
+                    } else if ( self.search_key == "title") {
+                        if (self.list[i].title.indexOf(self.searchText.trim()) > -1) {
+                            self.current_list.push(self.list[i]);
+                        }
+                    } else if ( self.search_key == "author") {
+                        if (self.list[i].writer == self.searchText) {
+                            self.current_list.push(self.list[i]);
+                        }                    
+                    }
+                    
+                }
+            },        
 
         },
         computed: {

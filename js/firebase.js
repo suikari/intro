@@ -55,7 +55,7 @@
     async function getdata() {
 
       const usersCollectionRef = collection(db, 'apptest'); 
-      const userSnap = await getDocs(query(usersCollectionRef, orderBy("num", "asc"))); 
+      const userSnap = await getDocs(query(usersCollectionRef, orderBy("num", "desc"))); 
       const data = userSnap.docs.map(doc => ({
           ...doc.data(),
           id: doc.id
