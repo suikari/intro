@@ -2,24 +2,6 @@ window.onload = () => {
 
 	ajtest();
 
-	let xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) { 
-			//console.log("xml",this.responseXML);
-			//console.log("xml",url);
-			//parseXML(this.responseXML);
-			//console.log(this.responseXML);
-
-		}
-	};
-	
-
-	xhttp.open("GET", url, true);
-	xhttp.send();
-
-
-
-
 	for (let i = 0; i < 125; i++) {
 		const snow = document.createElement("div");
 		snow.className = "snow";

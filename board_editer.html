@@ -1,0 +1,109 @@
+<div id="board_edit_app" class="board_container">
+  <!-- <h1 class="board_title">게시글 작성</h1> -->
+
+  <!-- 게시글 작성 폼 -->
+  <form action="javascript:;" method="post" id="board_edit_form" >
+      <div class="board_form-group">
+          <label for="title" class="board_form-label">제목</label>
+          <input type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요" required>
+      </div>
+
+      <div class="board_form-group">
+          <label for="author" class="board_form-label">작성자</label>
+          <input type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
+      </div>
+
+      <div class="board_form-group">
+          <label for="content" class="board_form-label">내용</label>
+          <textarea id="content"  v-model="content"   name="content" class="board_form-textarea" placeholder="게시글 내용을 입력하세요" required></textarea>
+      </div>
+      
+      <button class="board_btn" @click="fnSample" >게시글 작성</button>
+
+  </form>
+
+  <button @click="fnHomeClick" class="board_btn board_btn-cancel">목록으로 돌아가기</button>
+
+</div>
+
+
+
+
+  <script>
+    dark_toggle();
+    dark_toggle();
+   
+    board_edit_app = Vue.createApp({
+        data() {
+            return {
+              author : '', // 로그인에 사용할 username
+              title: '',  // 로그인에 사용할 password
+              content : '',
+            };
+        },
+        methods: {
+            // 함수(메소드)
+             fnSample : async function () {
+              var self = this;
+              
+              if(self.title == ""){
+                  swal_msg("입력오류","제목을 입력하세요","error");
+                  return;
+              } else if (self.author == "") {
+                swal_msg("입력오류","작성자를 입력하세요","error");
+                return;
+              } else if (self.content == "") {
+                swal_msg("입력오류","내용을 입력하세요","error");
+                return;
+              }  
+              
+              number_chk(self.title,self.author,self.content);
+
+            } , 
+            fnHomeClick : function (id) {
+                pagemove("1;");
+            }
+
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            //let self = this;
+            //self.fnSample();
+        }
+    });
+
+    board_edit_app.mount('#board_edit_app');
+
+
+    $(document).ready(function() {
+
+      
+    })
+
+    function body_load (){
+      if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
+
+        alert('테스트');
+      }
+    }
+
+    async function number_chk(title,writer,content) {
+        var num = await window.module.countdata();
+        var sysdate = getDate();
+        // console.log(num);
+        // console.log(title);
+        // console.log(writer);
+        // console.log(sysdate);
+        // console.log(content);
+
+        window.module.setdata(parseInt(num+1),title,writer,sysdate,0,content); 
+
+
+    }   
+
+  </script>
+
+
+<style>
+
+</style>

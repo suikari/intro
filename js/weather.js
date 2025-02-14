@@ -18,7 +18,7 @@ function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
     var category = xmlDOM.getElementsByTagName("category");
 	var	obsrValue =  xmlDOM.getElementsByTagName("obsrValue");
 
-	if ( parseInt(resultCode) != 3 ) {
+	if ( parseInt(resultCode) != 3 || parseInt(resultCode) != 4  ) {
 		for (i = 0; i < category.length; i++) {
 			if (category[i].childNodes[0].nodeValue == 'PTY' ) {
 				if (obsrValue[i].childNodes[0].nodeValue == 0 ) {
@@ -55,6 +55,7 @@ var url = apiURL + "serviceKey=" + apiKey + "&pageNo=1&numOfRows=1000&dataType=x
 
 
 function ajtest (){
+	console.log("url",url);
   $.ajax({
 	url : url,
 	type  : "GET",
@@ -69,4 +70,19 @@ function ajtest (){
 
 
 
+
+// let xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function () {
+// 	if (this.readyState == 4 && this.status == 200) { 
+// 		//console.log("xml",this.responseXML);
+// 		//console.log("xml",url);
+// 		//parseXML(this.responseXML);
+// 		//console.log(this.responseXML);
+
+// 	}
+// };
+
+
+// xhttp.open("GET", url, true);
+// xhttp.send();
 

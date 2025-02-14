@@ -163,15 +163,15 @@
     dark_toggle();
     dark_toggle();
 
-const Slider = function(pages, pagination) {
-		let slides = [],
+var Slider = function(pages, pagination) {
+    var slides = [],
 			btns = [],
 			count = 0,
 			current = 0,
 			touchstart = 0,
 			animation_state = false;
 
-		const init = () => {
+		var init = () => {
 		  slides = pages.children;
 		  count = slides.length;
 		  for(let i = 0; i < count; i++) {
@@ -185,7 +185,7 @@ const Slider = function(pages, pagination) {
 		  btns[0].classList.add('active');
 		}
 
-		const gotoNum = (index) => {
+		var gotoNum = (index) => {
 		  if((index != current) && !animation_state) {
 			animation_state = true;
 			setTimeout(() => animation_state = false, 1000);
@@ -198,9 +198,9 @@ const Slider = function(pages, pagination) {
 		  }
 		}
 
-		const gotoNext = () => current < count - 1 ? gotoNum(current + 1) : false;
-		const gotoPrev = () => current > 0 ? gotoNum(current - 1) : false;
-		const btnClick = (e) => gotoNum(parseInt(e.target.dataset.slide));
+		var gotoNext = () => current < count - 1 ? gotoNum(current + 1) : false;
+		var gotoPrev = () => current > 0 ? gotoNum(current - 1) : false;
+		var btnClick = (e) => gotoNum(parseInt(e.target.dataset.slide));
 		pages.ontouchstart = (e) => touchstart = e.touches[0].screenY;
 		pages.ontouchend = (e) => touchstart < e.changedTouches[0].screenY ? gotoPrev() : gotoNext();
 		pages.onmousewheel = pages.onwheel = (e) => e.deltaY < 0 ? gotoPrev() : gotoNext();

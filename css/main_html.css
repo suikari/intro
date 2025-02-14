@@ -633,18 +633,17 @@ table {
   }
 
   .dark-mode .side {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 
   }
 
   .dark-mode .pages {
-    border: 1px solid white;
+    /* border: 1px solid white; */
 
   } 
 
   .dark-mode .nav_menu  {
-    border: 1px solid white;
-
+    /* border: 1px solid white; */
   }
 
   .fa-black {

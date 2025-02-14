@@ -1,4 +1,4 @@
-<div id="board_app" class="b_container">
+<div id="board_app" class="board_container">
     <table class="board">
         <caption>
             <strong>게시판 목록</strong>
@@ -65,33 +65,12 @@
 
     async function useModule() {
         // let count = await window.module.countdata();
-
         let data = await window.module.getdata();
-        //console.log(data); // 모듈이 정상적으로 로드된 후 실행됨
-        
-        
-        // for (let i = 0; i < data.length; i++) {
-
-        // let html;
-
-        // html += '<tr  onClick="pagemove(\'b;'+ data[i].id +'\');">';
-        // html += '<td  class="col-number">' + data[i].num + '</td>';
-        // html += '<td  class="col-title align-l">' + data[i].title + '</td>';
-        // html += '<td  class="col-writer">' + data[i].writer + '</td>';
-        // html += '<td  class="col-date">' + data[i].sysdate + '</td>';
-        // html += '<td  class="col-view">' + data[i].view + '</td>';
-        // html += '</tr>';
-
-        // // /boardTable
-        // //$("#btable").append(html);       
-        // $("#boardTable").append(html);       
-        // }
-        // $("#write_doc").attr("name",data[data.length-1].num);
         return data;
     }
 
 
-    let board_app = Vue.createApp({
+    board_app = Vue.createApp({
         data() {
             return {
                 // 변수

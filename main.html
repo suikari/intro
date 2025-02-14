@@ -7,6 +7,7 @@
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
 <script src="js/weather.js?ver=0.3"></script>
@@ -361,6 +362,8 @@
           $('.navbar__menu').removeClass('dark-mode');
           $('.navbar').removeClass('dark-mode');
           $('#menu_btn').removeClass('dark-mode');
+          $('.board_container').removeClass('dark-mode');
+
 
           // $('div').removeClass('dark-mode');
           // $('nav').removeClass('dark-mode');
@@ -382,6 +385,7 @@
           $('.navbar__menu').addClass('dark-mode');
           $('.navbar').addClass('dark-mode');
           $('#menu_btn').addClass('dark-mode');
+          $('.board_container').addClass('dark-mode');
 
           
           
@@ -444,7 +448,7 @@
       $("#mian_pages").load("board_main.html");  
       $("#nav_2").addClass("active");
     } else if ( index[0] == "e"  ) {
-      $("#mian_pages").load("editer.html");  
+      $("#mian_pages").load("board_editer.html");  
       $("#nav_2").addClass("active");
     } else if ( index[0] == "s"  ) {
       $("#mian_pages").load("saler.html");  

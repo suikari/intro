@@ -102,6 +102,73 @@
     color: white;
 }
 
-.b_container {
+.board_container {
     width:100%;
+    max-width: 1000px;
+        border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.board_container.dark-mode table tbody tr * {
+    background-color: black;
+}
+
+.board_title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.board_form-group {
+    margin-bottom: 20px;
+}
+
+.board_form-label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.board_form-input, .board_form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.board_form-textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+.board_btn {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.board_btn:hover {
+    background-color: #45a049;
+}
+
+.board_btn-cancel {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.board_btn-cancel:hover {
+    background-color: #d32f2f;
 }
