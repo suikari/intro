@@ -1,8 +1,8 @@
-<div id="board_app" class="board_container">
+<div id="board_list_app" class="board_container">
     <table class="board">
         <caption>
             <strong>게시판 목록</strong>
-            <p>이 표    는 번호, 제목, 작성자, 작성일로 구성되었습니다.</p>
+            <p>이 표는 번호, 제목, 작성자, 작성일로 구성되었습니다.</p>
         </caption>
 
         <colgroup>
@@ -71,7 +71,7 @@
     }
 
 
-    board_app = Vue.createApp({
+    board_list_app = Vue.createApp({
         data() {
             return {
                 // 변수
@@ -147,7 +147,7 @@
         }
     });
 
-    board_app.mount('#board_app');
+    board_list_app.mount('#board_list_app');
 
 
     //useModule();

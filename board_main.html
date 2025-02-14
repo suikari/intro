@@ -1,28 +1,24 @@
 
-<!-- 
+<div id="board_app" class="board_container">
 
-<div class="board_container">
-  <h1 class="board_title">게시글 제목 예시</h1>
+  <h1 class="board_title">{{this.title}}</h1>
 
   <div class="board_info">
-      <span class="board_author">작성자: 홍길동</span>
-      <span class="board_date">작성일: 2024-02-14</span>
+      <span class="board_author">작성자: {{this.author}}</span>
+      <span class="board_date">작성일: {{this.sysdate}}</span>
   </div>
 
   <div class="board_content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod libero ut dolor convallis, 
-      in sollicitudin massa ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada 
-      fames ac turpis egestas. Quisque hendrerit scelerisque metus, at ultrices justo cursus sed. 
-      Vestibulum tincidunt metus nec ligula consectetur gravida.
+      {{this.content}}
   </div>
 
   <div class="board_buttons">
-      <a href="edit.html" class="board_btn board_btn-edit">수정</a>
-      <a href="#" class="board_btn board_btn-delete">삭제</a>
-      <a href="board.html" class="board_btn board_btn-back">목록으로</a>
+      <a href="javascript:;" @click="fnUpdateCilck" class="board_btn board_btn-edit">수정</a>
+      <a href="javascript:;" @click="fnDeleteCilck" class="board_btn board_btn-delete">삭제</a>
+      <a href="javascript:;" @click="fnHomeClick" class="board_btn board_btn-back">목록으로</a>
   </div>
 </div>
- -->
+<!-- 
 
 <div class="bbs-wrap bbs-qna paget" style="background-color: white;">
     <div class="result">
@@ -39,7 +35,6 @@
             <div class="attach">
               <ul>
                 <li><a href="javascript:;"><i class="ri-attachment-line"></i><span>첨부파일입니다.jpg (120kb)</span></a></li>
-                <!-- <li><a href="javascript:;"><i class="ri-attachment-line"></i><span>첨부파일입니다.jpg (120kb)</span></a></li> -->
               </ul>
             </div>
           </div>
@@ -48,7 +43,6 @@
           </div>
         </article>
       </div>
-      <!-- btns -->
       <div class="btns ac clearfix" style=" padding: 10px;">
         <div class="float-r">
           <a href="javascript:delete_doc();" class="btn-dark">삭제</a>
@@ -58,8 +52,8 @@
       </div>
     </div>
   </div>
- 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  -->
+  
 
 
  <script type="text/javascript">
@@ -73,41 +67,68 @@
         // let count = await window.module.countdata();
 
         let data = await window.module.getdata_p(board_id);
-        // console.log(data); // 
-        
-        $('#title').text(data.title);
-        $('#wid').text(data.writer);
-        $('#wday').text(data.sysdate);
-        $('#b_content').html(data.content);
-
+        return data;
     }
 
     async function useDelModule() {
-        // let count = await window.module.countdata();
-
         await window.module.deldata(board_id);
-
     }
-
-    useModule();
-
-    //deldata
-
-    function delete_doc() {
-      
-      if(!(confirm("정말 삭제하시겠습니까?"))){
-        return;
-      }
-
-      useDelModule();
-      //location.href = "main.html?content=1";
-
-    }
-
-    function update_doc() {
-      pagemove("e;"+ board_id);   
-      //console.log("e;"+ board_id);
-    } 
     
 
+    board_app = Vue.createApp({
+        data() {
+            return {
+              author : '', // 로그인에 사용할 username
+              title: '',  // 로그인에 사용할 password
+              content : '',
+              num     : '',
+              sysdate : '',
+              viewFlg : true ,
+            };
+        },
+        methods: {
+            // 함수(메소드)
+            fnHomeClick : function (id) {
+                pagemove("1;");
+            },
+            fnSample : async function () {
+                try {
+                var self =  this;
+                var data = await useModule();
+                  
+                //console.log(data);
+
+                self.author  = data.writer ;
+                self.title   = data.title ;
+                self.content = data.content;
+                self.num     = data.num;
+                self.sysdate = data.sysdate ;
+                self.viewFlg = false;
+
+                } catch (err) {
+                    swal_msg("에러","게시판 불러오기 실패","error");
+                    peagmove(";");
+                }
+            },
+            fnUpdateCilck : function () {
+              pagemove("e;"+ board_id); 
+            },
+            fnDeleteCilck : async function () {
+
+              if(!(confirm("정말 삭제하시겠습니까?"))){
+                return;
+              }
+
+              await useDelModule();
+            },
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            let self = this;
+            self.fnSample();
+        }
+    });
+
+    board_app.mount("#board_app");
+    
 </script>
