@@ -350,7 +350,7 @@
   
 
     function dark_toggle() {
-        const classList = $('.side').attr('class');
+        let classList = $('.side').attr('class');
         //console.log(classList);
         if  ( classList.search('dark-mode') > -1 ) {
           $('body').removeClass('dark-mode');
