@@ -341,10 +341,7 @@ table {
     position: absolute;
     pointer-events: none; /* 클릭 방지 */
     z-index: 9999; /* 최상단 배치 */
-    transition: transform 0.05s ease-out;
-
-
-
+    /* transition: transform 0.05s ease-out; */
   }
 
   #logo {

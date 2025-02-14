@@ -55,17 +55,19 @@ var url = apiURL + "serviceKey=" + apiKey + "&pageNo=1&numOfRows=1000&dataType=x
 
 
 function ajtest (){
-	console.log("url",url);
+  //console.log("url",url);
+  
   $.ajax({
 	url : url,
 	type  : "GET",
 	data : {} ,
 	async: true,
 	success : function (response) {
-	  console.log(response);
+	  //console.log(response);
 	  parseXML(response);
 	}
-	})
+  })
+
 }	
 
 
