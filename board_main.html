@@ -73,6 +73,10 @@
 
     function delete_doc() {
       
+      if(!(confirm("정말 삭제하시겠습니까?"))){
+        return;
+      }
+
       useDelModule();
       //location.href = "main.html?content=1";
 
@@ -80,7 +84,7 @@
 
     function update_doc() {
       pagemove("e;"+ board_id);   
-      console.log("e;"+ board_id);
+      //console.log("e;"+ board_id);
     } 
     
 

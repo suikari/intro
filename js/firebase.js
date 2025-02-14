@@ -33,12 +33,18 @@
 
     async function countdata() {
       
-      const coll = collection(db, "apptest");
-      const snapshot = await getCountFromServer(coll);
+      //const coll = collection(db, "apptest");
+      //const snapshot = await getCountFromServer(coll);
+      const usersCollectionRef = collection(db, 'apptest'); 
+      const userSnap = await getDocs(query(usersCollectionRef, orderBy("num", "asc"))); 
+      const data = userSnap.docs.map(doc => ({
+          ...doc.data(),
+          id: doc.id
+      }));
       
-      console.log('count: ', snapshot.data().count);
 
-      return snapshot.data().count;
+      //console.log('count: ', snapshot.data().count);
+      return data[(data.length-1)].num;
     }
 
 

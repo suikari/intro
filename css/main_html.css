@@ -616,12 +616,12 @@ table {
     text-shadow : none;
   }
 
-  .dark-mode.pagination>li {
+  .dark-mode.b_pagination>li {
     background : #fff;
   }
 
 
-  .dark-mode.pagination>li.active {
+  .dark-mode.b_pagination>li.active {
     background: #ff8373;
   }
 

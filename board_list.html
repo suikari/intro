@@ -74,7 +74,9 @@
         data() {
             return {
                 // 변수
-                list : []
+                list : [] ,
+                currentPage: 1, // 현재 페이지 번호
+                postsPerPage: 10, // 한 페이지에 보여줄 게시글의 개수
             };
         },
         methods: {
