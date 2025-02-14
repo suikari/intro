@@ -5,12 +5,17 @@
   <form action="javascript:;" method="post" id="board_edit_form" >
       <div class="board_form-group">
           <label for="title" class="board_form-label">제목</label>
-          <input type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요" required>
+          
+          <input v-if="viewFlg" type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요" required>
+          <input v-else type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요"  disabled required>
+
       </div>
 
       <div class="board_form-group">
           <label for="author" class="board_form-label">작성자</label>
-          <input type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
+          <input v-if="viewFlg" type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
+          <input v-else type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" disabled required>
+
       </div>
 
       <div class="board_form-group">
@@ -32,18 +37,47 @@
   <script>
     dark_toggle();
     dark_toggle();
-   
+
+    
+
+    async function number_chk(num , title,writer,content) {
+        if (typeof num == "undefined" || num == null || num == "") {
+          num = await window.module.countdata();
+        }
+         
+        var sysdate = getDate();
+        // console.log(num);
+        // console.log(title);
+        // console.log(writer);
+        // console.log(sysdate);
+        // console.log(content);
+        if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
+          window.module.setdata(parseInt(num),title,writer,sysdate,0,content,board_id); 
+        } else {
+          window.module.adddata(parseInt(num+1),title,writer,sysdate,0,content); 
+        }
+    }   
+
+    async function domModule() {
+        // let count = await window.module.countdata();
+
+        let data = await window.module.getdata_p(board_id);
+        return data;
+    }
+
     board_edit_app = Vue.createApp({
         data() {
             return {
               author : '', // 로그인에 사용할 username
               title: '',  // 로그인에 사용할 password
               content : '',
+              num     : '',
+              viewFlg : true ,
             };
         },
         methods: {
             // 함수(메소드)
-             fnSample : async function () {
+             fnSample : function () {
               var self = this;
               
               if(self.title == ""){
@@ -57,13 +91,30 @@
                 return;
               }  
               
-              number_chk(self.title,self.author,self.content);
+              number_chk(self.num, self.title,self.author,self.content);
 
-            } , 
+            }, 
             fnHomeClick : function (id) {
                 pagemove("1;");
-            }
+            },
+            fnUpdate : async function () {
+                try {
+                var self =  this;
+                var data = await domModule();
+                  
+                console.log(data);
 
+                self.author  = data.writer ;
+                self.title   = data.title ;
+                self.content = data.content;
+                self.num     = data.num;
+                self.viewFlg = false;
+
+                } catch (err) {
+                    swal_msg("에러","게시판 불러오기 실패","error");
+                    peagmove(";");
+                }
+            },
         },
         mounted() {
             // 처음 시작할 때 실행되는 부분
@@ -72,35 +123,19 @@
         }
     });
 
-    board_edit_app.mount('#board_edit_app');
-
-
     $(document).ready(function() {
+      appInstance = board_edit_app.mount("#board_edit_app");
 
+      if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
+        appInstance.fnUpdate();//
+      }
       
     })
 
-    function body_load (){
-      if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
-
-        alert('테스트');
-      }
-    }
-
-    async function number_chk(title,writer,content) {
-        var num = await window.module.countdata();
-        var sysdate = getDate();
-        // console.log(num);
-        // console.log(title);
-        // console.log(writer);
-        // console.log(sysdate);
-        // console.log(content);
-
-        window.module.setdata(parseInt(num+1),title,writer,sysdate,0,content); 
 
 
-    }   
 
+    
   </script>
 
 

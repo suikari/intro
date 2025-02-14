@@ -50,6 +50,10 @@
     background-color: #f9f9f9;
 }
 
+.board td:hover {
+    text-decoration: underline;
+}
+
 .board td a {
     color: #4CAF50;
     text-decoration: none;

@@ -1,12 +1,12 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
   import { getFirestore  } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
-  import { collection, doc, setDoc , getDoc , getDocs , addDoc , orderBy, query , getCountFromServer } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+  import { collection, doc, setDoc , getDoc , getDocs , addDoc , orderBy, query , deleteDoc , getCountFromServer } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
 
   
   /// Export
-  export default { getdata , setdata , countdata , getdata_p }; 
+  export default { getdata , adddata, setdata , countdata , getdata_p , deldata }; 
   export { getdata , setdata }; 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -69,9 +69,9 @@
 
     //1; 공지사항입니다; 방대한 ; 2025-02-09 ; 0 ; 공지사항 게시글 내용 입니다 ,
     
-    async function setdata(num,title,writer,sysdate,view,content) {
+    async function setdata(num,title,writer,sysdate,view,content,id) {
       
-      const docRef = await addDoc(collection(db, "apptest"), {
+      const docRef = await setDoc(doc(db, "apptest", id), {
         num: num,
         title: title ,
         writer : writer ,
@@ -84,51 +84,26 @@
       pagemove('1');
     }
 
-    // async function getdata() {
+    async function adddata(num,title,writer,sysdate,view,content) {
       
-    //   const docRef2 = doc(db, "apptest", "test");
-    //   const docSnap = await getDoc(docRef2);
+      const docRef = await addDoc(collection(db, "apptest"), {
+        num: num,
+        title: title ,
+        writer : writer ,
+        sysdate : sysdate,
+        view : view ,
+        content : content
+      });
 
-    //   const data = docSnap.data();
-    //   return  data;
-    // }
+      //alert("등록 완료!");
+      pagemove('1;');
+    }
 
-    // docRef.get().then((doc) => {
-    //     if (doc.exists) {
-    //         console.log("Document data:", doc.data());
-    //     } else {
-    //         console.log("No such document!");
-    //     }
-    // }).catch((error) => {
-    //     console.log("Error getting document:", error);
-    // });
-    // //set
-    // const docRef1 = db.collection("cities").doc("BJ");
+    async function deldata(id) {
+      
+      await deleteDoc(doc(db, "apptest", id));
 
-    // docRef1.set({
-    //     name: "Beijing",
-    //     country: "China",
-    //     population: 21542000
-    // }).then(() => {
-    //     console.log("Document written with ID: ", docRef1.id);
-    // }).catch((error) => {
-    //     console.log("Error adding document: ", error);
-    // });
-
-    // //update
-    // const washingtonRef = db.collection("cities").doc("DC");
-
-    // washingtonRef.update({
-    //     population: 6730000
-    // }).then(() => {
-    //     console.log("Document successfully updated!");
-    // }).catch((error) => {
-    //     console.log("Error updating document: ", error);
-    // });
-
-    // //delete
-    // db.collection("cities").doc("BJ").delete().then(() => {
-    //     console.log("Document successfully deleted!");
-    // }).catch((error) => {
-    //     console.log("Error removing document: ", error);
-    // });
+      //alert("삭제 완료!");
+      pagemove('1;');
+    }
+    

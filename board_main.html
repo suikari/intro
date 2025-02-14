@@ -22,33 +22,14 @@
           <div id="b_content" class="detail">
 
           </div>
-          <!-- answer -->
-          <!-- <div class="answer">
-            <div class="upr">
-              <h3><span>질문사항 답변입니다.</span></h3>
-              <div class="info">
-                <span class="writer"><i class="ri-user-line"></i><b class="hid">작성자</b><span>홍길동</span></span>
-                <span class="date"><i class="ri-time-line"></i><b class="hid">작성일</b><span>2020-01-01</span></span>
-              </div>
-              <div class="attach">
-                <ul>
-                  <li><a href="javascript:;"><i class="ri-attachment-line"></i><span>첨부파일입니다 첨부파일입니다 첨부파일입니다 첨부파일입니다 첨부파일입니다.jpg (120kb)</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="detail">
-              질문사항 답변입니다. 질문사항 답변입니다. 질문사항 답변입니다. 질문사항 답변입니다. 질문사항 답변입니다.
-
-            </div>
-          </div> -->
         </article>
       </div>
       <!-- btns -->
       <div class="btns ac clearfix" style=" padding: 10px;">
         <div class="float-r">
-          <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error')" class="btn-dark">삭제</a>
+          <a href="javascript:delete_doc();" class="btn-dark">삭제</a>
           <a href="javascript:pagemove('1;');" class="btn-outline">목록</a>
-          <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-outline">수정</a>
+          <a href="javascript:update_doc();" class="btn-outline">수정</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-fill">답변</a>
           <a href="javascript:swal_msg('구현중','최대한 노력중입니다.','error');" class="btn-fill">쓰기</a>
         </div>
@@ -79,18 +60,28 @@
 
     }
 
+    async function useDelModule() {
+        // let count = await window.module.countdata();
+
+        await window.module.deldata(board_id);
+
+    }
+
     useModule();
 
+    //deldata
 
     function delete_doc() {
       
-      location.href = "main.html?content=1";
+      useDelModule();
+      //location.href = "main.html?content=1";
 
     }
 
     function update_doc() {
-      location.href = "main.html?content=e&"+"num="+ b_num;     
-    }
+      pagemove("e;"+ board_id);   
+      console.log("e;"+ board_id);
+    } 
     
 
 </script>
