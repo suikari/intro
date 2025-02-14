@@ -7,7 +7,6 @@
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
 <script src="js/weather.js?ver=0.3"></script>
@@ -136,10 +135,6 @@
       <button id='dark_btn' class="fa-black " onclick="dark_toggle();"> </button>
     </div>
 
-    <!-- <button id="play">재생</button>
-    <button id="pause">일시 중지</button>
-    <button id="skip">다음 곡</button> -->
-
     <div id="container">
         <div id="test"></div>
         <div id="header" class="dropdown">
@@ -212,9 +207,6 @@
 
 
 </html>
-
-
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
 <script type="module">
   import common from "./js/firebase.js";
@@ -311,7 +303,7 @@
       
       pagemove(";");
 
-      const cursorIcon = document.querySelector('.cursor');
+      var cursorIcon = document.querySelector('.cursor');
 
       document.addEventListener('mousemove', (e) => {
         cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
