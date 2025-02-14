@@ -150,8 +150,8 @@
 
 <script>
 
-    const imgChange = document.querySelectorAll(".small");
-    const mainimg   = document.querySelector("#sans");
+    let imgChange = document.querySelectorAll(".small");
+    let mainimg   = document.querySelector("#sans");
 
     imgChange.forEach((imgChange) => {
 
@@ -163,7 +163,7 @@
     });
 
     function detail() {
-        const element = document.getElementById('details');
+        let element = document.getElementById('details');
         if ( element.style.display  == 'block') {
             element.style.display = 'none';
         } else {

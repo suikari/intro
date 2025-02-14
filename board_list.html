@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody id="boardTable">
-            <tr  v-for="(item, index) in list"  @Click="fnClick(item.id)" >
+            <tr  v-for="(item, index) in displayedPosts"  @Click="fnClick(item.id)" >
                 <td>{{item.num}} </td>
                 <td>{{item.title}} </td>
                 <td>{{item.writer}} </td>
@@ -34,15 +34,16 @@
     </table>
 
     <div class="pagination">
-        <a href="#">«</a>
-        <a href="#" class="active">1</a>
-        <!-- <a href="#">2</a>
-        <a href="#">3</a> -->
-        <a href="#">»</a>
+        <a v-if="currentPage > 1" @click="currentPage--">«</a>
+        <template  v-for="pagenum in totalPages ">
+            <a v-if="pagenum == currentPage " @click="currentPage = pagenum" class="active">{{pagenum}}</a>
+            <a v-else="pagenum == currentPage " @click="currentPage = pagenum">{{pagenum}}</a>
+        </template>
+        <a v-if="currentPage < totalPages" @click="currentPage++">»</a>
     </div>
 
     <div class="search-container">
-        <select id="searchField">
+        <select id="searchField" v-model="search_key">
             <option value="number">번호</option>
             <option value="title">제목</option>
             <option value="author">작성자</option>
@@ -75,8 +76,10 @@
             return {
                 // 변수
                 list : [] ,
-                currentPage: 1, // 현재 페이지 번호
-                postsPerPage: 10, // 한 페이지에 보여줄 게시글의 개수
+                current_list : [],
+                currentPage: 1,
+                postsPerPage: 8, 
+                search_key : "",
             };
         },
         methods: {
@@ -85,6 +88,8 @@
                 try {
                 var self =  this;
                 self.list = await useModule();
+                self.current_list = self.list;
+
                 } catch (err) {
                     swal_msg("에러","게시판 불러오기 실패","error");
                     peagmove(";");
@@ -94,6 +99,18 @@
                 pagemove("b;"+ id);
             }
 
+        },
+        computed: {
+            displayedPosts() {
+            // 현재 페이지에 해당하는 게시글 목록을 반환하는 computed 속성
+                const startIndex = (this.currentPage - 1) * this.postsPerPage;
+                const endIndex = startIndex + this.postsPerPage;
+                return this.current_list.slice(startIndex, endIndex);
+            },
+            totalPages() {
+            // 총 페이지 수를 계산하는 computed 속성
+                return Math.ceil(this.current_list.length / this.postsPerPage);
+            },
         },
         mounted() {
             // 처음 시작할 때 실행되는 부분
