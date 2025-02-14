@@ -55,47 +55,6 @@
       </div>
     </div>
   </div>
-
-
-  <!-- <script type="module">
-    import { useState, useEffect } from "react";
-    import { Octokit } from "https://cdn.skypack.dev/octokit"
-
-
-    let myKey = "";
-
-    const octokit = new Octokit({
-      auth: myKey
-    });
-
-    async function test() {
-    const result = await octokit.request(
-        "PUT /repos/bloodstrawberry/auto-test/contents/test/apitest.txt",
-        {
-        owner: "bloodstrawberry",
-        repo: "auto-test",
-        path: "test/apitest.txt",
-        message: "commit message!",
-        
-        sha: "ebcc5aa5ce2f4514b046c8841f5cc48b3cfd1a10",
-        
-        committer: {
-            name: "bloodstrawberry",
-            email: "bloodstrawberry@github.com",
-        },
-        content: `${btoa("change file!!\nYou can do it!!\n")}`,
-        }
-    );
-
-    console.log(result);
-    }
-    test();
-
-    
-
-  </script> -->
-
-  <!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/rest.js/15.2.6/octokit-rest.js"></script> -->
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -111,8 +70,7 @@
         // let count = await window.module.countdata();
 
         let data = await window.module.getdata_p(board_id);
-        // console.log(data); // 모듈이 정상적으로 로드된 후 실행됨
-        
+        // console.log(data); // 
         
         $('#title').text(data.title);
         $('#wid').text(data.writer);

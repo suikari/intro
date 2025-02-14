@@ -6,6 +6,8 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 
 <script src="js/weather.js?ver=0.3"></script>
 <script src="js/popup.js?ver=0.3"></script>
@@ -413,6 +415,7 @@
   function pagemove(val) {
     claerPage()
     let index = val.split(";");
+    //console.log(val);
 
     if (!(typeof index[1] == "undefined" || index[1] == null || index[1] == "")) {
        
@@ -434,11 +437,11 @@
       $("#nav_1").addClass("active");
       
     } else if ( index[0] == "1" ) {
-      $("#mian_pages").load("content3.html");  
+      $("#mian_pages").load("board_list.html");  
       $("#nav_2").addClass("active");
 
     } else if ( index[0] == "b"  ) {
-      $("#mian_pages").load("board.html");  
+      $("#mian_pages").load("board_main.html");  
       $("#nav_2").addClass("active");
     } else if ( index[0] == "e"  ) {
       $("#mian_pages").load("editer.html");  
