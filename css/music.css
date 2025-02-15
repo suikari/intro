@@ -9,7 +9,14 @@
         +music__footer
 */
 
+.music-black {
+    background-image: url('../image/music_black.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
 
+}
 
 .music__wrap {
     -webkit-animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

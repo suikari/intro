@@ -116,7 +116,7 @@
     }
     
 
-
+    const chatmainContainer   = document.getElementById('chat_main_div');
     const chatContainer = document.getElementById('chat-container');
     const messageInput = document.getElementById('message');
     const sendButton = document.getElementById('send-button');
@@ -124,6 +124,9 @@
     const anonymousLoginButton = document.getElementById('anonymous-login-button');
     const logoutButton = document.getElementById('logout-button');
     const userInfo = document.getElementById('user-info');
+    const chatCloseButton = document.getElementById('chat_close');
+    const chatOCButton = document.getElementById('chat_button');
+
     
     let currentUser = null;
     let nickname = null;
@@ -237,4 +240,21 @@
       if (event.key === 'Enter') {
         sendButton.click();
       }
+    });
+
+
+    chatCloseButton.addEventListener('click', async () => {
+      chatmainContainer.classList.add("close");
+    });
+
+    chatOCButton.addEventListener('click', async () => {
+
+      let classtype = $('#chat_main_div').attr('class');
+      //console.log(classList);
+      if  ( classtype.search('close') > -1 ) {
+        chatmainContainer.classList.remove("close");
+      } else {
+        chatmainContainer.classList.add("close");
+      }
+      
     });

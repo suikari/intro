@@ -48,14 +48,15 @@
 
 <body>
 
-  <div class="chat_div" >
+  <div id="chat_main_div" class="chat_div " >
+    <a href="#" id="chat_close" class="close"></a>
+
     <div class="chat_auth">
       <button class="chat_button" id="google-login-button">Google 로그인</button>
       <button class="chat_button" id="anonymous-login-button">익명 로그인</button>
       <br>
       <p class="chat_user_info" id="user-info">로그인하세요.</p>
       <button class="chat_button" id="logout-button" style="display: none;">로그아웃</button>
-
     </div>
     <div class="chat_container" id="chat-container"></div>
     <div class="chat_input_container">
@@ -161,6 +162,7 @@
     <div class="btnBox">
       <button class="zoomOut fa-min" onclick="font_size('m');"></button>
       <button class="zoomIn fa-plus" onclick="font_size('p');"></button>
+      <button id='chat_button' class="chat-black " > </button>
       <button id='music_button' class="music-black " > </button>
       <button id='dark_btn' class="fa-black " onclick="dark_toggle();"> </button>
     </div>

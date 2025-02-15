@@ -11,6 +11,25 @@
     box-shadow: 0 60px 100px rgba(0,0,0,0.4);
 }
 
+.chat-black {
+    background-image: url('../image/chat_black.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+
+}
+
+.chat_div {
+    -webkit-animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.chat_div.close {
+	-webkit-animation: rotate-out-2-cw 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-out-2-cw 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .chat_header {
     padding: 15px;
     background: #007BFF;
@@ -96,3 +115,15 @@
   .chat_button:hover {
     background: #0056b3;
   }
+
+  .chat_div .close {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    background-image: url(../image/music_icon.svg);
+    background-position: -120px -40px;
+    width: 40px;
+    height: 40px;
+    
+}
+
