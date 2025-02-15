@@ -24,6 +24,8 @@ function onMove(e) {
     if(nMoveType === 1) {
         e.preventDefault();
         console.log('swipe');
+        alert('swipe');
+
     }
 }
  
