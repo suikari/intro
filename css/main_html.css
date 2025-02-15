@@ -406,9 +406,9 @@ table {
     width: 100%;
   }
   
-  #now_time {
+  /* #now_time {
     color : black;
-  }
+  } */
   
   #ban_img {
     transition-property: all;

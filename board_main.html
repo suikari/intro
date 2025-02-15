@@ -8,8 +8,8 @@
       <span class="board_date">작성일: {{this.sysdate}}</span>
   </div>
 
-  <div class="board_content">
-      {{this.content}}
+  <div   v-html="content" div="board_main_content" class="board_content">
+      
   </div>
 
   <div class="board_buttons">
@@ -18,42 +18,7 @@
       <a href="javascript:;" @click="fnHomeClick" class="board_btn board_btn-back">목록으로</a>
   </div>
 </div>
-<!-- 
-
-<div class="bbs-wrap bbs-qna paget" style="background-color: white;">
-    <div class="result">
-      <div class="read">
-        <article>
-          <div class="upr" >
-            <h3><span id="title"></span></h3>
-            <div class="info">
-              <span class="writer"><i class="ri-user-line"></i><b  class="hid">작성자</b><span id="wid" ></span></span>
-              <span  class="date"><i class="ri-time-line"></i><b class="hid">작성일</b><span id="wday" ></span></span>
-              <span class="tel"><i class="ri-smartphone-line"></i><b class="hid">연락처</b><span></span></span>
-              <span class="mail"><i class="ri-mail-line"></i><b class="hid">메일주소</b><span></span></span>
-            </div>
-            <div class="attach">
-              <ul>
-                <li><a href="javascript:;"><i class="ri-attachment-line"></i><span>첨부파일입니다.jpg (120kb)</span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div id="b_content" class="detail">
-
-          </div>
-        </article>
-      </div>
-      <div class="btns ac clearfix" style=" padding: 10px;">
-        <div class="float-r">
-          <a href="javascript:delete_doc();" class="btn-dark">삭제</a>
-          <a href="javascript:pagemove('1;');" class="btn-outline">목록</a>
-          <a href="javascript:update_doc();" class="btn-outline">수정</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
-  
+ 
 
 
  <script type="text/javascript">
@@ -104,6 +69,8 @@
                 self.num     = data.num;
                 self.sysdate = data.sysdate ;
                 self.viewFlg = false;
+                
+                // $('#board_main_content').append(data.content);  
 
                 } catch (err) {
                     swal_msg("에러","게시판 불러오기 실패","error");

@@ -1,28 +1,39 @@
 <!doctype html>
 <html lang="ko">
 
+<script src="js/weather.js?ver=0.3"></script>
+<script src="js/popup.js?ver=0.3"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery_ui.js"></script>
+<script src="js/import.js"></script>
+<script src="js/main.js?ver=1.0"></script>
+<script src="js/music.js?ver=0.9"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=38d0c3995bfe828613ade0d7e4b8248e"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
-<script src="js/weather.js?ver=0.3"></script>
-<script src="js/popup.js?ver=0.3"></script>
-<script src="js/jquery.js?ver=0.3"></script>
-<script src="js/jquery_ui.js?ver=0.4"></script>
-<script src="js/import.js?ver=0.5"></script>
-<script src="js/main.js?ver=0.9"></script>
-<script src="js/music.js?ver=0.8"></script>
 
-<link href="css/main.css?ver=0.3" rel="stylesheet" type="text/css" />
-<link href="css/board.css?ver=0.3" rel="stylesheet" type="text/css" />
-<link href="css/music.css?ver=0.7" rel="stylesheet" type="text/css" />
 
-<link href="css/main_html.css?ver=1.6" rel="stylesheet" type="text/css" />
-<link href="css/jquery_ui.css?ver=0.5" rel="stylesheet" type="text/css" />
+<link href="css/main.css?ver=0.4" rel="stylesheet" type="text/css" />
+<link href="css/board.css?ver=0.4" rel="stylesheet" type="text/css" />
+<link href="css/music.css?ver=0.8" rel="stylesheet" type="text/css" />
+
+<link href="css/main_html.css?ver=1.7" rel="stylesheet" type="text/css" />
+<link href="css/jquery_ui.css?ver=0.6" rel="stylesheet" type="text/css" />
 
 
 <head>
@@ -179,8 +190,8 @@
             </div>  
             
             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
-                현재 날씨 / <span id="now_time"></span>
-              </div> 
+              <span id="now_time"></span> </br>   현재 날씨 
+            </div> 
 
             <div id = "wicon" class = "h5 mb-0 font-weight-bold text-gray-800 float-left">
                 <div id = "ods" class="float-left"> </div>

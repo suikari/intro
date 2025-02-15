@@ -31,9 +31,6 @@
 
 </div>
 
-
-
-
   <script>
     dark_toggle();
     dark_toggle();
@@ -79,7 +76,8 @@
             // 함수(메소드)
              fnSample : function () {
               var self = this;
-              
+              self.content = $('#content').summernote('code');
+
               if(self.title == ""){
                   swal_msg("입력오류","제목을 입력하세요","error");
                   return;
@@ -110,6 +108,8 @@
                 self.num     = data.num;
                 self.viewFlg = false;
 
+                $('#content').summernote('pasteHTML', self.content);
+
                 } catch (err) {
                     swal_msg("에러","게시판 불러오기 실패","error");
                     peagmove(";");
@@ -125,6 +125,13 @@
 
     $(document).ready(function() {
       appInstance = board_edit_app.mount("#board_edit_app");
+      $('#content').summernote({
+        height: 300, // set editor height
+        minHeight: 300, // set minimum height of editor
+        maxHeight: 300, // set maximum height of editor
+      });
+
+
 
       if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
         appInstance.fnUpdate();//
