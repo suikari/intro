@@ -667,9 +667,9 @@ table {
     border: 1px solid white;
   }  */
 
-  .dark-mode .nav_menu  {
-    /* border: 1px solid white; */
-  }
+  /* .dark-mode .nav_menu  {
+    border: 1px solid white;
+  } */
 
   .fa-black {
       background-image: url('../image/black.png');

@@ -31,6 +31,7 @@
 <link href="css/main.css?ver=0.4" rel="stylesheet" type="text/css" />
 <link href="css/board.css?ver=0.4" rel="stylesheet" type="text/css" />
 <link href="css/music.css?ver=0.8" rel="stylesheet" type="text/css" />
+<link href="css/chat.css?ver=0.8" rel="stylesheet" type="text/css" />
 
 <link href="css/main_html.css?ver=1.7" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.6" rel="stylesheet" type="text/css" />
@@ -46,6 +47,21 @@
 </head>
 
 <body>
+
+  <div class="chat_div">
+    <div class="chat_auth">
+      <button class="chat_button" id="login-button">Google 로그인</button>
+      <button class="chat_button" id="logout-button" style="display: none;">로그아웃</button>
+      <p id="user-info"></p>
+    </div>
+    <div class="chat_container" id="chat-container"></div>
+    <div class="chat_input_container">
+      <input type="text" class="chat_input" id="message" placeholder="메시지를 입력하세요..." disabled>
+      <button class="chat_button" id="send-button" disabled>전송</button>
+    </div>
+  </div>
+
+
   <div class="cursor">
     <img class="cur_img" src="image/san_cuss.png" width="60x" height="60px">
   </div> 
@@ -244,30 +260,6 @@
 
   clock();
   setInterval(clock, 1000);
-
-    // let audio = new Audio('common/san.m4a');
-    // audio.play();
-
-    // const main_audio = document.getElementById('main_audio');
-    // main_audio.play();
-	
-
-    // const music = document.getElementById('music');
-    // const playButton = document.getElementById('play');
-    // const pauseButton = document.getElementById('pause');
-    // const skipButton = document.getElementById('skip');
-
-    // playButton.addEventListener('click', () => {
-    //      music.play();
-    // });
-    // pauseButton.addEventListener('click', () => {
-    //     music.pause();
-    // });
-
-    // skipButton.addEventListener('click', () => {
-    // });
-
-
     
 
     function click_button () {
