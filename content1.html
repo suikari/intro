@@ -1,4 +1,4 @@
-<div id="pages" class="pages" style="width:100%;">
+<div id="pages" class="intro_page" style="width:100%;">
     <div class="first page paget">
         <section>
             <h2 class="subtitle">작업예정 내용</h2>
@@ -20,7 +20,6 @@
             </br>
                 <li>백엔드
                     <ul>
-                        <li> 게시판 검색 , 수정, 삭제 구현 (8개단위 페이징기능, 수정 , 삭제 완료) </li>
                         <li> 실시간 채팅기능 구현 </li>
                         <li> 회원가입 및 로그인 기능 구현 (채팅연동 예정) </li>
                         <li> 뷰JS 적용페이지 만들어보기 (차후 전체 페이지 수정 예정 > 게시판부터 작성중) </li>
@@ -45,6 +44,7 @@
                     <ul>
                         <li> 아임포트 api 연동 (결제창만 완료, 테스트 > 팝업 즉시구매 사이트 구매버튼) </li>
                         <li> 게시판 정상화 / firebase store연동 완료 동적 글쓰기 가능 </li>
+                        <li> 게시판 검색 , 수정, 삭제 구현 ( 페이징8페이지구간, 검색 수정 삭제 전부 완료) </li>
                         <li> 다크모드 정상화 , 글자 크기 변경 기능 추가 </li>
 
                     </ul>                        
@@ -195,7 +195,7 @@ var Slider = function(pages, pagination) {
 			current = index;
 			btns[current].classList.add('active');
 			for(let i = 0; i < count; i++) {
-			  slides[i].style.bottom = (current - i) * 100 + '%';
+			  slides[i].style.bottom = (current - i) * 110 + '%';
 			}
 		  }
 		}
