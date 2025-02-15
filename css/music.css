@@ -91,6 +91,8 @@
     color: #666;
     font-size: 16px;
     margin-bottom: 20px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .music__control .progress {
     background-color: #ccc;
