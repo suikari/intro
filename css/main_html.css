@@ -15,9 +15,8 @@ table {
   .side {
       background: linear-gradient(75deg, rgba(227,200,255, 0.6) 0%, rgba(250,180,176, 0.1) 100%) ; 
       backdrop-filter: blur(3px);
-
       /* min-width : 200px; */
-      max-width: 250px;
+      /* max-width: 250px; */
       width : 20%;
       height: 100vh;
       float:left;
@@ -74,7 +73,7 @@ table {
 
   .pages {
       height: 100vh;
-      width: 75%;
+      width: 80%;
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
@@ -197,7 +196,7 @@ table {
   @media (min-width: 801px){
 
     .pages {
-      width: 75%;
+      width: 80%;
     }
   }  
 
