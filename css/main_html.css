@@ -403,7 +403,7 @@ table {
   }
   
 
-  .paly_list {
+  .play_list {
     position: absolute;
     top: calc( 93% - 300px);
     left: 83%; /*calc(95% - 200px);*/
