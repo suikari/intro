@@ -497,8 +497,8 @@ table {
 @media (max-width: 768px) {
   .menu-toggle {
       display: flex;
-      left: calc(95% - 35px);
-      top : calc(0% + 20px);
+      left: calc(95% - 25px);
+      top : calc(0% + 10px);
       position:absolute;
   }
 
@@ -593,7 +593,7 @@ table {
   .navbar {
       flex-direction: column;
       align-items: flex-start;
-      padding: 8px 24px;
+      /* padding: 8px 24px; */
   }
   .navbar__menu {
       display: none;
@@ -621,6 +621,15 @@ table {
       /* background: linear-gradient(90deg, #eedeff 0%, #ffacea 100%); */
 
   }
+
+  .paly_list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9999; /* 최상단 배치 */
+
+  }
+
 }
 
   .dark-mode {
