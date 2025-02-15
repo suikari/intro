@@ -622,10 +622,18 @@ table {
 
   }
 
-  .paly_list {
+  .play_list {
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: 9999; /* 최상단 배치 */
+
+  }
+
+  .chat_div  {
+    position: absolute;
+    top: 40%;
+    left: 15%;
     z-index: 9999; /* 최상단 배치 */
 
   }
