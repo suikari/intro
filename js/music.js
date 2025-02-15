@@ -290,7 +290,12 @@ function music_con () {
 
     // 뮤직 리스트 버튼
     musicListBtn.addEventListener("click", () => {
-        musicList.classList.add("show");
+        let classtype = $('.music__list').attr('class');
+        if  ( classtype.search('show') > -1 ) {
+            musicList.classList.remove("show");
+        } else {
+            musicList.classList.add("show");
+        }
     });
 
     musicListClose.addEventListener("click", () => {
