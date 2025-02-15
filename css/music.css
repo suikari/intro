@@ -18,9 +18,18 @@
 
 }
 
+.play_list {
+    position: absolute;
+    top: calc( 93% - 300px);
+    left: 83%; /*calc(95% - 200px);*/
+    z-index: 9999; /* 최상단 배치 */
+
+}
+
 .music__wrap {
     -webkit-animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: rotate-in-2-ccw 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    
 }
 
 .music__wrap h2 .close {

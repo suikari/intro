@@ -2,24 +2,6 @@ window.onload = () => {
 
 	ajtest();
 
-	let xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) { 
-			//console.log("xml",this.responseXML);
-			//console.log("xml",url);
-			//parseXML(this.responseXML);
-			//console.log(this.responseXML);
-
-		}
-	};
-	
-
-	xhttp.open("GET", url, true);
-	xhttp.send();
-
-
-
-
 	for (let i = 0; i < 125; i++) {
 		const snow = document.createElement("div");
 		snow.className = "snow";
@@ -67,18 +49,18 @@ window.onload = () => {
 
 	
 	if (getCookie("today") == "yy") {
-		$(".main_popup").removeClass("on");
+		$("#popup_1").removeClass('on');
 	} else {
-		$(".main_popup").addClass("on");
+		$("#popup_1").addClass('on');
 	}
 
-	$(".main_popup").on("click", ".btn_today_close", function () {
+	$("#popup_1").on("click", ".btn_today_close", function () {
 		setCookie("today", "yy", 1);
-		$(this).parents(".main_popup.on").removeClass("on");
+		$(this).parents("#popup_1").removeClass("on");
 	});
 
-	$(".main_popup").on("click", ".btn_close", function () {
-		$(this).parents(".main_popup.on").removeClass("on");
+	$("#popup_1").on("click", ".btn_close", function () {
+		$(this).parents("#popup_1").removeClass("on");
 	});
 
 

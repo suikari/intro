@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <script src="js/weather.js?ver=0.3"></script>
-<script src="js/popup.js?ver=0.3"></script>
+<script type="module" src="js/popup.js?ver=0.3"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery_ui.js"></script>
 <script src="js/import.js"></script>
@@ -49,7 +49,7 @@
 
 <body>
 
-  <div id="chat_main_div" class="chat_div " >
+  <div id="chat_main_div" class="chat_div draggable" >
     <a href="#" id="chat_close" class="close"></a>
 
     <div class="chat_auth">
@@ -71,9 +71,9 @@
     <img class="cur_img" src="image/san_cuss.png" width="60x" height="60px">
   </div> 
   
-  <div id= "draggable" class="main_popup " style="display:none;">
+  <div id="popup_1" class="main_popup draggable">
     <div class="layer_cont">
-      <div class="title_wrap draggable" > 팝업 </div>
+      <div class="title_wrap " > 팝업 </div>
       <div class="img_wrap">
         <img  id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
@@ -98,7 +98,7 @@
 
             <!-- 뮤직 플레이어 -->
             <div class="music__wrap play_list">
-              <div class="music__inner">
+              <div class="music__inner draggable">
                   <div class="music__header">
                       <span class="left"></span>
                       <h2 class="font-shadow" >MUSIC PLAYER      <a href="#" class="close"></a>

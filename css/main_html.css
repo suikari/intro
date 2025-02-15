@@ -271,7 +271,9 @@ table {
     top: 50px;
     left: calc(95% - 200px);
     display: none;
+    background-color: white;
   }
+
   .main_popup.on {
     display: block;
     background-color: #fff;
@@ -284,6 +286,7 @@ table {
     justify-content: center;
     align-items: center;
     background-color: silver;
+    position: absolute;
   }
 
   .main_popup .img_wrap {
@@ -349,7 +352,6 @@ table {
   
     /* 중앙 정렬 */
     align-items: center;
-    display: flex;
     justify-content: center;
   
     transition: transform 0.2s ease;
@@ -403,13 +405,7 @@ table {
   }
   
 
-  .play_list {
-    position: absolute;
-    top: calc( 93% - 300px);
-    left: 83%; /*calc(95% - 200px);*/
-    z-index: 9999; /* 최상단 배치 */
 
-  }
 
   .btnBox {
     position: absolute;
