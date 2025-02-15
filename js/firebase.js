@@ -128,7 +128,6 @@
     let currentUser = null;
     let nickname = null;
 
-    // Google 로그인
     googleLoginButton.addEventListener('click', async () => {
       try {
         await signInWithPopup(auth, provider);
@@ -137,7 +136,6 @@
       }
     });
 
-    // 익명 로그인
     anonymousLoginButton.addEventListener('click', async () => {
       try {
         await signInAnonymously(auth);
@@ -146,13 +144,11 @@
       }
     });
 
-    // 로그아웃 버튼 클릭 시
     logoutButton.addEventListener('click', async () => {
       await signOut(auth);
     });
 
 
-    // 랜덤 닉네임 생성 및 중복 체크
     async function generateUniqueNickname() {
       let isUnique = false;
       let newNickname = "";
@@ -161,7 +157,6 @@
         const randomNum = Math.floor(1000 + Math.random() * 9000);
         newNickname = `익명_${randomNum}`;
 
-        // Firestore에서 닉네임 중복 체크
         const usersSnapshot = await getDocs(query(collection(db, "messages"), where("user", "==", newNickname)));
         if (usersSnapshot.empty) {
           isUnique = true;
@@ -171,55 +166,62 @@
     }
 
 
-// 로그인 상태 감지
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    currentUser = user;
+    // 로그인 상태 감지
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        nickname = user.isAnonymous ? `익명_${Math.floor(10000 + Math.random() * 90000)}` : user.displayName || "사용자";
 
-    if (user.isAnonymous) {
-      if (!nickname) {
-        nickname = await generateUniqueNickname();
+        userInfo.textContent = `닉네임: ${nickname}`;
+        googleLoginButton.style.display = "none";
+        anonymousLoginButton.style.display = "none";
+        logoutButton.style.display = "inline";
+        messageInput.disabled = false;
+        sendButton.disabled = false;
+
+        fetchRecentMessages(); // 로그인 후 최신 메시지 불러오기
+      } else {
+        currentUser = null;
+        nickname = null;
+        userInfo.textContent = "로그인하세요.";
+        googleLoginButton.style.display = "inline";
+        anonymousLoginButton.style.display = "inline";
+        logoutButton.style.display = "none";
+        messageInput.disabled = true;
+        sendButton.disabled = true;
       }
-    } else {
-      nickname = user.displayName || "사용자";
-    }
+    });
 
-    userInfo.textContent = `닉네임: ${nickname}`;
-    googleLoginButton.style.display = "none";
-    anonymousLoginButton.style.display = "none";
-    logoutButton.style.display = "inline";
-    messageInput.disabled = false;
-    sendButton.disabled = false;
-  } else {
-    currentUser = null;
-    nickname = null;
-    userInfo.textContent = "로그인하세요.";
-    googleLoginButton.style.display = "inline";
-    anonymousLoginButton.style.display = "inline";
-    logoutButton.style.display = "none";
-    messageInput.disabled = true;
-    sendButton.disabled = true;
-  }
-});
-
-    // Firestore에서 메시지 가져오기 (실시간 업데이트)
     const messagesRef = collection(db, "messages");
     const messagesQuery = query(messagesRef, orderBy("timestamp"));
 
+    function getTwentyMinutesAgo() {
+      const now = new Date();
+      return new Date(now.getTime() - 20 * 60000);
+    }
     
-    onSnapshot(query(collection(db, "messages"), orderBy("timestamp")), (snapshot) => {
-      chatContainer.innerHTML = "";
-      snapshot.forEach((doc) => {
-        const { text, timestamp, user } = doc.data();
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chat_message', currentUser && user === (currentUser.displayName || nickname) ? 'mine' : 'others');
-        messageElement.innerHTML = `<span>${user}</span>${text}`;
-        chatContainer.appendChild(messageElement);
-      });
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    });
 
-    // 메시지 전송
+    fetchRecentMessages();
+
+    function fetchRecentMessages() {
+      const twentyMinutesAgo = getTwentyMinutesAgo();
+
+      onSnapshot(
+        query(collection(db, "messages"), where("timestamp", ">", twentyMinutesAgo), orderBy("timestamp")),
+        (snapshot) => {
+          chatContainer.innerHTML = "";
+          snapshot.forEach((doc) => {
+            const { text, timestamp, user } = doc.data();
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat_message', user === nickname ? 'mine' : 'others');
+            messageElement.innerHTML = `<span>${user}</span>${text}`;
+            chatContainer.appendChild(messageElement);
+          });
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+      );
+    }
+
     sendButton.addEventListener('click', async () => {
       if (messageInput.value.trim()) {
         await addDoc(collection(db, "messages"), {
@@ -231,7 +233,6 @@ onAuthStateChanged(auth, async (user) => {
       }
     });
 
-    // Enter 키로 메시지 전송
     messageInput.addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
         sendButton.click();

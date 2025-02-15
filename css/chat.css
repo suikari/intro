@@ -49,7 +49,7 @@
     padding: 8px 12px;
     margin: 8px;
     border-radius: 8px;
-    max-width: 70%;
+    max-width: 90%;
     word-wrap: break-word;
   }
   .chat_message.mine {
