@@ -74,11 +74,19 @@ table {
   }
 
   body {
-    background: url(../image/test.webp) no-repeat; 
+    /* background: url(../image/test.webp) no-repeat;  */
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4)), url("../image/test.webp");
 
     background-position : 35% ;
     background-size: cover;
   }
+
+  /* body::after {
+    background-color: rgba(0,0,0,0.4);
+  } */
+
   .intro_page {
     height: 100vh;
     width: 80%;
@@ -88,7 +96,7 @@ table {
     
     float: left;
     /* padding: 5px 0px 0px 25px; */
-    line-height: 25px;
+    /* line-height: 25px; */
     padding-top: 15px;
   }
   .pages {
@@ -100,7 +108,7 @@ table {
       
       float: left;
       /* padding: 5px 0px 0px 25px; */
-      line-height: 25px;
+      /* line-height: 25px; */
       /* padding-top: 15px; */
 
   }
@@ -410,12 +418,20 @@ table {
   .btnBox {
     position: absolute;
     top: calc( 95% - 54px);
-    left: calc(100% - 185px);
+    left: calc(100% - 250px);
     z-index: 9999; /* 최상단 배치 */
     background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
+    width: 200px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+
   }
-  
+  .btnBox * {
+    margin: 0 5px;
+
+  } 
 
   #smart_editor2 {
     width: 100%;

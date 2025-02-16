@@ -105,6 +105,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    max-width: 230px;
   }
   .chat_button {
     padding: 10px 15px;
