@@ -21,31 +21,41 @@ let musicListClose = null;
 
 const allMusic = [
     {
-        name : "1. 끝났다는 것은 다시 시작된다는 것을",
+        name : "1. 그래 그래 세상은",
+        artist : "투니버스 주제곡 / vocal : 정여진",
+        img : "image/soso.jpg",
+        audio: "soso"
+    },{
+        name : "2. 희망봉 ",
+        artist : "투니버스 주제곡 / vocal : 윤공주",
+        img : "image/hope.jpg",
+        audio: "hope"
+    },{
+        name : "3. 끝났다는 것은 다시 시작된다는 것을",
         artist : "Warak / vocal : 강아윤",
         img : "image/san1.jfif",
         audio: "san"
     },
     {
-        name : "2. 사랑의 구조 신호 LOVE S.O.S",
+        name : "4. 사랑의 구조 신호 LOVE S.O.S",
         artist : "We 3 (투니버스 주제가 Best) / vocal : 토리",
         img : "image/sos.jpg",
         audio: "sos"
     },
     {
-        name : "3. Sweet Dreams, My Dear",
+        name : "5. Sweet Dreams, My Dear",
         artist : " LostArk / vocal : 소향",
         img : "image/sweetd.jpg",
         audio: "sweetd"
     },
     {
-        name : "4. 바람에게 부탁해",
+        name : "6. 바람에게 부탁해",
         artist : "Forte Escape / vocal : Miya",
         img : "image/wind.webp",
         audio: "wind"
     },
     {
-        name : "5. 사랑을 주세요",
+        name : "7. 사랑을 주세요",
         artist : "투니버스 주제가 / vocal : 타이푼",
         img : "image/kero.jpg",
         audio: "kero"
