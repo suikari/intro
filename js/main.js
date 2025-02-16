@@ -162,3 +162,37 @@ function toggleMenu() {
 	button.classList.toggle('active');
     // links.classList.toggle('active');
 }
+
+
+
+
+async function swal_msg (title, text, image) {
+	result = await  Swal.fire({
+				title: title,
+				text: text,
+				icon: image	,
+				background: "gray",
+				allowOutsideClick: false,  
+		  }).then((result) => {
+		  });
+  }
+
+  function swal_confirm (title,  image , y, n) {
+	
+	Swal.fire({
+	  title: title,
+	  showDenyButton: true,
+	  icon: image	,
+	  background: "gray",
+	  confirmButtonText: "예",
+	  denyButtonText: "아니오"
+	}).then((result) => {
+	  /* Read more about isConfirmed, isDenied below */
+	  if (result.isConfirmed) {
+		
+	  } else if (result.isDenied) {
+		
+	  }
+	});
+
+  }

@@ -131,6 +131,18 @@
     let currentUser = null;
     let nickname = null;
 
+    // 20분 전 시간 계산
+    function getTwentyMinutesAgo() {
+      return new Date(Date.now() - 20 * 60000);
+    }
+
+    function formatTime(timestamp) {
+      if (!timestamp) return "";
+      const date = timestamp.toDate();
+      return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
+    }
+
+
     googleLoginButton.addEventListener('click', async () => {
       try {
         await signInWithPopup(auth, provider);
@@ -198,11 +210,6 @@
     const messagesRef = collection(db, "messages");
     const messagesQuery = query(messagesRef, orderBy("timestamp"));
 
-    function getTwentyMinutesAgo() {
-      const now = new Date();
-      return new Date(now.getTime() - 20 * 60000);
-    }
-    
 
     fetchRecentMessages();
 
@@ -217,13 +224,15 @@
             const { text, timestamp, user } = doc.data();
             const messageElement = document.createElement('div');
             messageElement.classList.add('chat_message', user === nickname ? 'mine' : 'others');
-            messageElement.innerHTML = `<span>${user}</span>${text}`;
+            messageElement.innerHTML = `<span>${user}</span>${text} <span class="chat_time">${formatTime(timestamp)}</span>`;
             chatContainer.appendChild(messageElement);
           });
           chatContainer.scrollTop = chatContainer.scrollHeight;
         }
       );
     }
+
+    
 
     sendButton.addEventListener('click', async () => {
       if (messageInput.value.trim()) {

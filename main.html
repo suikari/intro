@@ -6,7 +6,7 @@
 <script src="js/jquery.js"></script>
 <script src="js/jquery_ui.js"></script>
 <script src="js/import.js"></script>
-<script src="js/main.js?ver=1.0"></script>
+<script src="js/main.js?ver=1.1"></script>
 <script src="js/music.js?ver=0.9"></script>
 <script src="js/swipe.js?ver=0.1"></script>
 
@@ -276,36 +276,6 @@
 				  background: "#ffffff"
 			}).then((result) => {
 			});
-    }
-
-    function swal_msg (title, text, image) {
-      Swal.fire({
-				  title: title,
-				  text: text,
-				  icon: image	,
-				  background: "gray"
-			}).then((result) => {
-			});
-    }
-
-    function swal_confirm (title,  image , y, n) {
-      
-      Swal.fire({
-        title: title,
-        showDenyButton: true,
-        icon: image	,
-        background: "gray",
-        confirmButtonText: "예",
-        denyButtonText: "아니오"
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          
-        } else if (result.isDenied) {
-          
-        }
-      });
-
     }
 
     $(document).ready(function(){
