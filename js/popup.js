@@ -54,6 +54,8 @@ draggables.forEach((draggable) => {
 
   draggable.addEventListener('mousedown', (e) => {
     activeDraggable = draggable; 
+    // console.log(activeDraggable);
+    
     offsetX = e.clientX - draggable.offsetLeft;
     offsetY = e.clientY - draggable.offsetTop;
     draggable.style.cursor = 'grabbing';

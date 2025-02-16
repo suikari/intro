@@ -274,17 +274,19 @@ table {
   .main_popup {
     position : absolute ;
     z-index: 1005;
-    -webkit-box-shadow: 0px 13px 40px -6px #061626;
-    box-shadow: 0px 13px 40px -6px #061626;
     top: 50px;
     left: calc(95% - 200px);
     display: none;
-    background-color: white;
-  }
+    /* padding: 10px 10px; */
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+    
+    -webkit-box-shadow: 0px 13px 40px -6px #061626;
+    box-shadow: 0px 13px 40px -6px #061626;
+    }
 
   .main_popup.on {
     display: block;
-    background-color: #fff;
   }
  
   .main_popup .title_wrap {
@@ -293,8 +295,19 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: silver;
+    /* background-color: silver; */
     position: absolute;
+  }
+
+  .main_popup h2 {
+    text-align: center;
+    font-size: 18px;
+    background-color: silver;
+    /* padding-top: 3px; */
+    font-weight: 200;
+    font-weight: bold;
+    margin-top: 0px; 
+    margin-bottom : 0px;
   }
 
   .main_popup .img_wrap {
@@ -303,7 +316,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    /* background-color: white; */
   }
 
   .main_popup .btn_close {
@@ -355,7 +368,7 @@ table {
   .draggable {
     /* 커서를 이동형식으로 주고, 위치를 절대형식으로 지정 */
     cursor: move;
-    position: absolute;
+    /* position: absolute; */
     user-select: none;
   
     /* 중앙 정렬 */
@@ -366,6 +379,11 @@ table {
 
   }
   
+  .draggable * {
+    cursor: initial;
+
+  }
+
   .cursor {
     position: absolute;
     pointer-events: none; /* 클릭 방지 */
