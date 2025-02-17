@@ -30,8 +30,9 @@
 
     </div>
 
-    <div id="ifm_div" style= "height: 700px;" >
-
+    <div id="ifm_div" style= "height: 700px;display: none;" >
+        <iframe width="100%" height="100%" src="" name="Ifrm" id="Ifrm" frameborder="1" scrolling="yes" align="left" style="border:none">
+        </iframe>
     </div>
 
 </div>
@@ -85,13 +86,21 @@
 </style>
 
 <script>
+
+    function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+    }
+
+    function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+    }
+
     g_token = 'gi' + 'thub_'+'pat_'+'11BOD'+'3YWY0'+'iJaHVP'+'ik0hX'+'r_pTDSD'+'ATphWLly'+'IPBPeC'+'k3MomY'+'EiLrGnBY'+'zRmjcXN'+'w2ZJCRY'+'ROTXw'+'ueK9WYI';
 
 
     function IfmChange( src ){
-
-	    // $('#Ifrm').attr('src', src);
-        // $('#ifm_div').attr('style', 'max-width:800px; max-height: 700px; height:100%;display:block');
+	    $('#Ifrm').attr('srcdoc', src);
+        $('#ifm_div').attr('style', 'max-width:800px; max-height: 700px; height:100%;display:block');
     }   
 
 
@@ -174,7 +183,6 @@
     //https://api.github.com/repos/suikari/html/contents/day1/area.html
     async function getRepoInfo2( repo, content ) {
         if (content.indexOf('\.html') > -1 ) {
-            $("#ifm_div").empty();   
 
             //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
             fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}`, {
@@ -186,10 +194,11 @@
                     })
             .then(response => response.json())
             .then(data => {
-                let b_content = atob(data.content);  // base64 디코딩
-                console.log(b_content);
-                
-                $("#ifm_div").append(b_content);   
+                let b_content = b64_to_utf8(data.content);  // base64 디코딩
+                //console.log(b_content);
+                IfmChange(b_content);
+                $("#list_div").empty();    
+                $("#list_detail_div").empty();   
             });
         } else {    
             //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}/`);
@@ -221,7 +230,6 @@
 
     async function getRepoInfo3( repo, content , name ) {
         if (name.indexOf('\.html') > -1 ) {
-            $("#ifm_div").empty();   
 
             //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
             fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}/${name}`, {
@@ -233,10 +241,11 @@
                     })
             .then(response => response.json())
             .then(data => {
-                let b_content = atob(data.content);  // base64 디코딩
-                console.log(b_content);
-                
-                $("#ifm_div").append(b_content);   
+                let b_content = b64_to_utf8(data.content);  // base64 디코딩
+                //console.log(b_content);
+                IfmChange(b_content);
+                $("#list_div").empty();    
+                $("#list_detail_div").empty();   
             });
         }
     }
