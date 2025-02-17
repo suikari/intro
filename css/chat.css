@@ -2,7 +2,7 @@
     position: absolute;
     top: calc(20% );
     left: 70%;
-    z-index: 9999;
+    z-index: 999;
     width: 350px;
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(20px);

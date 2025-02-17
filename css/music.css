@@ -22,7 +22,7 @@
     position: absolute;
     top: calc( 93% - 300px);
     left: 83%; /*calc(95% - 200px);*/
-    z-index: 9999; /* 최상단 배치 */
+    z-index: 999; /* 최상단 배치 */
 
 }
 
