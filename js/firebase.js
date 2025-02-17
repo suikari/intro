@@ -6,7 +6,7 @@
 
   
   /// Export
-  export default { getdata , adddata, setdata , countdata , getdata_p , deldata }; 
+  export default { glogin , anylogin , getdata , adddata, setdata , countdata , getdata_p , deldata , addmember , getmember , user_login  }; 
   export { getdata , setdata }; 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -50,6 +50,41 @@
     }
 
 
+
+
+
+    async function addmember(userid,pwd,hp,hobby,gender) {
+      var sysdate = getDate();
+
+      const docRef = await addDoc(collection(db, "member"), {
+        userid: userid,
+        pwd : pwd ,
+        hp : hp ,
+        sysdate : sysdate,
+        hobby : hobby ,
+        gender : gender
+      });
+
+      //alert("등록 완료!");
+      //pagemove('1;');
+      swal_msg("회원가입 완료","회원가입 감사합니다!" ,"info");
+
+    }
+
+    async function getmember(userid , userpwd) {
+
+      const usersCollectionRef = collection(db, 'member'); 
+      const q1 = query(usersCollectionRef, where("userid", "==", userid) , where("pwd", "==", userpwd));
+
+      const userSnap = await getDocs(q1); 
+      const data = userSnap.docs.map(doc => ({
+          ...doc.data(),
+          id: doc.id,
+          login : true
+      }));
+
+      return data;
+    }
 
     // const docRef2 = doc(db, "apptest", "test");
     // const docSnap = await getDoc(docRef2);
@@ -120,16 +155,17 @@
     const chatContainer = document.getElementById('chat-container');
     const messageInput = document.getElementById('message');
     const sendButton = document.getElementById('send-button');
-    const googleLoginButton = document.getElementById('google-login-button');
-    const anonymousLoginButton = document.getElementById('anonymous-login-button');
+    // const googleLoginButton = document.getElementById('google-login-button');
+    // const anonymousLoginButton = document.getElementById('anonymous-login-button');
     const logoutButton = document.getElementById('logout-button');
     const userInfo = document.getElementById('user-info');
     const chatCloseButton = document.getElementById('chat_close');
     const chatOCButton = document.getElementById('chat_button');
+    const memberjoinButton = document.getElementById('member_join');
 
+    let nickname = localStorage.getItem("nickname") || null;
     
     let currentUser = null;
-    let nickname = null;
 
     // 20분 전 시간 계산
     function getTwentyMinutesAgo() {
@@ -143,24 +179,55 @@
     }
 
 
-    googleLoginButton.addEventListener('click', async () => {
+
+    // googleLoginButton.addEventListener('click', async () => {
+    //   try {
+    //     await signInWithPopup(auth, provider);
+    //   } catch (error) {
+    //     console.error("로그인 실패:", error);
+    //   }
+    // });
+
+    // anonymousLoginButton.addEventListener('click', async () => {
+    //   try {
+    //     await signInAnonymously(auth);
+    //   } catch (error) {
+    //     console.error("익명 로그인 실패:", error);
+    //   }
+    // });
+
+    async function glogin() {
       try {
         await signInWithPopup(auth, provider);
+        user_login(); // 로그인 상태 감지 호출
+
+        swal_msg('','구글 로그인 성공','info');
       } catch (error) {
         console.error("로그인 실패:", error);
       }
-    });
+    }
 
-    anonymousLoginButton.addEventListener('click', async () => {
+    async function anylogin() {
       try {
         await signInAnonymously(auth);
+        if (!nickname) {
+          nickname = await generateUniqueNickname();
+          localStorage.setItem("nickname", nickname);
+        }
+        user_login(); // 로그인 상태 감지 호출
+
+        swal_msg('','익명 로그인 성공','info');
+
       } catch (error) {
         console.error("익명 로그인 실패:", error);
       }
-    });
+    }
 
-    logoutButton.addEventListener('click', async () => {
+
+    logoutButton.addEventListener("click", async () => {
       await signOut(auth);
+      localStorage.removeItem("nickname"); // 로컬 스토리지에서 닉네임 삭제
+      user_login(); // 로그아웃 후 상태 업데이트
     });
 
 
@@ -181,31 +248,56 @@
     }
 
 
-    // 로그인 상태 감지
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        currentUser = user;
-        nickname = user.isAnonymous ? `익명_${Math.floor(10000 + Math.random() * 90000)}` : user.displayName || "사용자";
 
-        userInfo.textContent = `닉네임: ${nickname}`;
-        googleLoginButton.style.display = "none";
-        anonymousLoginButton.style.display = "none";
-        logoutButton.style.display = "inline";
-        messageInput.disabled = false;
-        sendButton.disabled = false;
+    function user_login() {
 
-        fetchRecentMessages(); // 로그인 후 최신 메시지 불러오기
-      } else {
-        currentUser = null;
-        nickname = null;
-        userInfo.textContent = "로그인하세요.";
-        googleLoginButton.style.display = "inline";
-        anonymousLoginButton.style.display = "inline";
-        logoutButton.style.display = "none";
-        messageInput.disabled = true;
-        sendButton.disabled = true;
-      }
-    });
+      onAuthStateChanged(auth, (user) => {
+        
+        if (!user && localStorage.getItem("nickname")) {
+          nickname = localStorage.getItem("nickname");
+          updateUI(nickname);
+          return;
+        }
+
+        if (user) {
+          if (!nickname) {
+            nickname = user.isAnonymous 
+              ? localStorage.getItem("nickname") || `익명_${Math.floor(10000 + Math.random() * 90000)}`
+              : user.displayName || "사용자";
+            localStorage.setItem("nickname", nickname);
+          }
+
+          updateUI(nickname);
+          fetchRecentMessages(); 
+        } else {
+          logoutUI();
+        }
+      });
+    }
+
+    function updateUI(nickname) {
+      userInfo.textContent = `닉네임: ${nickname}`;
+      // googleLoginButton.style.display = "none";
+      // anonymousLoginButton.style.display = "none";
+      // customLoginButton.style.display = "none";
+      // customUsernameInput.style.display = "none";
+      logoutButton.style.display = "inline";
+      messageInput.disabled = false;
+      sendButton.disabled = false;
+    }
+
+    // ✅ UI 초기화 함수 (로그아웃 시)
+    function logoutUI() {
+      nickname = null;
+      userInfo.textContent = "로그인하세요.";
+      // googleLoginButton.style.display = "inline";
+      // anonymousLoginButton.style.display = "inline";
+      // customLoginButton.style.display = "inline";
+      // customUsernameInput.style.display = "inline";
+      logoutButton.style.display = "none";
+      messageInput.disabled = true;
+      sendButton.disabled = true;
+    }
 
     const messagesRef = collection(db, "messages");
     const messagesQuery = query(messagesRef, orderBy("timestamp"));
@@ -239,7 +331,7 @@
         await addDoc(collection(db, "messages"), {
           text: messageInput.value.trim(),
           timestamp: new Date(),
-          user: currentUser ? (currentUser.displayName || nickname) : "익명"
+          user: currentUser ? (currentUser.displayName || nickname) : nickname
         });
         messageInput.value = '';
       }
@@ -267,3 +359,14 @@
       }
       
     });
+
+
+    if (nickname) {
+      userInfo.textContent = `닉네임: ${nickname}`;
+      messageInput.disabled = false;
+      sendButton.disabled = false;
+      // googleLoginButton.style.display = "none";
+      // anonymousLoginButton.style.display = "none";
+      logoutButton.style.display = "inline";
+      fetchRecentMessages();
+    }

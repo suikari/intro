@@ -21,7 +21,7 @@ $('body').on('touchend', function(e) {
   var mob_diffY = mob_endY - mob_startY;
 
   // X축으로 200픽셀 이상 이동했을 때만 감지
-  if (Math.abs(mob_diffX) > 150 && Math.abs(mob_diffY) < 100) {
+  if (Math.abs(mob_diffX) > 200 && Math.abs(mob_diffY) < 100) {
     if (mob_diffX > 0) {
       //alert('오른쪽으로 200픽셀 이상 스와이프');
       next_pagemove();

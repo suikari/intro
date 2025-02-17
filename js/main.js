@@ -171,7 +171,6 @@ async function swal_msg (title, text, image) {
 				title: title,
 				text: text,
 				icon: image	,
-				background: "gray",
 				allowOutsideClick: false,  
 		  }).then((result) => {
 		  });
@@ -196,3 +195,20 @@ async function swal_msg (title, text, image) {
 	});
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

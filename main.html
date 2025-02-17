@@ -12,8 +12,9 @@
 <script src="js/import.js"></script>
 <script src="js/main.js?ver=1.1"></script>
 <script src="js/music.js?ver=0.9"></script>
+<script src="js/toastr.js?ver=0.1"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<link href="css/sweetalert2dark.css" rel="stylesheet" type="text/css" >
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
@@ -30,12 +31,14 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
-
+<script src="js/member.js?ver=0.9"></script>
 
 <link href="css/main.css?ver=0.5" rel="stylesheet" type="text/css" />
 <link href="css/board.css?ver=0.5" rel="stylesheet" type="text/css" />
 <link href="css/music.css?ver=1.0" rel="stylesheet" type="text/css" />
 <link href="css/chat.css?ver=0.9" rel="stylesheet" type="text/css" />
+<link href="css/member.css?ver=0.1" rel="stylesheet" type="text/css" />
+<link href="css/toastr.css?ver=0.1" rel="stylesheet" type="text/css" />
 
 <link href="css/main_html.css?ver=1.9" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.6" rel="stylesheet" type="text/css" />
@@ -52,15 +55,15 @@
 
 <body>
 
+
+
+
   <div id="chat_main_div" class="chat_div draggable" >
     <a href="#" id="chat_close" class="close"></a>
 
     <div class="chat_auth draggable">
-      <button class="chat_button" id="google-login-button">Google 로그인</button>
-      <button class="chat_button" id="anonymous-login-button">익명 로그인</button>
-      <br>
-      <p class="chat_user_info" id="user-info">로그인하세요.</p>
       <button class="chat_button" id="logout-button" style="display: none;">로그아웃</button>
+      <p class="chat_user_info" id="user-info" onclick="mem_login();">로그인하세요.</p>
     </div>
     <div class="chat_container" id="chat-container"></div>
     <div class="chat_input_container">
@@ -68,13 +71,19 @@
       <button class="chat_button" id="send-button" disabled>전송</button>
     </div>
   </div>
-
+<!-- 
+  <button class="chat_button" id="member_join" onclick="member_join();" style="display: none;">회원가입</button>
+  <button class="chat_button" id="member_join" onclick="Login();" style="">로그인테스트</button> 
+  <button class="chat_button" id="google-login-button">Google 로그인</button>
+  <button class="chat_button" id="anonymous-login-button">익명 로그인</button>
+  <button class="chat_button" id="custom-login-button">사용자 로그인</button>
+-->
 
   <div class="cursor">
     <img class="cur_img" src="image/san_cuss.png" width="60x" height="60px">
   </div> 
   
-  <div id="popup_1" class="main_popup draggable">
+  <div id="popup_1" class="main_popup draggable" style="display: none;">
     <div class="layer_cont ">
       <h2 class="title_wrap font-shadow draggable" > 팝업 제목 </h2>
       <div class="img_wrap">
@@ -184,7 +193,7 @@
                   <li id="nav_1" class="nav_menu"> <a href="javascript:pagemove(';');"> 자기소개 </a>        </li>
                   <li id="nav_2" class="nav_menu"> <a href="javascript:pagemove('1;');"> 알림 게시판 </a>    </li>
                   <li id="nav_3" class="nav_menu"> <a href="javascript:pagemove('a;');"> 사이트 둘러보기 </a> </li>
-                  <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m;');"> 회원가입 페이지 </a>  </li>
+                  <!-- <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m;');"> 회원가입 페이지 </a>  </li> -->
                   <li id="nav_5" class="nav_menu"> <a href="javascript:pagemove('s;');">결제테스트 페이지</a>  </li>
                   <!-- <li id="nav_5" class="nav_menu"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li> -->
                 </ul>
