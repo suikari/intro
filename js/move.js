@@ -98,8 +98,10 @@ function addEvent(target,e,f) {
     if(mY > 0) dir = "U";
     else dir = "D";
     } else if(slope < 0.5 && slope > -0.5) {
-    if(mX > 0) dir = "R";
-    else dir = "L";
+    // if(mX > 0) dir = "R";
+    // else dir = "L";
+        if(mX > 200) dir = "R";
+        else if(mX < -200) dir = "L";
     }
     }
     
