@@ -1,50 +1,30 @@
+var mob_startX, mob_startY, mob_endX, mob_endY;
 
-// var bStartEvent = false;
+// body 전체에 대해 터치 이벤트를 설정
+$('body').on('touchstart', function(e) {
+  var touch = e.originalEvent.touches[0];
+  mob_startX = touch.pageX;
+  mob_startY = touch.pageY;
+});
 
-// var bMoveEvent = false;
- 
-// function init(){
-//     document.addEventListener("touchstart", this.onStart.bind(this), false);
-//     document.addEventListener("touchmove", this.onMove.bind(this), false);
-//     document.addEventListener("touchend", this.onEnd.bind(this), false);
-// }
+$('body').on('touchmove', function(e) {
+  e.preventDefault(); // 화면 스크롤을 방지하려면
+});
 
-// function onMove(e) {
-//     if(!bStartEvent) {
-//         return
-//     }
-//     console.log('swipe');
+$('body').on('touchend', function(e) {
+  var touch = e.originalEvent.changedTouches[0];
+  mob_endX = touch.pageX;
+  mob_endY = touch.pageY;
 
-//     var nX = e.changedTouches[0].pageX;
-//     var nY = e.changedTouches[0].pageY;
-    
-//     nMoveType = getMoveType(nX, nY);
-    
-//     if(nMoveType === 1) {
-//         e.preventDefault();
-//         console.log('swipe');
-//         alert('swipe');
+  var diffX = endX - mob_startX;
+  var diffY = endY - mob_startY;
 
-//     }
-// }
- 
-// function getMoveType(x, y) {
-
-//     var nMoveType = -1;
-//     var nX = Math.abs(htTouchInfo.nX- x);
-//     var nY = Math.abs(htTouchInfo.nY - y);
-//     var nDis = nX + nY;
-    
-//     if(nDis < 25) { return nMoveType }
-    
-//     var nHSlope = ((window.innerHeight / 2) / window.innerWidth).toFixed(2) * 1;
-    
-//     var nSlope = parseFloat((nY / nX).toFixed(2), 10);
-    
-//     if(nSlope > nHSlope) {
-//         nMoveType = 1;
-//     } else {
-//         nMoveType = 0;
-//     }
-//     return nMoveType;
-// }
+  // X축으로 200픽셀 이상 이동했을 때만 감지
+  if (Math.abs(diffX) > 200 && Math.abs(diffY) < 100) {
+    if (diffX > 0) {
+      alert('오른쪽으로 200픽셀 이상 스와이프');
+    } else {
+      alert('왼쪽으로 200픽셀 이상 스와이프');
+    }
+  }
+});
