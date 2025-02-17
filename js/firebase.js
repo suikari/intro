@@ -346,6 +346,8 @@
 
     chatCloseButton.addEventListener('click', async () => {
       chatmainContainer.classList.add("close");
+      localStorage.setItem("chatOC", "y");
+
     });
 
     chatOCButton.addEventListener('click', async () => {
@@ -354,8 +356,12 @@
       //console.log(classList);
       if  ( classtype.search('close') > -1 ) {
         chatmainContainer.classList.remove("close");
+        localStorage.removeItem("chatOC");
+
       } else {
         chatmainContainer.classList.add("close");
+        localStorage.setItem("chatOC", "y");
+
       }
       
     });

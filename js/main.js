@@ -44,24 +44,11 @@ window.onload = () => {
 
     marker.setMap(map);
 	
-
+	open_pop('1');
 
 
 	
-	if (getCookie("today") == "yy") {
-		$("#popup_1").removeClass('on');
-	} else {
-		$("#popup_1").addClass('on');
-	}
 
-	$("#popup_1").on("click", ".btn_today_close", function () {
-		setCookie("today", "yy", 1);
-		$(this).parents("#popup_1").removeClass("on");
-	});
-
-	$("#popup_1").on("click", ".btn_close", function () {
-		$(this).parents("#popup_1").removeClass("on");
-	});
 
 
 	$("#ban_img").hover(
@@ -198,7 +185,22 @@ async function swal_msg (title, text, image) {
 
 
 
+  function open_pop(index) {
+	if (getCookie("today") == "yy") {
+		$("#popup_"+index).removeClass('on');
+	} else {
+		$("#popup_"+index).addClass('on');
+	}
 
+	$("#popup_"+index).on("click", ".btn_today_close", function () {
+		setCookie("today", "yy", 1);
+		$(this).parents("#popup_"+index).removeClass("on");
+	});
+
+	$("#popup_"+index).on("click", ".btn_close", function () {
+		$(this).parents("#popup_"+index).removeClass("on");
+	});
+  }
 
 
 

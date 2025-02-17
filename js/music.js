@@ -306,14 +306,19 @@ function music_con () {
         //console.log(classList);
         if  ( classtype.search('close') > -1 ) {
             musicWrap.classList.remove("close");
+            localStorage.removeItem("musicWrap"); 
+
         } else {
             musicWrap.classList.add("close");
+            localStorage.setItem("musicWrap", "y");
+
         }
 
     });
 
     musicWrapClose.addEventListener("click", () => {
         musicWrap.classList.add("close");
+        localStorage.setItem("musicWrap", "y");
     });
 
     for(let i = 0; i < allMusic.length; i++){

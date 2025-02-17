@@ -37,7 +37,6 @@ function member_join() {
 
     Swal.fire({
         html: html,
-        allowOutsideClick: false,  
         showCancelButton: false,
         showConfirmButton: false
       });
@@ -74,7 +73,6 @@ function mem_login(){
 
        Swal.fire({
         html: html,
-        allowOutsideClick: false,  
         showCancelButton: false,
         showConfirmButton: false
       });
