@@ -54,6 +54,8 @@ draggables.forEach((draggable) => {
 
   draggable.addEventListener('mousedown', (e) => {
     activeDraggable = draggable; 
+    isDragging = true;
+
     // console.log(activeDraggable);
     
     offsetX = e.clientX - draggable.offsetLeft;
@@ -64,6 +66,7 @@ draggables.forEach((draggable) => {
 
 document.addEventListener('mousemove', (e) => {
   if (activeDraggable) {
+    
     const x = e.clientX - offsetX;
     const y = e.clientY - offsetY;
 
@@ -89,11 +92,49 @@ document.addEventListener('mousemove', (e) => {
   document.addEventListener('mousedown', (e) => {
     if (!e.target.classList.contains('draggable')) {
       activeDraggable = null; 
+      isDragging = false;
     }
   });
 
 
 
+  var startX = 0;
+  var distanceThreshold = 200; // 이동 거리 기준 (픽셀 단위)
+  var isDragging = false; // 드래그 여부를 추적
+
+  // body에서 왼쪽/오른쪽 이동 거리 감지
+  $(document).on('mousedown', function(event) {
+      // 드래그 중이라면 왼쪽/오른쪽 이동 감지를 하지 않도록 처리
+      if (isDragging) return;
+
+      // body에서 클릭 시 시작 위치 기록
+      startX = event.pageX;
+
+      $(document).on('mousemove', function(event) {
+          var currentX = event.pageX;
+          var distanceMoved = currentX - startX; // 이동 거리 계산
+
+          if (Math.abs(distanceMoved) >= distanceThreshold) {
+              if (distanceMoved > 0) {
+                  // 오른쪽으로 이동
+                  //console.log('오른쪽으로 이동!');
+                  next_pagemove();
+              } else {
+                  // 왼쪽으로 이동
+                  //console.log('왼쪽으로 이동!');
+                  prev_pagemove();
+              }
+    
+              // 한 번 이동을 감지한 후 더 이상 추적하지 않음
+              $(document).off('mousemove');
+          }
+      });
+
+      $(document).on('mouseup', function() {
+          // 마우스 업 시 이벤트 해제
+          $(document).off('mousemove');
+      });
+  });
 
 
 
