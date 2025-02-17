@@ -20,19 +20,19 @@ function addEvent(target,e,f) {
     
     // 액션 리스트
     var _gestures = {
-    U : ["스크롤 UP",function() {document.documentElement.scrollTop -= document.documentElement.clientHeight;}],
-    D : ["스크롤 DOWN",function() {document.documentElement.scrollTop += document.documentElement.clientHeight;}],
-    LU : ["페이지 상단",function() {document.documentElement.scrollTop = 0;}],
-    LD : ["페이지 하단",function() {document.documentElement.scrollTop = document.documentElement.scrollHeight;}],
+    // U : ["스크롤 UP",function() {document.documentElement.scrollTop -= document.documentElement.clientHeight;}],
+    // D : ["스크롤 DOWN",function() {document.documentElement.scrollTop += document.documentElement.clientHeight;}],
+    // LU : ["페이지 상단",function() {document.documentElement.scrollTop = 0;}],
+    // LD : ["페이지 하단",function() {document.documentElement.scrollTop = document.documentElement.scrollHeight;}],
     
-    R : ["앞으로",function() {history.forward();}],
-    L : ["뒤로",function() {history.back();}],
+    R : ["앞으로",function() {next_pagemove();}],
+    L : ["뒤로",function() {prev_pagemove();}],
     
-    DR : ["새 창(탭) 열기",function() {window.open('about:blank');}],
-    DL : ["창(탭) 닫기",function() {window.close();}],
+    // DR : ["새 창(탭) 열기",function() {window.open('about:blank');}],
+    // DL : ["창(탭) 닫기",function() {window.close();}],
     
-    DU : ["창(탭) 복사",function() {window.open(location.href);}],
-    UD : ["새로 고침",function() {location.reload();}]
+    // DU : ["창(탭) 복사",function() {window.open(location.href);}],
+    // UD : ["새로 고침",function() {location.reload();}]
     }
     
     // 사용 전역변수 선언
