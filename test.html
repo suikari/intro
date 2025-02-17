@@ -22,6 +22,9 @@
         <a href="javascript:IfmChange('https://suikari.github.io/intro/main.html')" class="card"> 방대한 </a> -->
 
     </div>
+    <div id="list_div"  >
+
+    </div>
 
     <div id="ifm_div" style= "height: 700px;display: none;" >
         <iframe width="100%" height="100%" src="" name="Ifrm" id="Ifrm" frameborder="1" scrolling="yes" align="left" style="border:none">
@@ -80,9 +83,90 @@
 <script>
     g_token = 'gi' + 'thub_'+'pat_'+'11BOD'+'3YWY0'+'iJaHVP'+'ik0hX'+'r_pTDSD'+'ATphWLly'+'IPBPeC'+'k3MomY'+'EiLrGnBY'+'zRmjcXN'+'w2ZJCRY'+'ROTXw'+'ueK9WYI';
 
-    function IfmChange( src ){
-	    $('#Ifrm').attr('src', src);
-        $('#ifm_div').attr('style', 'max-height: 700px; height:100%;display:block');
 
+    function IfmChange( src ){
+        $("#mian_pages").load(src);  
+
+	    // $('#Ifrm').attr('src', src);
+        // $('#ifm_div').attr('style', 'max-width:800px; max-height: 700px; height:100%;display:block');
     }   
+
+
+
+    async function getUserRepos(username, token) {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+
+        const data = await response.json();
+        console.log(data);
+
+        for (let i = 0; i < data.length; i++) {
+            getRepoInfo("suikari", data[i].name , token );            
+        }
+
+    }
+
+    getUserRepos("suikari",g_token);
+
+    async function getRepoInfo(owner, repo , token) {
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            });
+    const data = await response.json();
+    console.log(data);
+
+    if (!(typeof data == "undefined" || data == null || data == "")) {
+        let html = "";
+
+        html += '<a href="javascript:getlist(\''+ data.name +'\')"  class="card"> '+ data.name +' </a>';
+
+        $("#atest").append(html);    
+    }
+        
+    
+    }
+
+    function getlist ( src ) {
+        getRepoInfo1(src, g_token);
+
+    }
+    //https://api.github.com/repos/suikari/html/contents/day1/area.html
+    async function getRepoInfo1( repo, token) {
+
+        fetch(`https://api.github.com/repos/suikari/${repo}/contents/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                })
+        .then(response => response.json())
+        .then(data => {
+            //const content = atob(data.content);  // base64 디코딩
+            console.log(data);
+            //document.getElementById('파일내용').innerText = content;
+
+            for (let i = 0; i < data.length; i++) {                
+                let html = "";
+
+                html += '<a href="javascript:;"  class="card"> '+ data[i].name +' </a>';
+
+                $("#list_div").append(html);   
+            }
+
+
+            
+
+        });
+    }
+
 </script>
