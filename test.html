@@ -26,10 +26,14 @@
 
     </div>
 
-    <div id="ifm_div" style= "height: 700px;display: none;" >
-        <iframe width="100%" height="100%" src="" name="Ifrm" id="Ifrm" frameborder="1" scrolling="yes" align="left" style="border:none">
-        </iframe>
+    <div id="list_detail_div"  >
+
     </div>
+
+    <div id="ifm_div" style= "height: 700px;" >
+
+    </div>
+
 </div>
 
 
@@ -85,7 +89,6 @@
 
 
     function IfmChange( src ){
-        $("#mian_pages").load(src);  
 
 	    // $('#Ifrm').attr('src', src);
         // $('#ifm_div').attr('style', 'max-width:800px; max-height: 700px; height:100%;display:block');
@@ -125,6 +128,7 @@
     console.log(data);
 
     if (!(typeof data == "undefined" || data == null || data == "")) {
+
         let html = "";
 
         html += '<a href="javascript:getlist(\''+ data.name +'\')"  class="card"> '+ data.name +' </a>';
@@ -154,19 +158,86 @@
             //const content = atob(data.content);  // base64 디코딩
             console.log(data);
             //document.getElementById('파일내용').innerText = content;
+            $("#list_div").empty();    
 
             for (let i = 0; i < data.length; i++) {                
                 let html = "";
 
-                html += '<a href="javascript:;"  class="card"> '+ data[i].name +' </a>';
+                html += '<a href="javascript:getRepoInfo2(\''+ repo+'\',\''+ data[i].name +'\')"  class="card"> '+ data[i].name +' </a>';
 
                 $("#list_div").append(html);   
             }
 
-
-            
-
         });
     }
 
+    //https://api.github.com/repos/suikari/html/contents/day1/area.html
+    async function getRepoInfo2( repo, content ) {
+        if (content.indexOf('\.html') > -1 ) {
+            $("#ifm_div").empty();   
+
+            //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
+            fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    })
+            .then(response => response.json())
+            .then(data => {
+                let b_content = atob(data.content);  // base64 디코딩
+                console.log(b_content);
+                
+                $("#ifm_div").append(b_content);   
+            });
+        } else {    
+            //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}/`);
+            fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}/`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    })
+            .then(response => response.json())
+            .then(data => {
+                //const content = atob(data.content);  // base64 디코딩
+                console.log(data);
+                //document.getElementById('파일내용').innerText = content;
+                $("#list_detail_div").empty();    
+
+                for (let i = 0; i < data.length; i++) {                
+                    let html = "";
+
+                    html += '<a href="javascript:getRepoInfo3(\''+ repo +'\',\''+ content +'\',\''+ data[i].name +'\')"  class="card"> '+ data[i].name +' </a>';
+
+                    $("#list_detail_div").append(html);   
+                }
+
+            });
+        }
+    }
+
+    async function getRepoInfo3( repo, content , name ) {
+        if (name.indexOf('\.html') > -1 ) {
+            $("#ifm_div").empty();   
+
+            //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
+            fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}/${name}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    })
+            .then(response => response.json())
+            .then(data => {
+                let b_content = atob(data.content);  // base64 디코딩
+                console.log(b_content);
+                
+                $("#ifm_div").append(b_content);   
+            });
+        }
+    }
 </script>
