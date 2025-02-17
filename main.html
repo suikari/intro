@@ -392,6 +392,11 @@
        } 
     }
 
+    let classtype = $('.navbar__menu').attr('class');
+    if  ( classtype.search('active') > -1 ) {
+      toggleMenu();
+    }
+
     $("#pagination_main1").empty();
 
     $("#nav_1").removeClass("active");
