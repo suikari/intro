@@ -44,13 +44,6 @@ window.onload = () => {
 
     marker.setMap(map);
 	
-	open_pop('1');
-
-
-	
-
-
-
 	$("#ban_img").hover(
 		function () { // mouseover
 			$(this).attr("src","image/san2.jfif");
@@ -59,8 +52,12 @@ window.onload = () => {
 			$(this).attr("src","image/san1.jfif");
 		}
 	);
+	
+	open_pop('1');
 
 	music_con();
+
+	open_contents();
 }
 
 
@@ -181,6 +178,23 @@ async function swal_msg (title, text, image) {
 	  }
 	});
 
+  }
+
+
+  function open_contents() {
+
+	var chat = localStorage.getItem("chatOC");
+	var music = localStorage.getItem("musicWrap");
+    musicWrap			= document.querySelector(".music__wrap");
+    chatmainContainer   = document.getElementById('chat_main_div');
+
+	if (chat == "y") {
+		chatmainContainer.classList.add("close");
+	}
+	
+	if (music == "y") {
+		musicWrap.classList.add("close");
+	}
   }
 
 
