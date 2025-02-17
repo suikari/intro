@@ -55,7 +55,7 @@ document.addEventListener('mousemove', (e) => {
   var startX = 0;
   var startY = 0; 
 
-  var distanceThreshold = 200; 
+  var distanceThreshold = 250; 
   var isDragging = false; 
 
   $(document).on('mousedown', function(event) {

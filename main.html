@@ -241,8 +241,8 @@
         <div id="mian_pages" name="mian_pages" class="pages">
         </div> 
   
-<ul id="pagination_main1" class="b_pagination" >
-</ul>    
+    <ul id="pagination_main1" class="b_pagination" >
+    </ul>    
 
     </div>
 
@@ -366,7 +366,11 @@
   
 
   //페이지 전환용 전변수 
-  let board_list = ['','1','b','m','s']
+  let board_list = [';','1;','s;'];
+  let board_list_index = 0;
+
+  //    musicIndex == allMusic.length ? musicIndex = 1 : musicIndex++;
+
   let board_id = '';
   let board_index = '';
   let prev_board_index = '';
@@ -384,14 +388,17 @@
   }
 
   function next_pagemove() {
-    pagemove(next_board_index);
+    board_list_index == board_list.length ? board_list_index = 1 : board_list_index++;
+    pagemove(board_list[board_list_index-1]);
+    // pagemove(next_board_index);
   }   
   // val >> 이동주소;전달변수1;전달변수2;.. 추가예정 
   function pagemove(val) {
+
     claerPage();
     board_index = val;
     let index = board_index.split(";"); 
-    //console.log(val);
+    console.log(val);
 
     if (!(typeof index[1] == "undefined" || index[1] == null || index[1] == "")) {
        
