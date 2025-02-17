@@ -672,8 +672,8 @@ table {
 
   .chat_div  {
     position: absolute;
-    top: 40%;
-    left: 15%;
+    top: 25%;
+    left: 5%;
     z-index: 9999; /* 최상단 배치 */
 
   }
