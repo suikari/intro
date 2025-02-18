@@ -22,7 +22,7 @@ function requestPay (){
         buyer_tel: "02-1670-5176",
         buyer_addr: "성수이로 20길 16",
         buyer_postcode: "04783",
-        m_redirect_url: "https://helloworld.com/payments/result", // 모바일 환경에서 필수 입력
+        m_redirect_url: "https://suikari.github.io/intro/payresponse.html", // 모바일 환경에서 필수 입력
         notice_url: "https://helloworld.com/api/v1/payments/notice",
         confirm_url: "https://helloworld.com/api/v1/payments/confirm",
         currency: "KRW",
@@ -39,6 +39,7 @@ function requestPay (){
     },
     (response) => {
         // PC 환경에서 결제 프로세스 완료 후 실행 될 로직
+        console.log(response);
     },
     );
 }
