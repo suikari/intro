@@ -168,7 +168,7 @@ async function swal_msg (title, text, image) {
 	  icon: image	,
 	  background: "gray",
 	  confirmButtonText: "예",
-	  denyButtonText: "아니오"
+	  denyButtonText: "아니오",
 	}).then((result) => {
 	  /* Read more about isConfirmed, isDenied below */
 	  if (result.isConfirmed) {
