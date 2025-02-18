@@ -220,7 +220,7 @@
             <div id="namecard">
                 <div id="p_img">  </div>
                 <h1>Bang DaeHan</h1>    
-                <p> if(1.1+0.1==1.2) </br> { alert("컴퓨터야") } </br> else </br> { alert("날 속인거니") }   </p>
+                <p><a href="javascript:compute_error();"> if(1.1+0.1==1.2) </br> { alert("컴퓨터야"); } </br> else </br> { alert("날 속인거니"); }  </a></p>
             </div>
             <div id="detail">
                 <p>Incheon, Korea / suikari@naver.com</p>                                 
@@ -267,6 +267,14 @@
 </script>
 
 <script>
+
+  function compute_error () {
+      if ( 1.1+0.1 == 1.2) {
+         swal_msg("","컴퓨터야","error"); 
+      } else {
+        swal_msg("","날 속인거니","error"); 
+      }
+  }
 
   function clock() {
     let time = new Date();
