@@ -296,6 +296,13 @@
     .board_btn {
         margin: 5px 0;
     }
+
+    
+    .board_content {
+        max-height: 550px;
+
+    }
+
 }
 
 .autocomplete-list {
