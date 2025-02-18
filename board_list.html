@@ -123,6 +123,9 @@
             searchBoard : function () {
                 var self =  this;
 
+                if(isEmptyArr(self.current_list)){
+                    self.current_list = self.list;
+                }
 
                 if (self.searchText == '' ){
                     self.current_list = self.list;
@@ -147,6 +150,7 @@
                     }
                     
                 }
+
             },   
             filterList  : function() {
                     var self =  this;
@@ -222,6 +226,14 @@
     });
 
     board_list_app.mount('#board_list_app');
+
+   
+    function isEmptyArr(arr)  {
+        if(Array.isArray(arr) && arr.length === 0)  {
+            return true;
+        }
+        return false;
+    }
 </script>
 
 <style>
