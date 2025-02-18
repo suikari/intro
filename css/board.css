@@ -316,3 +316,10 @@
     font-size: 16px;
     padding: 10px 10px;
 }
+
+
+.board_pagenum {
+    padding: 5px;
+    border-radius: 5px;
+    float: right;
+}

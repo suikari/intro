@@ -1,6 +1,17 @@
 
 
-<div id="board_list_app" class="board_container">
+<div id="board_list_app" class="board_container" @change="fnSample()">
+    <div class="board">
+        <select class="board_pagenum" v-model="postsPerPage" >
+            <option value="4">4개씩</option>
+            <option value="5">5개씩</option>
+            <option value="6">6개씩</option>
+            <option value="7">7개씩</option>
+            <option value="8">8개씩</option>
+            <option value="9">9개씩</option>
+            <option value="10">10개씩</option>
+        </select>
+    </div>
     <table class="board">
         <colgroup>
             <col style="width:7%; text-align: center;">
@@ -86,7 +97,7 @@
                 current_list : [],
                 currentPage: 1,
                 postsPerPage: 8, 
-                search_key : "number",
+                search_key : "title",
                 searchText : "",
                 filteredList: [],
                 showDropdown : false,
