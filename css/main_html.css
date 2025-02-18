@@ -1,10 +1,11 @@
 
-div{ -webkit-touch-callout: none;
+div{ 
+  -webkit-touch-callout: none;
   user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
-  touch-action: none; 
+  /* touch-action: none;  */
 }
 
 

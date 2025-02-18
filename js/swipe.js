@@ -9,7 +9,7 @@ $('body').on('touchstart', function(e) {
 });
 
 $('body').on('touchmove', function(e) {
-  e.preventDefault(); // 화면 스크롤을 방지하려면
+  //e.preventDefault(); // 화면 스크롤을 방지하려면
 });
 
 $('body').on('touchend', function(e) {
@@ -24,9 +24,11 @@ $('body').on('touchend', function(e) {
   if (Math.abs(mob_diffX) > 150 && Math.abs(mob_diffY) < 50) {
     if (mob_diffX > 0) {
       //alert('오른쪽으로 200픽셀 이상 스와이프');
-      next_pagemove();
-    } else {
       prev_pagemove();
+
+    } else {
+      next_pagemove();
+
       //alert('왼쪽으로 200픽셀 이상 스와이프');
     }
   }

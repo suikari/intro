@@ -70,10 +70,12 @@ document.addEventListener('mousemove', (e) => {
           if (Math.abs(distanceMoved) >= distanceThreshold) {
               if (distanceMoved > 0) {
                   //console.log('오른쪽으로 이동!');
-                  next_pagemove();
+                  prev_pagemove();
+
               } else {
                   //console.log('왼쪽으로 이동!');
-                  prev_pagemove();
+                  next_pagemove();
+
               }
     
               $(document).off('mousemove');
