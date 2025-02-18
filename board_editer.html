@@ -89,6 +89,10 @@
                 return;
               }  
               
+              if(!(ban_chk(self.content))){
+                return;
+              }
+
               number_chk(self.num, self.title,self.author,self.content);
 
             }, 
@@ -140,7 +144,52 @@
     })
 
 
+function ban_chk ( val ){
+  chk = true;
+  //console.log(val);
+  //console.log(banList);
+  
+  for (i=0;i<banList.length-1;i++){
+    if ( val.indexOf(banList[i]) >-1 ) {
+      swal_msg("에러","사용 금지 단어가 포함되어있습니다.","error");
+      chk = false;
+    }
+    
+  }
 
+  return chk;
+}
+
+var banList = []; 
+var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+
+
+
+function loadCSV(targetFile) {
+    
+
+    var request = new XMLHttpRequest();
+    request.open("get", targetFile, false);
+    request.send(null);
+
+    var csvData = request.responseText;
+
+    var lines = csvData.split("\n");
+
+ for (var i = 0; i < lines.length - 1; i++) {
+
+        var wordSet = lines[i].split(",");
+
+        var wordData = wordSet[0].replace(regExp, "");
+        
+
+        banList.push(wordData);
+    }
+   //console.log(banList);
+}
+
+
+loadCSV("common/bantext.csv");
 
     
   </script>

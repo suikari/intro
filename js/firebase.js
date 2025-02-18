@@ -286,7 +286,6 @@
       sendButton.disabled = false;
     }
 
-    // ✅ UI 초기화 함수 (로그아웃 시)
     function logoutUI() {
       nickname = null;
       userInfo.textContent = "로그인하세요.";
