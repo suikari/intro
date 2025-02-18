@@ -12,11 +12,11 @@
 
         <thead>
             <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
+                <th @click="fnOrder('num')">번호</th>
+                <th @click="fnOrder('title')" >제목</th>
+                <th @click="fnOrder('writer')">작성자</th>
+                <th @click="fnOrder('sysdate')">작성일</th>
+                <th @click="fnOrder('view')">조회수</th>
             </tr>
         </thead>
         <tbody id="boardTable">
@@ -90,6 +90,7 @@
                 searchText : "",
                 filteredList: [],
                 showDropdown : false,
+                ordertype : "asc" ,
             };
         },
         methods: {
@@ -155,7 +156,7 @@
                         }
                         this.showDropdown = true;
                         //console.log(self.filteredList);
-
+                        
                     } else {
                         this.filteredList = [];
                         this.showDropdown = false;
@@ -171,7 +172,20 @@
                     this.showDropdown = false;
                 }, 200); // 클릭 이벤트 처리 시간 고려
             },    
-
+            fnOrder : function ( keyword ) {
+                var self =  this;
+                if (self.ordertype == 'asc') {
+                    self.current_list.sort(function(a, b) { // 오름차순
+                        return a[keyword] < b[keyword] ? -1 : a[keyword] > b[keyword] ? 1 : 0;
+                    });
+                    self.ordertype = 'desc';
+                }  else {
+                    self.current_list.sort(function(a, b) { // 내림차순
+                        return a[keyword]   > b[keyword] ? -1 : a[keyword] < b[keyword] ? 1 : 0;
+                    });
+                    self.ordertype = 'asc';
+                } 
+            }
         },
         computed: {
             displayedPosts() {
@@ -194,9 +208,6 @@
 
     board_list_app.mount('#board_list_app');
 
-
-    //useModule();
- 
 </script>
 
 <style>
