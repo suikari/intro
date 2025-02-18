@@ -136,6 +136,7 @@ table {
       bottom: -100%;
       transition: bottom .7s;
       overflow :  hidden;
+      line-height: 25px;
       /* background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;

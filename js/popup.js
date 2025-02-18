@@ -56,19 +56,24 @@ document.addEventListener('mousemove', (e) => {
   var startY = 0; 
 
   var distanceThreshold = 250; 
+  var verticalThreshold = 100; 
+
   var isDragging = false; 
 
   $(document).on('mousedown', function(event) {
       if (isDragging) return;
 
       startX = event.pageX;
+      startY = event.pageY;
 
       $(document).on('mousemove', function(event) {
-          var currentX = event.pageX;
-          var distanceMoved = currentX - startX; 
+        var currentX = event.pageX;
+        var currentY = event.pageY;
+        var distanceMovedX = currentX - startX; 
+        var distanceMovedY = Math.abs(currentY - startY);
 
-          if (Math.abs(distanceMoved) >= distanceThreshold) {
-              if (distanceMoved > 0) {
+          if (Math.abs(distanceMovedX) >= distanceThreshold && distanceMovedY <= verticalThreshold) {
+              if (distanceMovedX > 0) {
                   //console.log('오른쪽으로 이동!');
                   prev_pagemove();
 
