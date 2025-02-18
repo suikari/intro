@@ -22,11 +22,11 @@
         <a href="javascript:IfmChange('https://suikari.github.io/intro/main.html')" class="card"> 방대한 </a> -->
 
     </div>
-    <div id="list_div"  >
+    <div id="list_div" class="card-list-div"  >
 
     </div>
 
-    <div id="list_detail_div"  >
+    <div id="list_detail_div" class="card-list-div"  >
 
     </div>
 
@@ -41,11 +41,11 @@
 
 <style>
 
-    #atest {
+    .card-list {
         margin : 30px;
     }
 
-    #atest a {
+    .card-list a {
         background-color: aliceblue;
         cursor: pointer;
         border: 1px solid aliceblue;
@@ -56,6 +56,18 @@
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    }
+
+    .card-list-div {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .card-list-div a {
+        background-color: aliceblue;
+        cursor: pointer;
+        border: 1px solid aliceblue;
+        border-radius: 15%;
     }
 
     .card{
