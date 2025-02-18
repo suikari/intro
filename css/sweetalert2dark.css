@@ -253,8 +253,9 @@
     text-transform: none;
     word-wrap: break-word; }
   
-  .swal2-html-container {
-    /* color: #e1e1e1; */
+
+    .swal2-html-container {
+    color: #e1e1e1;
     font-size: 1.5em;
     font-weight: 400;
   }
