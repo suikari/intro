@@ -133,7 +133,7 @@
             });
 
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
 
         for (let i = 0; i < data.length; i++) {
             getRepoInfo("suikari", data[i].name , token );            
@@ -152,7 +152,7 @@
                 }
             });
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
     if (!(typeof data == "undefined" || data == null || data == "")) {
 
@@ -183,7 +183,7 @@
         .then(response => response.json())
         .then(data => {
             //const content = atob(data.content);  // base64 디코딩
-            console.log(data);
+            //console.log(data);
             //document.getElementById('파일내용').innerText = content;
             $("#list_div").empty();    
 
@@ -230,7 +230,7 @@
             .then(response => response.json())
             .then(data => {
                 //const content = atob(data.content);  // base64 디코딩
-                console.log(data);
+                //console.log(data);
                 //document.getElementById('파일내용').innerText = content;
                 $("#list_detail_div").empty();    
 
