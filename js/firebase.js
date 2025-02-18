@@ -169,7 +169,7 @@
 
     // 20분 전 시간 계산
     function getTwentyMinutesAgo() {
-      return new Date(Date.now() - 20 * 60000);
+      return new Date(Date.now() - 120 * 60000);
     }
 
     function formatTime(timestamp) {
