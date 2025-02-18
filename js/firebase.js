@@ -162,6 +162,7 @@
     const chatCloseButton = document.getElementById('chat_close');
     const chatOCButton = document.getElementById('chat_button');
     const memberjoinButton = document.getElementById('member_join');
+    const notificationSound = new Audio("./common/msg_bgm.mp3");
 
     let nickname = localStorage.getItem("nickname") || null;
     
@@ -315,6 +316,12 @@
             const { text, timestamp, user } = doc.data();
             const messageElement = document.createElement('div');
             messageElement.classList.add('chat_message', user === nickname ? 'mine' : 'others');
+
+            const isMyMessage = user === nickname; // 내가 보낸 메시지 확인
+            if (!isMyMessage) {
+              playNotificationSound(); // 🔔 다른 사람이 보낸 메시지일 경우 알림음 재생
+            }
+
             messageElement.innerHTML = `<span>${user}</span>${text} <span class="chat_time">${formatTime(timestamp)}</span>`;
             chatContainer.appendChild(messageElement);
           });
@@ -364,6 +371,12 @@
       }
       
     });
+
+    function playNotificationSound() {
+      if (document.hidden) { // 🔕 사용자가 다른 탭에 있을 때만 실행
+        notificationSound.play().catch((error) => console.error("🚨 알림음 재생 실패:", error));
+      }
+    }
 
 
     if (nickname) {
