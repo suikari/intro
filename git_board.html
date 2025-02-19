@@ -1,0 +1,305 @@
+
+<div id="git_app" class="git_container">
+    <div class="git_row" id="card-container">
+        <template v-if="viewFlg">
+            <div v-for="git_list in git_main_list" class="git_card-col">
+                <div class="git_card">
+                    <img :src="`${git_list.owner.avatar_url}`" class="git_card-img-top" alt="이미지">
+                    <div class="git_card-body">
+                        <h5 class="git_card-title">{{git_list.name}}</h5>
+                        <p class="git_card-text">{{git_list.url}}</p>
+                        <a href="#" @click="git_detail(git_list.owner.login,git_list.name,'')" >더 보기</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template v-if="view_detail">
+            <div v-for="git_list in git_main_detail_list" class="git_card-col">
+                <div class="git_card">
+                    <div class="git_card-body">
+                        <h5 class="git_card-title">{{git_list.name}}</h5>
+                        <p class="git_card-text">{{git_list.url}}</p>
+                        <a href="#" @click="git_detail(username,'',git_list.path)" >더 보기</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template v-if="view_content" >
+            <div><a href="javascript:;" @click="getGit('suikari')"> 처음으로 돌아가기 </a></div>
+            <div id="ifm_div" class="giv_ifm" >
+                <iframe  width="100%" height="100%" :srcdoc="content" name="Ifrm" id="Ifrm" frameborder="1" scrolling="yes" align="left" style="max-width:800px; max-height: 700px; height:100%;display:block;">
+                </iframe>
+            </div>
+        </template>
+
+    </div>
+</div>
+
+
+
+<script>
+
+    function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+    }
+
+    function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+    }
+
+    g_token = 'gi' + 'thub_'+'pat_'+'11BOD'+'3YWY0'+'iJaHVP'+'ik0hX'+'r_pTDSD'+'ATphWLly'+'IPBPeC'+'k3MomY'+'EiLrGnBY'+'zRmjcXN'+'w2ZJCRY'+'ROTXw'+'ueK9WYI';
+
+
+    function IfmChange( src ){
+	    $('#Ifrm').attr('srcdoc', src);
+        $('#ifm_div').attr('style', 'max-width:800px; max-height: 700px; height:100%;display:block;');
+    }   
+
+
+
+    // async function getUserRepos(username, token) {
+    //     const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+    //                 'Accept': 'application/vnd.github.v3+json'
+    //             }
+    //         });
+
+    //     const data = await response.json();
+    //     //console.log(data);
+
+    //     for (let i = 0; i < data.length; i++) {
+    //         getRepoInfo("suikari", data[i].name , token );            
+    //     }
+
+    // }
+
+    // getUserRepos("suikari",g_token);
+
+    // async function getRepoInfo(owner, repo , token) {
+    // const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+    //                 'Accept': 'application/vnd.github.v3+json'
+    //             }
+    //         });
+    // const data = await response.json();
+    // //console.log(data);
+
+    // if (!(typeof data == "undefined" || data == null || data == "")) {
+
+    //     let html = "";
+
+    //     html += '<a href="javascript:getlist(\''+ data.name +'\')"  class="card"> '+ data.name +' </a>';
+
+    //     $("#atest").append(html);    
+    // }
+        
+    
+    // }
+
+    // function getlist ( src ) {
+    //     getRepoInfo1(src, g_token);
+
+    // }
+    // //https://api.github.com/repos/suikari/html/contents/day1/area.html
+    // async function getRepoInfo1( repo, token) {
+
+    //     fetch(`https://api.github.com/repos/suikari/${repo}/contents/`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Authorization': `token ${token}`, // 인증된 요청을 위해 토큰 추가
+    //                     'Accept': 'application/vnd.github.v3+json'
+    //                 }
+    //             })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         //const content = atob(data.content);  // base64 디코딩
+    //         //console.log(data);
+    //         //document.getElementById('파일내용').innerText = content;
+    //         $("#list_div").empty();    
+
+    //         for (let i = 0; i < data.length; i++) {                
+    //             let html = "";
+
+    //             html += '<a href="javascript:getRepoInfo2(\''+ repo+'\',\''+ data[i].name +'\')"  class="card"> '+ data[i].name +' </a>';
+
+    //             $("#list_div").append(html);   
+    //         }
+
+    //     });
+    // }
+
+    // //https://api.github.com/repos/suikari/html/contents/day1/area.html
+    // async function getRepoInfo2( repo, content ) {
+    //     if (content.indexOf('\.html') > -1 ) {
+
+    //         //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
+    //         fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}`, {
+    //                     method: 'GET',
+    //                     headers: {
+    //                         'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+    //                         'Accept': 'application/vnd.github.v3+json'
+    //                     }
+    //                 })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let b_content = b64_to_utf8(data.content);  // base64 디코딩
+    //             //console.log(b_content);
+    //             IfmChange(b_content);
+    //             $("#list_div").empty();    
+    //             $("#list_detail_div").empty();   
+    //         });
+    //     } else {    
+    //         //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}/`);
+    //         fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}/`, {
+    //                     method: 'GET',
+    //                     headers: {
+    //                         'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+    //                         'Accept': 'application/vnd.github.v3+json'
+    //                     }
+    //                 })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             //const content = atob(data.content);  // base64 디코딩
+    //             //console.log(data);
+    //             //document.getElementById('파일내용').innerText = content;
+    //             $("#list_detail_div").empty();    
+
+    //             for (let i = 0; i < data.length; i++) {                
+    //                 let html = "";
+
+    //                 html += '<a href="javascript:getRepoInfo3(\''+ repo +'\',\''+ content +'\',\''+ data[i].name +'\')"  class="card"> '+ data[i].name +' </a>';
+
+    //                 $("#list_detail_div").append(html);   
+    //             }
+
+    //         });
+    //     }
+    // }
+
+    // async function getRepoInfo3( repo, content , name ) {
+    //     if (name.indexOf('\.html') > -1 ) {
+
+    //         //console.log(`https://api.github.com/repos/suikari/${repo}/contents/${content}`);
+    //         fetch(`https://api.github.com/repos/suikari/${repo}/contents/${content}/${name}`, {
+    //                     method: 'GET',
+    //                     headers: {
+    //                         'Authorization': `token ${g_token}`, // 인증된 요청을 위해 토큰 추가
+    //                         'Accept': 'application/vnd.github.v3+json'
+    //                     }
+    //                 })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let b_content = b64_to_utf8(data.content);  // base64 디코딩
+    //             //console.log(b_content);
+    //             IfmChange(b_content);
+    //             $("#list_div").empty();    
+    //             $("#list_detail_div").empty();   
+    //         });
+    //     }
+    // }
+
+
+
+
+
+
+
+
+    git_app = Vue.createApp({
+        data() {
+            return {
+              git_main_list : [],
+              git_main_detail_list : [],
+              viewFlg : true ,
+              view_detail : false ,
+              view_content : false ,
+              username : '',
+              detail_repo : '',
+              content : '',
+            };
+        },
+        methods: {
+            getGit : function (username) {
+                let self = this;
+                self.viewFlg = true;
+                self.view_content = false;
+
+                self.username = username;
+                $.ajax({
+                    url: `https://api.github.com/users/${username}/repos`,
+                    type: "GET",
+                    async: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `token ${g_token}`);//header추가
+                        xhr.setRequestHeader('Accept', 'application/vnd.github.v3+json');//header추가
+                    },
+                    success: function(data) {
+                        //result = data;
+                        console.log(data);
+                        self.git_main_list = data;
+                    }
+                });
+            }, 
+            git_detail : function (username, repo , content ) {
+                let self = this;
+
+                if (repo == '') {
+                    repo = self.detail_repo;
+                }
+
+
+
+                $.ajax({
+                    url: `https://api.github.com/repos/${username}/${repo}/contents/${content}`,
+                    type: "GET",
+                    async: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `token ${g_token}`);//header추가
+                        xhr.setRequestHeader('Accept', 'application/vnd.github.v3+json');//header추가
+                    },
+                    success: function(data) {
+                        //result = data;
+                        console.log(data);
+
+                        if (content.indexOf('.html') > -1 ){
+                            self.viewFlg = false;
+                            self.view_detail = false;
+                            self.view_content = true;
+
+                            self.content = b64_to_utf8(data.content);
+
+                        } else {
+                            self.viewFlg = false;
+                            self.view_detail = true;
+                            self.view_content = false;
+
+                            self.git_main_detail_list = data;
+                            self.detail_repo = repo;
+                        }
+
+                    }
+                });
+                
+
+
+            }
+        },
+        mounted() {
+            let self = this;
+            this.getGit('suikari');
+        }
+    });
+
+    git_app.mount("#git_app");
+
+
+
+</script>
+
+

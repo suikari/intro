@@ -1,0 +1,98 @@
+.git_container {
+    width: 100%;
+    max-width: 900px;  /* 최대 너비를 고정 */
+    margin: 50px auto;
+    padding: 0 20px;
+    overflow-x: auto;  /* 스크롤 가능하도록 설정 */
+}
+
+.git_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.git_card-col {
+    flex: 1 1 30%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    max-width: 32%;
+}
+
+.git_card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.git_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.git_card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.git_card-body {
+    padding: 20px;
+}
+
+.git_card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.git_card-text {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.git_btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.git_btn:hover {
+    background-color: #0056b3;
+}
+
+
+.giv_ifm {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* 반응형 디자인 추가 */
+@media (max-width: 768px) {
+    .git_card-col {
+        flex: 1 1 48%;  /* 화면이 작은 경우 2개 카드씩 */
+        max-width: 48%;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .git_card-col {
+        flex: 1 1 100%;  /* 화면이 더 작은 경우 1개 카드씩 */
+        max-width: 99%;
+
+    }
+}

@@ -27,6 +27,7 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="css/bootstrap3.4.1.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -39,6 +40,7 @@
 <link href="css/chat.css?ver=1.0" rel="stylesheet" type="text/css" />
 <link href="css/member.css?ver=0.1" rel="stylesheet" type="text/css" />
 <link href="css/toastr.css?ver=0.1" rel="stylesheet" type="text/css" />
+<link href="css/git.css?ver=0.1" rel="stylesheet" type="text/css" />
 
 <link href="css/main_html.css?ver=1.9" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.6" rel="stylesheet" type="text/css" />
@@ -137,7 +139,7 @@
                           <div class="progress">
                               <div class="bar">
                                 <audio controls id="main_audio" style="display: none;" controls autoplay controlsList="nodownload">
-                                  <source id="source-audio"  src="common/san.m4a" type="audio/mpeg">
+                                  <source id="source-audio"  src="common/san.mp3" type="audio/mpeg">
                                   Your browser does not support the audio element.
                                 </audio>                              
                               </div>
@@ -464,7 +466,7 @@
       $("#nav_4").addClass("active");
       
     }  else {
-      $("#mian_pages").load("test.html"); 
+      $("#mian_pages").load("git_board.html"); 
       $("#nav_3").addClass("active");
       board_list_index = 3;
 
