@@ -142,9 +142,24 @@
       pagemove('1;');
     }
 
-    async function deldata(id) {
+    async function adddata_comment(num,title,writer,sysdate,view,content) {
       
-      await deleteDoc(doc(db, "apptest", id));
+      const docRef = await addDoc(collection(db, "apptest"), {
+        num: num,
+        title: title ,
+        writer : writer ,
+        sysdate : sysdate,
+        view : view ,
+        content : content
+      });
+
+      //alert("등록 완료!");
+      pagemove('1;');
+    }
+
+    async function deldata(docname, id) {
+      
+      await deleteDoc(doc(db, docname , id));
 
       //alert("삭제 완료!");
       pagemove('1;');
