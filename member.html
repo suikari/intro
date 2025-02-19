@@ -1,20 +1,23 @@
 <style>
     .container_m {
-        background: rgba(255,255,255, 0.7);
+        background: rgba(255, 255, 255, 0.7);
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     h2 {
         text-align: center;
         color: #333;
     }
+
     label {
-        font-weight   : bold;
-        margin-top    : 10px;
-        margin-bottom : 15px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 15px;
 
     }
+
     input[type="text"],
     input[type="password"] {
         width: 100%;
@@ -23,9 +26,12 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-    input[type="checkbox"], input[type="radio"] {
+
+    input[type="checkbox"],
+    input[type="radio"] {
         margin-right: 5px;
     }
+
     .mem_button {
         width: 100%;
         padding: 10px;
@@ -37,6 +43,7 @@
         cursor: pointer;
         font-size: 16px;
     }
+
     .mem_button:hover {
         background-color: #4cae4c;
     }
@@ -45,21 +52,21 @@
 <div class="container_m paget">
     <h2>회원가입</h2>
     <form action="#" method="post">
-        <div> 
+        <div>
             <label for="userid">아이디:</label>
             <input type="text" id="userid" name="userid" required>
-        
+
             <label for="password">패스워드:</label>
             <input type="password" id="password" name="password" required>
-            
+
             <label for="password_confirm">패스워드 확인:</label>
             <input type="password" id="password_confirm" name="password_confirm" required>
-            
+
             <label for="phone">핸드폰 번호:</label>
             <input type="text" id="phone" name="phone" pattern="[0-9]{11}" placeholder="01012341234" required>
         </div>
 
-        <div> 
+        <div>
             <label>관심 언어:</label>
             <input type="checkbox" id="java" name="language" value="java">
             <label for="java">자바</label>
@@ -71,8 +78,8 @@
             <label for="python">Python</label>
         </div>
 
-        <div> 
-        <label>성별:</label>
+        <div>
+            <label>성별:</label>
             <input type="radio" id="male" name="gender" value="male" required>
             <label for="male">남성</label>
             <input type="radio" id="female" name="gender" value="female" required>
@@ -81,74 +88,74 @@
 
 
     </form>
-    <button class="mem_button" onclick="mem_submit();" >가입하기</button>
+    <button class="mem_button" onclick="mem_submit();">가입하기</button>
 
 </div>
 
 
 <script>
-var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+    var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
 
 
-function mem_submit() {
-        let id           = $('#userid').val();
-        let password     = $('#password').val();
+    function mem_submit() {
+        let id = $('#userid').val();
+        let password = $('#password').val();
         let password_chk = $('#password_confirm').val();
-        let phone        = $('#phone').val();
-        let language     = "";
+        let phone = $('#phone').val();
+        let language = "";
 
-        $('input:checkbox[name="language"]').each(function() {
-            if(this.checked){
+        $('input:checkbox[name="language"]').each(function () {
+            if (this.checked) {
                 language += this.value + ";"
             }
         });
 
-        let gender       = $("input:radio[name='gender']:checked").val();
+        let gender = $("input:radio[name='gender']:checked").val();
 
         console.log(language);
         console.log(gender);
 
-        if ( id.length < 6  ) {
-            swal_msg("아이디 입력 에러","아이디 6글자 이상으로 입력","error");   
-            return;
-        }
-        
-        if ( password.length < 6  ) {
-            swal_msg("패스워드 입력 에러"," 패스워드 6글자 이상으로 입력","error" );
-            return;
-        }
-        
-        if ( password != password_chk ) {
-            swal_msg("패스워드 입력 에러","2개의 패스워드 일치하지 않음","error" );
+        if (id.length < 6) {
+            swal_msg("아이디 입력 에러", "아이디 6글자 이상으로 입력", "error");
             return;
         }
 
-        if (password.search(special_pattern) < 0 ) {
-            swal_msg("패스워드 입력 에러","패스워드 특수문자 포함되지않음","error" );
+        if (password.length < 6) {
+            swal_msg("패스워드 입력 에러", " 패스워드 6글자 이상으로 입력", "error");
             return;
         }
 
-        if ( phone.length != 11  ) {
-           swal_msg("전화번호 입력 에러","전화번호 반드시 11글자로 입력(010XXXXXXXX)","error" );
+        if (password != password_chk) {
+            swal_msg("패스워드 입력 에러", "2개의 패스워드 일치하지 않음", "error");
+            return;
+        }
+
+        if (password.search(special_pattern) < 0) {
+            swal_msg("패스워드 입력 에러", "패스워드 특수문자 포함되지않음", "error");
+            return;
+        }
+
+        if (phone.length != 11) {
+            swal_msg("전화번호 입력 에러", "전화번호 반드시 11글자로 입력(010XXXXXXXX)", "error");
             return;
         }
 
         if (typeof language == "undefined" || language == null || language == "") {
             // swal_confirm("관심언어를 선택하지 않았습니다 그대로 진행하시겠습니까?", "warning", "", "return;");
             //warning
-            if(confirm("관심언어를 선택하지 않았습니다 그대로 진행하시겠습니까?")){
-            }else{
+            if (confirm("관심언어를 선택하지 않았습니다 그대로 진행하시겠습니까?")) {
+            } else {
                 return;
             }
-            
+
         }
 
         if (typeof gender == "undefined" || gender == null || gender == "") {
-            swal_msg("성별 입력 에러","성별 선택하지 않음" ,"error");
+            swal_msg("성별 입력 에러", "성별 선택하지 않음", "error");
             return;
         }
 
-        swal_msg("회원가입 완료","회원가입 감사합니다!" ,"info");
+        swal_msg("회원가입 완료", "회원가입 감사합니다!", "info");
 
     }
 

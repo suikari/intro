@@ -14,7 +14,7 @@
 <script src="js/music.js?ver=0.9"></script>
 <script src="js/toastr.js?ver=0.2"></script>
 
-<link href="css/sweetalert2dark.css" rel="stylesheet" type="text/css" >
+<link href="css/sweetalert2dark.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
@@ -47,17 +47,17 @@
 
 
 <head>
-	<title> 자기만족 홈페이지 </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
-	  <meta charset="utf-8"/>
+  <title> 자기만족 홈페이지 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" />
+  <meta charset="utf-8" />
   <style>
- 
+
   </style>
 
   <script type="text/javascript">
-    document.oncontextmenu = function(){return false;}
+    document.oncontextmenu = function () { return false; }
   </script>
-  
+
 
 </head>
 
@@ -66,7 +66,7 @@
 
 
 
-  <div id="chat_main_div" class="chat_div draggable " >
+  <div id="chat_main_div" class="chat_div draggable ">
     <a href="#" id="chat_close" class="close"></a>
 
     <div class="chat_auth draggable">
@@ -79,7 +79,7 @@
       <button class="chat_button" id="send-button" disabled>전송</button>
     </div>
   </div>
-<!-- 
+  <!-- 
   <button class="chat_button" id="member_join" onclick="member_join();" style="display: none;">회원가입</button>
   <button class="chat_button" id="member_join" onclick="Login();" style="">로그인테스트</button> 
   <button class="chat_button" id="google-login-button">Google 로그인</button>
@@ -89,18 +89,18 @@
 
   <div class="cursor">
     <img class="cur_img" src="image/san_cuss.png" width="60x" height="60px">
-  </div> 
-  
+  </div>
+
   <div id="popup_1" class="main_popup draggable" style="display: none;">
     <div class="layer_cont ">
-      <h2 class="title_wrap font-shadow draggable" > 팝업 제목 </h2>
+      <h2 class="title_wrap font-shadow draggable"> 팝업 제목 </h2>
       <div class="img_wrap">
-        <img  id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
+        <img id="ban_img" width="200px" height="160px" style="margin-top : 40px;" src="image/san1.jfif" />
       </div>
       <div style="text-align: center;">
         <button class="button" onclick="javascript:pagemove('s;');"> 산나비 즉시구매 </button>
       </div>
-      
+
       <div class="btn_wrap">
         <button class="btn_today_close"><span>오늘 하루 보지 않기</span></button>
         <button class="btn_close">close</button>
@@ -109,153 +109,158 @@
   </div>
 
 
-    <!-- <audio controls id="music"  class="paly_list" controls autoplay controlsList="nodownload">
+  <!-- <audio controls id="music"  class="paly_list" controls autoplay controlsList="nodownload">
       <source id="source-audio"  src="common/san.m4a" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio> -->
-    <!-- 기존코드 절취선-->
+  <!-- 기존코드 절취선-->
 
 
-            <!-- 뮤직 플레이어 -->
-            <div class="music__wrap play_list ">
-              <div class="music__inner draggable">
-                  <div class="music__header draggable">
-                      <span class="left"></span>
-                      <h2 class="font-shadow" >MUSIC PLAYER      <a href="#" class="close"></a>
-                      </h2>
-                      <span class="right"></span>
-                  </div>
-                  <div class="music__contents">
-                      <div class="music__view">
-                          <div class="image" >
-                              <img src="" width="300px" height="180px" alt="음악">
-                          </div>
-                      </div>
-                      <div class="music__control">
-                          <div class="m_title">
-                            <marquee  behavior="scroll"><h3 >노래 제목</h3></marquee>
-                              <p>가수 이름</p>
-                          </div>
-                          <div class="progress">
-                              <div class="bar">
-                                <audio controls id="main_audio" style="display: none;" controls autoplay controlsList="nodownload">
-                                  <source id="source-audio"  src="common/san.mp3" type="audio/mpeg">
-                                  Your browser does not support the audio element.
-                                </audio>                              
-                              </div>
-                              <div class="timer">
-                                  <span class="current"></span>
-                                  <span class="duration"></span>
-                              </div>
-                          </div>
-                          <div class="control">
-                              <span>
-                                  <i class="repeat" id="control-repeat" title="전체 반복"></i>
-                              </span>
-                              <span>
-                                  <i class="prev" id="control-prev" title="이전 곡"></i>
-                                  <!-- <span class="repeat_one">한 곡 반복</span>-->
-                                  <!-- <span class="shuffle">랜덤 반복</span> -->
-                              </span>
-                              <span>
-                                  <i class="play" id="control-play" title="재생"></i>
-                                  <!-- <span class="stop">정지</span> -->
-                              </span>
-                              <span>
-                                  <i class="next" id="control-next" title="다음 곡"></i>
-                              </span>
-                              <span>
-                                  <i class="list" id="control-list" title="재생 목록"></i>
-                              </span>
-                          </div>
-                      </div>
-                      <div class="music__list">
-                          <h3>뮤직 리스트 <a href="#" class="close"></a></h3>
-                          <ul></ul>
-                      </div>
-                  </div>
-              </div>
+  <!-- 뮤직 플레이어 -->
+  <div class="music__wrap play_list ">
+    <div class="music__inner draggable">
+      <div class="music__header draggable">
+        <span class="left"></span>
+        <h2 class="font-shadow">MUSIC PLAYER <a href="#" class="close"></a>
+        </h2>
+        <span class="right"></span>
+      </div>
+      <div class="music__contents">
+        <div class="music__view">
+          <div class="image">
+            <img src="" width="300px" height="180px" alt="음악">
           </div>
-          <!-- //뮤직 플레이어 -->
-
-  
-    <!-- 기존코드 절취선-->
-    <div class="btnBox">
-      <button class="zoomOut fa-min" onclick="font_size('m');"></button>
-      <button class="zoomIn fa-plus" onclick="font_size('p');"></button>
-      <button id='chat_button' class="chat-black " > </button>
-      <button id='music_button' class="music-black " > </button>
-      <button id='dark_btn' class="fa-black " onclick="dark_toggle();"> </button>
+        </div>
+        <div class="music__control">
+          <div class="m_title">
+            <marquee behavior="scroll">
+              <h3>노래 제목</h3>
+            </marquee>
+            <p>가수 이름</p>
+          </div>
+          <div class="progress">
+            <div class="bar">
+              <audio controls id="main_audio" style="display: none;" controls autoplay controlsList="nodownload">
+                <source id="source-audio" src="common/san.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            <div class="timer">
+              <span class="current"></span>
+              <span class="duration"></span>
+            </div>
+          </div>
+          <div class="control">
+            <span>
+              <i class="repeat" id="control-repeat" title="전체 반복"></i>
+            </span>
+            <span>
+              <i class="prev" id="control-prev" title="이전 곡"></i>
+              <!-- <span class="repeat_one">한 곡 반복</span>-->
+              <!-- <span class="shuffle">랜덤 반복</span> -->
+            </span>
+            <span>
+              <i class="play" id="control-play" title="재생"></i>
+              <!-- <span class="stop">정지</span> -->
+            </span>
+            <span>
+              <i class="next" id="control-next" title="다음 곡"></i>
+            </span>
+            <span>
+              <i class="list" id="control-list" title="재생 목록"></i>
+            </span>
+          </div>
+        </div>
+        <div class="music__list">
+          <h3>뮤직 리스트 <a href="#" class="close"></a></h3>
+          <ul></ul>
+        </div>
+      </div>
     </div>
-
-    <div id="container">
-        <div id="test"></div>
-        <div id="header" class="dropdown">
-            <nav class="navbar">
-              <div class="navbar__logo">
-                <a href="javascript:pagemove(';');">
-                  <img id="logo" src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png" width="56px" style="float: left;">
-                </a>
-              </div>
-              <ul class="navbar__menu">
-                  <li id="nav_1" class="nav_menu"> <a href="javascript:pagemove(';');"> 자기소개 </a>        </li>
-                  <li id="nav_2" class="nav_menu"> <a href="javascript:pagemove('1;');"> 알림 게시판 </a>    </li>
-                  <li id="nav_3" class="nav_menu"> <a href="javascript:pagemove('a;');"> 공부(git) 리스트 </a> </li>
-                  <!-- <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m;');"> 회원가입 페이지 </a>  </li> -->
-                  <li id="nav_5" class="nav_menu"> <a href="javascript:pagemove('s;');">결제테스트 페이지</a>  </li>
-                  <!-- <li id="nav_5" class="nav_menu"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li> -->
-                </ul>
-              <ul class="navbar__links">
-                  <li><i class="fab fa-facebook-square"></i></li>
-                  <li><i class="fab fa-instagram"></i></li>
-              </ul>
-      
-              <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
-              <div id='menu_btn' class="menu-toggle " onclick="toggleMenu();"> </div>                
-
-          </nav>
+  </div>
+  <!-- //뮤직 플레이어 -->
 
 
-          </div>
-        <!-- 사이드바 -->
-        <div class="side">
-            <div id="namecard">
-                <div id="p_img">  </div>
-                <h1>Bang DaeHan</h1>    
-                <p><a href="javascript:compute_error();"> if(1.1+0.1==1.2) </br> { alert("컴퓨터야"); } </br> else </br> { alert("날 속인거니"); }  </a></p>
-            </div>
-            <div id="detail">
-                <p>Incheon, Korea / suikari@naver.com</p>                                 
-            </div>
-            <!-- <div id="sns">
+  <!-- 기존코드 절취선-->
+  <div class="btnBox">
+    <button class="zoomOut fa-min" onclick="font_size('m');"></button>
+    <button class="zoomIn fa-plus" onclick="font_size('p');"></button>
+    <button id='chat_button' class="chat-black "> </button>
+    <button id='music_button' class="music-black "> </button>
+    <button id='dark_btn' class="fa-black " onclick="dark_toggle();"> </button>
+  </div>
+
+  <div id="container">
+    <div id="test"></div>
+    <div id="header" class="dropdown">
+      <nav class="navbar">
+        <div class="navbar__logo">
+          <a href="javascript:pagemove(';');">
+            <img id="logo"
+              src="https://upload.wikimedia.org/wikipedia/ko/7/7d/%EC%B9%98%EC%A7%80%EC%A7%81_%EB%A1%9C%EA%B3%A0.png"
+              width="56px" style="float: left;">
+          </a>
+        </div>
+        <ul class="navbar__menu">
+          <li id="nav_1" class="nav_menu"> <a href="javascript:pagemove(';');"> 자기소개 </a> </li>
+          <li id="nav_2" class="nav_menu"> <a href="javascript:pagemove('1;');"> 알림 게시판 </a> </li>
+          <li id="nav_3" class="nav_menu"> <a href="javascript:pagemove('a;');"> 공부(git) 리스트 </a> </li>
+          <!-- <li id="nav_4" class="nav_menu"> <a href="javascript:pagemove('m;');"> 회원가입 페이지 </a>  </li> -->
+          <li id="nav_5" class="nav_menu"> <a href="javascript:pagemove('s;');">결제테스트 페이지</a> </li>
+          <!-- <li id="nav_5" class="nav_menu"> <a href="downscroll.html">스크롤 테스트 페이지</a>  </li> -->
+        </ul>
+        <ul class="navbar__links">
+          <li><i class="fab fa-facebook-square"></i></li>
+          <li><i class="fab fa-instagram"></i></li>
+        </ul>
+
+        <!-- <a href="#" class="navbar__toggleBtn"><i class="fas fa-bars"></i></a> -->
+        <div id='menu_btn' class="menu-toggle " onclick="toggleMenu();"> </div>
+
+      </nav>
+
+
+    </div>
+    <!-- 사이드바 -->
+    <div class="side">
+      <div id="namecard">
+        <div id="p_img"> </div>
+        <h1>Bang DaeHan</h1>
+        <p><a href="javascript:compute_error();"> if(1.1+0.1==1.2) </br> { alert("컴퓨터야"); } </br> else </br> { alert("날
+            속인거니"); } </a></p>
+      </div>
+      <div id="detail">
+        <p>Incheon, Korea / suikari@naver.com</p>
+      </div>
+      <!-- <div id="sns">
                 <h3><a href="javascript:click_button();"> SNS 클릭!</a></h3>
             </div>   -->
-            
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id= "city" >
-              <span id="now_time"></span> </br>   현재 날씨 
-            </div> 
 
-            <div id = "wicon" class = "h5 mb-0 font-weight-bold text-gray-800 float-left">
-                <div id = "ods" class="float-left"> </div>
-                <div id = "sds" class="float-left"> </div>
-                <div id = "fds" class="float-left"> </div> 
-            </div>
-            <br>
-            <div id="map" style="width:100%; height:150px;"></div>
-            <div id="clickLatlng"></div>           
+      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="city">
+        <span id="now_time"></span> </br> 현재 날씨
+      </div>
 
-        </div>
-        
-        <div id="mian_pages" name="mian_pages" class="pages">
-        </div> 
-  
-    <ul id="pagination_main1" class="b_pagination" >
-    </ul>    
+      <div id="wicon" class="h5 mb-0 font-weight-bold text-gray-800 float-left">
+        <div id="ods" class="float-left"> </div>
+        <div id="sds" class="float-left"> </div>
+        <div id="fds" class="float-left"> </div>
+      </div>
+      <br>
+      <div id="map" style="width:100%; height:150px;"></div>
+      <div id="clickLatlng"></div>
 
     </div>
 
+    <div id="mian_pages" name="mian_pages" class="pages">
+    </div>
 
-    
+    <ul id="pagination_main1" class="b_pagination">
+    </ul>
+
+  </div>
+
+
+
 </body>
 
 
@@ -270,12 +275,12 @@
 
 <script>
 
-  function compute_error () {
-      if ( 1.1+0.1 == 1.2) {
-         swal_msg("","컴퓨터야","error"); 
-      } else {
-        swal_msg("","날 속인거니","error"); 
-      }
+  function compute_error() {
+    if (1.1 + 0.1 == 1.2) {
+      swal_msg("", "컴퓨터야", "error");
+    } else {
+      swal_msg("", "날 속인거니", "error");
+    }
   }
 
   function clock() {
@@ -283,106 +288,106 @@
 
     let now;
 
-    let hours = time.getHours().toString().padStart(2, '0'); ;
-    let minutes = time.getMinutes().toString().padStart(2, '0'); ;
-    let seconds = time.getSeconds().toString().padStart(2, '0'); ;
+    let hours = time.getHours().toString().padStart(2, '0');;
+    let minutes = time.getMinutes().toString().padStart(2, '0');;
+    let seconds = time.getSeconds().toString().padStart(2, '0');;
 
-    now = hours +" : "+ minutes +" : "+ seconds
+    now = hours + " : " + minutes + " : " + seconds
     $('#now_time').text(now);
     //console.log(now);
   }
 
   clock();
   setInterval(clock, 1000);
-    
 
-    function click_button () {
-        Swal.fire({
-				  title: "SNS는 없어요",
-				  text: "안써요.. ",
-				  icon: "error"	,
-				  background: "#ffffff"
-			}).then((result) => {
-			});
-    }
 
-    $(document).ready(function(){
-      
-      pagemove(";");
-
-      var cursorIcon = document.querySelector('.cursor');
-
-      document.addEventListener('mousemove', (e) => {
-        cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-      });
+  function click_button() {
+    Swal.fire({
+      title: "SNS는 없어요",
+      text: "안써요.. ",
+      icon: "error",
+      background: "#ffffff"
+    }).then((result) => {
     });
+  }
 
-    let basicFont = 16; // 기본 폰트 크기를 12px로 지정
-    let minbasicFont = 10; // 기본 폰트 크기를 12px로 지정
-    let maxbasicFont = 24; // 기본 폰트 크기를 12px로 지정
+  $(document).ready(function () {
 
-    font_size(''); 
-  
+    pagemove(";");
 
-    function font_size(val) {
-      if ( val == "p" ) {
-        if (basicFont == maxbasicFont) {
-          swal_msg('경고','24px 위로는 올릴수 없습니다.','error');
-          return;
-        }
+    var cursorIcon = document.querySelector('.cursor');
 
-        basicFont++;
-        $("body").css("font-size", basicFont);
-      } else if  ( val == "m" )  {
-        
-        if (basicFont == minbasicFont) {
-          swal_msg('경고','10px 밑으로는 내릴수 없습니다.','error');
-          return;
-        }
+    document.addEventListener('mousemove', (e) => {
+      cursorIcon.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+  });
 
-        basicFont--;
-        $("body").css("font-size", basicFont);
-      } else {
-        $("body").css("font-size", basicFont);
+  let basicFont = 16; // 기본 폰트 크기를 12px로 지정
+  let minbasicFont = 10; // 기본 폰트 크기를 12px로 지정
+  let maxbasicFont = 24; // 기본 폰트 크기를 12px로 지정
+
+  font_size('');
+
+
+  function font_size(val) {
+    if (val == "p") {
+      if (basicFont == maxbasicFont) {
+        swal_msg('경고', '24px 위로는 올릴수 없습니다.', 'error');
+        return;
       }
+
+      basicFont++;
+      $("body").css("font-size", basicFont);
+    } else if (val == "m") {
+
+      if (basicFont == minbasicFont) {
+        swal_msg('경고', '10px 밑으로는 내릴수 없습니다.', 'error');
+        return;
+      }
+
+      basicFont--;
+      $("body").css("font-size", basicFont);
+    } else {
+      $("body").css("font-size", basicFont);
     }
-  
-
-    function dark_toggle() {
-        let classList = $('.side').attr('class');
-        //console.log(classList);
-        if  ( classList.search('dark-mode') > -1 ) {
-          $('body').removeClass('dark-mode');
-          $('.side').removeClass('dark-mode');
-          $('.pages').removeClass('dark-mode');
-          $('.paget').removeClass('dark-mode');
-          $('.b_pagination').removeClass('dark-mode');
-          $('.navbar__menu').removeClass('dark-mode');
-          $('.navbar').removeClass('dark-mode');
-          $('#menu_btn').removeClass('dark-mode');
-          $('.board_container').removeClass('dark-mode');
-          
-          $('.btn').removeClass('dark-mode');
-        } else {
-          $('body').addClass('dark-mode');
-          $('.side').addClass('dark-mode');
-          $('.paget').addClass('dark-mode');
-          $('.contents').addClass('dark-mode');
-          $('.b_pagination').addClass('dark-mode');
-          $('.navbar__menu').addClass('dark-mode');
-          $('.navbar').addClass('dark-mode');
-          $('#menu_btn').addClass('dark-mode');
-          $('.board_container').addClass('dark-mode');
-
-          $('.btn').addClass('dark-mode');
-        }
+  }
 
 
+  function dark_toggle() {
+    let classList = $('.side').attr('class');
+    //console.log(classList);
+    if (classList.search('dark-mode') > -1) {
+      $('body').removeClass('dark-mode');
+      $('.side').removeClass('dark-mode');
+      $('.pages').removeClass('dark-mode');
+      $('.paget').removeClass('dark-mode');
+      $('.b_pagination').removeClass('dark-mode');
+      $('.navbar__menu').removeClass('dark-mode');
+      $('.navbar').removeClass('dark-mode');
+      $('#menu_btn').removeClass('dark-mode');
+      $('.board_container').removeClass('dark-mode');
+
+      $('.btn').removeClass('dark-mode');
+    } else {
+      $('body').addClass('dark-mode');
+      $('.side').addClass('dark-mode');
+      $('.paget').addClass('dark-mode');
+      $('.contents').addClass('dark-mode');
+      $('.b_pagination').addClass('dark-mode');
+      $('.navbar__menu').addClass('dark-mode');
+      $('.navbar').addClass('dark-mode');
+      $('#menu_btn').addClass('dark-mode');
+      $('.board_container').addClass('dark-mode');
+
+      $('.btn').addClass('dark-mode');
     }
-  
+
+
+  }
+
 
   //페이지 전환용 전변수 
-  let board_list = [';','1;','k;','s;'];
+  let board_list = [';', '1;', 'k;', 's;'];
   let board_list_index = 0;
 
   //    musicIndex == allMusic.length ? musicIndex = 1 : musicIndex++;
@@ -397,7 +402,7 @@
     history.scrollRestoration = "manual"
     prev_board_index = board_index;
     board_id = '';
-  } 
+  }
   function prev_pagemove() {
     next_board_index = board_index;
     pagemove(prev_board_index);
@@ -405,28 +410,28 @@
 
   function next_pagemove() {
     board_list_index == board_list.length ? board_list_index = 1 : board_list_index++;
-    pagemove(board_list[board_list_index-1]);
+    pagemove(board_list[board_list_index - 1]);
     // pagemove(next_board_index);
-  }   
+  }
   // val >> 이동주소;전달변수1;전달변수2;.. 추가예정 
   function pagemove(val) {
 
     claerPage();
     board_index = val;
-    let index = board_index.split(";"); 
+    let index = board_index.split(";");
     //console.log(val);
 
     if (!(typeof index[1] == "undefined" || index[1] == null || index[1] == "")) {
-       
-       if ( index[0] == 'b' ) {
-         board_id =  index[1] ; 
-       } else if ( index[0] == 'e' ) {
-         board_id =  index[1] ; 
-       } 
+
+      if (index[0] == 'b') {
+        board_id = index[1];
+      } else if (index[0] == 'e') {
+        board_id = index[1];
+      }
     }
 
     let classtype = $('.navbar__menu').attr('class');
-    if  ( classtype.search('active') > -1 ) {
+    if (classtype.search('active') > -1) {
       toggleMenu();
     }
 
@@ -438,35 +443,35 @@
     $("#nav_4").removeClass("active");
     $("#nav_5").removeClass("active");
 
-    if ( index[0] == "") {
-      $("#mian_pages").load("content1.html");  
+    if (index[0] == "") {
+      $("#mian_pages").load("content1.html");
       $("#nav_1").addClass("active");
       board_list_index = 1;
 
-    } else if ( index[0] == "1" ) {
-      $("#mian_pages").load("board_list.html");  
+    } else if (index[0] == "1") {
+      $("#mian_pages").load("board_list.html");
       $("#nav_2").addClass("active");
       board_list_index = 2;
 
-    } else if ( index[0] == "b"  ) {
-      $("#mian_pages").load("board_main.html");  
+    } else if (index[0] == "b") {
+      $("#mian_pages").load("board_main.html");
       $("#nav_2").addClass("active");
 
-    } else if ( index[0] == "e"  ) {
-      $("#mian_pages").load("board_editer.html");  
+    } else if (index[0] == "e") {
+      $("#mian_pages").load("board_editer.html");
       $("#nav_2").addClass("active");
 
-    } else if ( index[0] == "s"  ) {
-      $("#mian_pages").load("saler.html");  
+    } else if (index[0] == "s") {
+      $("#mian_pages").load("saler.html");
       $("#nav_5").addClass("active");
       board_list_index = 0;
 
-    } else if ( index[0] == "m"  ) {
-      $("#mian_pages").load("member.html");  
+    } else if (index[0] == "m") {
+      $("#mian_pages").load("member.html");
       $("#nav_4").addClass("active");
-      
-    }  else {
-      $("#mian_pages").load("git_board.html"); 
+
+    } else {
+      $("#mian_pages").load("git_board.html");
       $("#nav_3").addClass("active");
       board_list_index = 3;
 

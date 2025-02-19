@@ -7,8 +7,8 @@
                     <img :src="`${git_list.owner.avatar_url}`" class="git_card-img-top" alt="이미지">
                     <div class="git_card-body">
                         <h5 class="git_card-title">{{git_list.name}}</h5>
-                        <p class="git_card-text">{{git_list.url}}</p>
-                        <a href="#" @click="git_detail(git_list.owner.login,git_list.name,'')" >더 보기</a>
+                        <p class="git_card-text"><a :href="git_list.html_url" target='_blank'>{{git_list.html_url}}</a></p>
+                        <a class="btn btn-primary" href="#" @click="git_detail(git_list.owner.login,git_list.name,'')" >자세히</a>
                     </div>
                 </div>
             </div>
@@ -19,8 +19,8 @@
                 <div class="git_card">
                     <div class="git_card-body">
                         <h5 class="git_card-title">{{git_list.name}}</h5>
-                        <p class="git_card-text">{{git_list.url}}</p>
-                        <a href="#" @click="git_detail(username,'',git_list.path)" >더 보기</a>
+                        <p class="git_card-text"><a :href="git_list.html_url" target='_blank'>{{git_list.html_url}}</a></p>
+                        <a class="btn btn-primary" href="#" @click="git_detail(username,'',git_list.path)" >자세히</a>
                     </div>
                 </div>
             </div>
@@ -32,6 +32,13 @@
             <div id="ifm_div" class="giv_ifm" >
                 <iframe  width="100%" height="100%" :srcdoc="content" name="Ifrm" id="Ifrm" class="gif_ifm" frameborder="1" scrolling="yes" align="left" >
                 </iframe>
+            </div>
+        </template>
+
+        <template v-if="view_etc_content" >
+            <div><a class="btn btn-primary" href="javascript:;" @click="getGit('suikari')"> 처음으로 돌아가기 </a></div>
+            <div id="ifm_div" class="giv_ifm" >
+                {{content}}
             </div>
         </template>
 
@@ -66,6 +73,7 @@
               viewFlg : true ,
               view_detail : false ,
               view_content : false ,
+              view_etc_content : false,
               username : '',
               detail_repo : '',
               content : '',
@@ -77,6 +85,7 @@
                 self.viewFlg = true;
                 self.view_detail = false;
                 self.view_content = false;
+                self.view_etc_content = false;
 
                 self.username = username;
                 $.ajax({
@@ -119,13 +128,23 @@
                             self.viewFlg = false;
                             self.view_detail = false;
                             self.view_content = true;
+                            self.view_etc_content = false;
 
                             self.content = b64_to_utf8(data.content);
 
+                        } else if (content.indexOf('.java') > -1) {
+                            self.viewFlg = false;
+                            self.view_detail = false;
+                            self.view_content = false;
+                            self.view_etc_content = true;
+
+                            self.content = b64_to_utf8(data.content);
                         } else {
                             self.viewFlg = false;
                             self.view_detail = true;
                             self.view_content = false;
+                            self.view_etc_content = false;
+
 
                             self.git_main_detail_list = data;
                             self.detail_repo = repo;
