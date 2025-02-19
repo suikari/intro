@@ -151,7 +151,7 @@ function ban_chk ( val ){
   
   for (i=0;i<banList.length-1;i++){
     if ( val.indexOf(banList[i]) >-1 ) {
-      swal_msg("에러","사용 금지 단어가 포함되어있습니다.","error");
+      swal_msg("에러","사용 금지 단어("+ banList[i] +")가 포함되어있습니다.","error");
       chk = false;
     }
     
