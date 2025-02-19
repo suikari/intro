@@ -37,7 +37,7 @@
 
         <template v-if="view_etc_content" >
             <div><a class="btn btn-primary" href="javascript:;" @click="getGit('suikari')"> 처음으로 돌아가기 </a></div>
-            <div id="ifm_div" class="giv_ifm" >
+            <div class="giv_ifm" :data-pym-src="jdoodleSrc" :data-language="jdoodleType" :data-version-index="jdoodleVersion">
                 {{content}}
             </div>
         </template>
@@ -77,6 +77,9 @@
               username : '',
               detail_repo : '',
               content : '',
+              jdoodleSrc : 'https://www.jdoodle.com/plugin',
+              jdoodleType : 'java',
+              jdoodleVersion : '5',
             };
         },
         methods: {
@@ -139,6 +142,12 @@
                             self.view_etc_content = true;
 
                             self.content = b64_to_utf8(data.content);
+
+                            const script = document.createElement('script');
+                            script.src = "https://www.jdoodle.com/assets/jdoodle-pym.min.js";
+                            script.type = "text/javascript";
+                            document.body.appendChild(script);
+
                         } else {
                             self.viewFlg = false;
                             self.view_detail = true;
@@ -158,6 +167,8 @@
             }
         },
         mounted() {
+
+
             let self = this;
             this.getGit('suikari');
         }
@@ -166,7 +177,4 @@
     git_app.mount("#git_app");
 
 
-
 </script>
-
-
