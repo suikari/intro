@@ -6,21 +6,21 @@
       <div class="board_form-group">
           <label for="title" class="board_form-label">제목</label>
           
-          <input v-if="viewFlg" type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요" required>
-          <input v-else type="text" v-model="title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요"  disabled required>
+          <input v-if="viewFlg" type="text" v-model="boardData.title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요" required>
+          <input v-else type="text" v-model="boardData.title" id="title" name="title" class="board_form-input" placeholder="제목을 입력하세요"  disabled required>
 
       </div>
 
       <div class="board_form-group">
           <label for="author" class="board_form-label">작성자</label>
-          <input v-if="viewFlg" type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
-          <input v-else type="text" v-model="author"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" disabled required>
+          <input v-if="viewFlg" type="text" v-model="boardData.writer"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
+          <input v-else type="text" v-model="boardData.writer"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" disabled required>
 
       </div>
 
       <div class="board_form-group">
           <label for="content" class="board_form-label">내용</label>
-          <textarea id="content"  v-model="content"   name="content" class="board_form-textarea" placeholder="게시글 내용을 입력하세요" required></textarea>
+          <textarea id="content"  v-model="boardData.content"   name="content" class="board_form-textarea" placeholder="게시글 내용을 입력하세요" required></textarea>
       </div>
       
       <button class="board_btn" @click="fnSample" >게시글 작성</button>
@@ -37,21 +37,19 @@
 
     
 
-    async function number_chk(num , title,writer,content) {
-        if (typeof num == "undefined" || num == null || num == "") {
-          num = await window.module.countdata();
+    async function number_chk( data ) {
+        if (typeof data.num == "undefined" || data.num == null || data.num == "") {
+          data.num = await window.module.countdata();
         }
-         
-        var sysdate = getDate();
-        // console.log(num);
-        // console.log(title);
-        // console.log(writer);
-        // console.log(sysdate);
-        // console.log(content);
+        
+        console.log(data);
+
         if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
-          window.module.setdata(parseInt(num),title,writer,sysdate,0,content,board_id); 
+          //window.module.setdata(parseInt(num),title,writer,sysdate,0,content,board_id); 
+          window.module.new_setData("apptest", board_id , data ); 
         } else {
-          window.module.adddata(parseInt(num+1),title,writer,sysdate,0,content); 
+          data.num = Number(data.num) + 1;
+          window.module.new_addData("apptest",data); 
         }
     }   
 
@@ -65,35 +63,44 @@
     board_edit_app = Vue.createApp({
         data() {
             return {
-              author : '', // 로그인에 사용할 username
-              title: '',  // 로그인에 사용할 password
-              content : '',
               num     : '',
               viewFlg : true ,
+
+              boardData : {
+                num: "",
+                title: "",
+                writer: "",
+                sysdate: "",
+                view: 0,
+                content: "",
+              }
+
             };
         },
         methods: {
             // 함수(메소드)
              fnSample : function () {
               var self = this;
-              self.content = $('#content').summernote('code');
+              self.boardData.content = $('#content').summernote('code');
+              
 
-              if(self.title == ""){
+              if(self.boardData.title == ""){
                   swal_msg("입력오류","제목을 입력하세요","error");
                   return;
-              } else if (self.author == "") {
+              } else if (self.boardData.writer == "") {
                 swal_msg("입력오류","작성자를 입력하세요","error");
                 return;
-              } else if (self.content == "") {
+              } else if (self.boardData.content == "") {
                 swal_msg("입력오류","내용을 입력하세요","error");
                 return;
               }  
               
-              if(!(ban_chk(self.content))){
+              if(!(ban_chk(self.boardData.content))){
                 return;
               }
+              self.boardData.sysdate = getDate();
 
-              number_chk(self.num, self.title,self.author,self.content);
+              number_chk(self.boardData);
 
             }, 
             fnHomeClick : function (id) {
@@ -106,13 +113,13 @@
                   
                 //console.log(data);
 
-                self.author  = data.writer ;
-                self.title   = data.title ;
-                self.content = data.content;
-                self.num     = data.num;
+                self.boardData.writer  = data.writer ;
+                self.boardData.title   = data.title ;
+                self.boardData.content = data.content;
+                self.boardData.num     = data.num;
                 self.viewFlg = false;
 
-                $('#content').summernote('pasteHTML', self.content);
+                $('#content').summernote('pasteHTML', self.boardData.content );
 
                 } catch (err) {
                     swal_msg("에러","게시판 불러오기 실패","error");

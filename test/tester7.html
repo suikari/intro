@@ -1,0 +1,25 @@
+// 게시글 추가
+const boardData = {
+  type: "board",
+  num: 1,
+  title: "게시글 제목",
+  writer: "작성자",
+  sysdate: "2025-02-20",
+  view: 0,
+  content: "게시글 내용",
+};
+
+addDataToFirestore(boardData);
+
+// 댓글 추가
+const commentData = {
+  type: "comment",
+  boardno: 1,
+  commentno: 1,
+  contents: "댓글 내용",
+  sysdate: "2025-02-20",
+  like: 0,
+  userid: "user123",
+};
+
+addDataToFirestore(commentData);

@@ -6,7 +6,7 @@
 
   
   /// Export
-  export default { glogin , anylogin , getdata , adddata, setdata , countdata , getdata_p , deldata , addmember , getmember , user_login  }; 
+  export default { new_addData, new_setData ,   glogin , anylogin , getdata , adddata, setdata , countdata , getdata_p , deldata , addmember , getmember , user_login  }; 
   export { getdata , setdata }; 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -31,6 +31,53 @@
 
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+
+
+
+    async function new_addData( collectionName , data ) {
+      if (!collectionName) {
+        console.error("컬렉션명이 필요합니다.");
+        return;
+      }
+    
+      try {
+        await addDoc(collection(db, collectionName), {
+          ...data,
+          timestamp: new Date(), // 공통적으로 timestamp 추가
+        });
+    
+        console.log(`${collectionName} 컬렉션에 데이터 추가 완료!`);
+    
+        if (collectionName === "apptest") {
+          pagemove("1;");
+        }
+      } catch (error) {
+        console.error("데이터 추가 실패:", error);
+      }
+    }
+
+    async function new_setData(collectionName , docId , data ) {
+      if (!collectionName || !docId) {
+        console.error("컬렉션명과 문서 ID가 필요합니다.");
+        return;
+      }
+
+      try {
+        await setDoc(doc(db, collectionName, docId), {
+          ...data,
+          timestamp: new Date(), // 공통적으로 timestamp 추가
+        });
+
+        console.log(`${collectionName} 컬렉션의 ${docId} 문서에 데이터 설정 완료!`);
+
+        if (collectionName === "apptest") {
+          pagemove("1;");
+        }
+      } catch (error) {
+        console.error("데이터 추가/업데이트 실패:", error);
+      }
+    }
+
 
 
     async function countdata() {
@@ -142,19 +189,20 @@
       pagemove('1;');
     }
 
-    async function adddata_comment(num,title,writer,sysdate,view,content) {
+    async function adddata_comment(boardno,commentno,contents,sysdate,like,userid) {
       
-      const docRef = await addDoc(collection(db, "apptest"), {
-        num: num,
-        title: title ,
-        writer : writer ,
+      const docRef = await addDoc(collection(db, "msgcomment"), {
+        boardno : boardno,
+        commentno: commentno ,
+        contents : contents ,
         sysdate : sysdate,
-        view : view ,
-        content : content
+        like : like ,
+        timestamp: new Date(),
+        userid : userid,
       });
 
       //alert("등록 완료!");
-      pagemove('1;');
+      //pagemove('1;');
     }
 
     async function deldata(docname, id) {
@@ -193,8 +241,6 @@
       const date = timestamp.toDate();
       return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
     }
-
-
 
     // googleLoginButton.addEventListener('click', async () => {
     //   try {
@@ -332,9 +378,9 @@
             const messageElement = document.createElement('div');
             messageElement.classList.add('chat_message', user === nickname ? 'mine' : 'others');
 
-            const isMyMessage = user === nickname; // 내가 보낸 메시지 확인
+            const isMyMessage = user === nickname; 
             if (!isMyMessage) {
-              playNotificationSound(); // 🔔 다른 사람이 보낸 메시지일 경우 알림음 재생
+              playNotificationSound(); // 
             }
 
             messageElement.innerHTML = `<span>${user}</span>${text} <span class="chat_time">${formatTime(timestamp)}</span>`;
@@ -388,8 +434,8 @@
     });
 
     function playNotificationSound() {
-      if (document.hidden) { // 🔕 사용자가 다른 탭에 있을 때만 실행
-        notificationSound.play().catch((error) => console.error("🚨 알림음 재생 실패:", error));
+      if (document.hidden) { // 
+        notificationSound.play().catch((error) => console.error("알림음 재생 실패:", error));
       }
     }
 
