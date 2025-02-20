@@ -39,7 +39,7 @@
 
     async function number_chk( data ) {
         if (typeof data.num == "undefined" || data.num == null || data.num == "") {
-          data.num = await window.module.countdata();
+          data.num = await window.module.countdata('apptest','num');
         }
         
         console.log(data);
@@ -66,6 +66,7 @@
               num     : '',
               viewFlg : true ,
 
+              
               boardData : {
                 num: "",
                 title: "",
@@ -73,7 +74,7 @@
                 sysdate: "",
                 view: 0,
                 content: "",
-              }
+              } ,
 
             };
         },

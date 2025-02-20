@@ -1,12 +1,12 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
-  import { getFirestore, collection, doc, setDoc , getDoc , getDocs , addDoc , orderBy, query , deleteDoc , where  , onSnapshot  , getCountFromServer } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+  import { getFirestore,  collection, doc, setDoc , getDoc , getDocs , addDoc , orderBy, query , deleteDoc , where  , onSnapshot  , getCountFromServer } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
   import { getAuth, GoogleAuthProvider, signInWithPopup , signInAnonymously , signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
 
   
   /// Export
-  export default { new_addData, new_setData ,   glogin , anylogin , getdata , adddata, setdata , countdata , getdata_p , deldata , addmember , getmember , user_login  }; 
+  export default { new_addData, new_setData , getcomment , glogin , anylogin , getdata , adddata, setdata , countdata , getdata_p , deldata , addmember , getmember , user_login  }; 
   export { getdata , setdata }; 
 
   // TODO: Add SDKs for Firebase products that you want to use
@@ -80,12 +80,12 @@
 
 
 
-    async function countdata() {
+    async function countdata(colname, calname ) {
       
       //const coll = collection(db, "apptest");
       //const snapshot = await getCountFromServer(coll);
-      const usersCollectionRef = collection(db, 'apptest'); 
-      const userSnap = await getDocs(query(usersCollectionRef, orderBy("num", "asc"))); 
+      const usersCollectionRef = collection(db, colname); 
+      const userSnap = await getDocs(query(usersCollectionRef, orderBy(calname, "asc"))); 
       const data = userSnap.docs.map(doc => ({
           ...doc.data(),
           id: doc.id
@@ -128,6 +128,21 @@
           ...doc.data(),
           id: doc.id,
           login : true
+      }));
+
+      return data;
+    }
+
+
+    async function getcomment( boardno ) {
+
+      const usersCollectionRef = collection(db, 'msgcomment'); 
+      const q1 = query(usersCollectionRef, where("boardno", "==", boardno));
+
+      const userSnap = await getDocs(q1); 
+      const data = userSnap.docs.map(doc => ({
+          ...doc.data(),
+          id: doc.id,
       }));
 
       return data;
@@ -210,7 +225,10 @@
       await deleteDoc(doc(db, docname , id));
 
       //alert("삭제 완료!");
-      pagemove('1;');
+      if (docname === "apptest") {
+        pagemove("1;");
+      }
+
     }
     
 
