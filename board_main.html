@@ -39,7 +39,7 @@
                 <input  v-model="re_comment" type="text" class="board_comment_edit_input" />
 
                 <div class="board_comment_actions">
-                    <button class="board_comment_confirm" >확인</button>
+                    <button @click="fncomEditCommit(item.commentno, item.id)" class="board_comment_confirm" >확인</button>
                     <button @click="fncomEditCancel" class="board_comment_cancel"  >취소</button>
                 </div> 
             </template>
@@ -65,14 +65,21 @@
 
     //alert(board_id);
 
-    async function number_chk( data ) {
+    async function number_chk( data , insert , text , docid ) {
         if (typeof data.commentno == "undefined" || data.commentno == null || data.commentno == "") {
           data.commentno = await window.module.countdata('msgcomment','commentno');
+        //   console.log(data.commentno);
         }
-        console.log(data);
+        // console.log(data);
+        // console.log(text);
 
-        data.commentno = Number(data.commentno) + 1;
-        window.module.new_addData("msgcomment",data); 
+        if (insert) {
+            data.commentno = Number(data.commentno) + 1;
+            window.module.new_addData("msgcomment",data); 
+        } else {
+            data.contents = text;
+            window.module.new_setData("msgcomment",docid,data);
+        }
         
     }   
 
@@ -115,7 +122,7 @@
 
               commentData : {
                 boardno: "",
-                commentno: "",
+                commentno: 0,
                 contents: "",
                 sysdate: "",
                 like: 0,
@@ -156,6 +163,10 @@
                 var data = await commentModule(self.num ); 
                 console.log(data);
 
+                self.rewrite_index = -1 ;
+                self.re_comment = '';
+                self.commentData.contents = '';
+                
                 self.comment_list = data;
                 
             },
@@ -202,22 +213,26 @@
                 let self = this;
 
                 self.commentData.sysdate = getDate();
-                await number_chk(self.commentData);
+                
+                if (self.commentData.contents == '') {
+                    swal_msg('내용 에러','내용을 입력해주세요.','error')
+                    return;
+                }
+                await number_chk(self.commentData,true,'','');
                 self.fncomment();
             },
             fncomEdit : function ( indexnum  , text ) {
                 let self = this;
-                //console.log(commenttext);
-
                 self.rewrite_index = indexnum ;
                 self.re_comment = text;
-                // console.log(self.re_comment );
-
             },
-            fncomEditCommit : function (commentnum){
+            fncomEditCommit : async function (commentnum , docid){
                 let self = this;
-                let nparmap = {CONTENTS : self.re_comment , COMMENTNO : commentnum  } 
+                
+                self.commentData.commentno = commentnum;
 
+                await number_chk(self.commentData,false,self.re_comment, docid);
+                self.fncomment();
             },
             fncomEditCancel : function ( ) {
                 let self = this;

@@ -93,7 +93,13 @@
       
 
       //console.log('count: ', snapshot.data().count);
-      return data[(data.length-1)].num;
+      // console.log("cc",data[(data.length-1)].commentno);
+      if (colname == 'apptest') {
+        return data[(data.length-1)].num;
+      } else if (colname == 'msgcomment') {
+        return data[(data.length-1)].commentno;
+      }
+
     }
 
 
@@ -204,21 +210,6 @@
       pagemove('1;');
     }
 
-    async function adddata_comment(boardno,commentno,contents,sysdate,like,userid) {
-      
-      const docRef = await addDoc(collection(db, "msgcomment"), {
-        boardno : boardno,
-        commentno: commentno ,
-        contents : contents ,
-        sysdate : sysdate,
-        like : like ,
-        timestamp: new Date(),
-        userid : userid,
-      });
-
-      //alert("등록 완료!");
-      //pagemove('1;');
-    }
 
     async function deldata(docname, id) {
       
