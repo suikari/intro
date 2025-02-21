@@ -1,71 +1,107 @@
+<style>
+
+
+#canvas {
+  display: block;
+  background-color: #f0f0f0;
+}
+
+.cat {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url('../image/cat.png'); /* 고양이 이미지 경로 */
+  background-size: cover;
+  transition: all 0.1s ease;
+  pointer-events: none;  /* 캔버스를 클릭할 때 고양이 요소가 방해되지 않게 */
+}
+
+#img-ball {
+  width: 100px;
+  height: 100px;
+}
+
+</style>
 
 <div class="content-wrap" id="app">
-  <canvas id="canvas" width="720" height="480">
-    <img src="../image/san1.jfif" id="img-ball" style="display: none"/>
-
+  <canvas id="canvas" width="320" height="240">
+    <img src="../image/ball.png" id="img-ball" style="display: none; border-radius: 50%" />
 
   </canvas>
+  <div id="cat" class="cat"></div>
+
 </div>
 
-
 <script>
-
-
 window.onload = function() {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
-  const imgBall = document.getElementById('img-ball');
-  ctx.drawImage(imgBall, 0, 0);
+  const imgBall = document.getElementById('img-ball'); // HTML에서 미리 삽입된 이미지 참조
+  const cat = document.getElementById('cat');
 
-let x = 0;  
-let y = 0;
-let speed = 0;
-let acceleration = 50;
-let angularVelocity = 0; // 각속도
-let rotation = 0; // 현재 회전 값
-const timeSpeed = 10;
+  let x = canvas.width / 2;
+  let y = 0;
+  let speedY = 0;
+  let speedX = 0;
+  let acceleration = 50;
+  let angularVelocity = 0;
+  let rotation = 0;
+  const timeSpeed = 10;
 
-let lastTimestamp = null;
+  let lastTimestamp = null;
 
-function draw(timestamp) {
-  if (!lastTimestamp) lastTimestamp = timestamp;
-  let timeDiff = (timestamp - lastTimestamp) / 1000;
-  lastTimestamp = timestamp;
+  function draw(timestamp) {
+    if (!lastTimestamp) lastTimestamp = timestamp;
+    let timeDiff = (timestamp - lastTimestamp) / 1000;
+    lastTimestamp = timestamp;
 
-  timeDiff *= timeSpeed;
+    timeDiff *= timeSpeed;
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  speed += acceleration * timeDiff;
-  y += speed * timeDiff;
-  rotation += angularVelocity * timeDiff;
+    speedY += acceleration * timeDiff;
+    y += speedY * timeDiff;
+    rotation += angularVelocity * timeDiff;
+    x += speedX * timeDiff;
 
-  if (y > canvas.height - imgBall.height) {
-    y = canvas.height - imgBall.height;
-    speed = -speed * 0.7;
+    if (y > canvas.height - 100) {  
+      y = canvas.height - 100;
+      speedY = -speedY * 0.7;
+      speedX = speedX * 0.9;
+    }
+
+    if (y < 0) {
+      y = 0;
+      speedY = -speedY * 0.7;
+    }
+
+    if (x < 0 || x > canvas.width - 100) {
+      speedX = -speedX * 0.7;
+      x = Math.max(0, Math.min(x, canvas.width - 100));
+    }
+
+    // 공을 100x100 크기로 그리기
+    ctx.save();
+    ctx.translate(x + 50, y + 50);
+    ctx.rotate(rotation);
+    ctx.drawImage(imgBall, -50, -50, 120, 100);
+    ctx.restore();
+
+    // 고양이의 위치를 공과 동일하게 설정
+    cat.style.left = `${x}px`;
+    cat.style.top = `${y}px`;
+
+    window.requestAnimationFrame(draw);
   }
 
-  ctx.save();
-  // 아래 drawImage에서
-  // -imgBall.width / 2, -imgBall.height / 2 한 것을 보정해서 translate합니다.
-  ctx.translate( Math.random(719)  + imgBall.width / 2, y + imgBall.height / 2);
-  ctx.rotate(rotation);
-  ctx.drawImage(imgBall, -imgBall.width / 2, -imgBall.height / 2);
-  ctx.restore();
-
   window.requestAnimationFrame(draw);
+
+  canvas.addEventListener('click', (e) => {
+    speedY = -100;
+    speedX = (Math.random() - 0.5) * 150;
+    angularVelocity = Math.random() - 0.5;
+  });
 }
-
-window.requestAnimationFrame(draw);
-
-canvas.addEventListener('click', (e) => {
-  speed = -150;
-  angularVelocity = Math.random() - 0.5; // -0.5 ~ 0.5 사이의 임의의 각속도를 설정합니다
-});
-
-}
-
-
 
 </script>
