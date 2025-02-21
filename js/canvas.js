@@ -48,7 +48,7 @@ function draw(timestamp) {
     ctx.save();
     ctx.translate(x + 50, y + 50);
     ctx.rotate(rotation);
-    ctx.drawImage(imgBall, -50, -50, 100, 100);
+    ctx.drawImage(imgBall, -50, -50, 125, 100);
     ctx.restore();
   
     const catWidth = cat.offsetWidth;
