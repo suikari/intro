@@ -93,6 +93,19 @@ document.addEventListener('mousemove', (e) => {
   });
 
 
+  $(document).on('mousedown', function(event) {
+    // XButton1 (뒤로가기)
+    if (event.button === 3) {
+      event.preventDefault(); //
+      prev_pagemove();
+    
+    }
+    // XButton2 (앞으로가기)
+    else if (event.button === 4) {
+      event.preventDefault(); //
+      next_pagemove();
+    }
+});
 
 
 
