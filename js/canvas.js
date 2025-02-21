@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-const imgBall = document.getElementById('img-ball'); // HTML에서 미리 삽입된 이미지 참조
+const imgBall = document.getElementById('img-ball'); 
 const cat = document.getElementById('cat');
 
 let x = canvas.width / 2;
@@ -29,7 +29,6 @@ function draw(timestamp) {
     rotation += angularVelocity * timeDiff;
     x += speedX * timeDiff;
   
-    // 공이 캔버스를 벗어나지 않도록 제한
     if (y > canvas.height - 100) {  
       y = canvas.height - 100;
       speedY = -speedY * 0.7;
@@ -46,14 +45,12 @@ function draw(timestamp) {
       x = Math.max(0, Math.min(x, canvas.width - 100));
     }
   
-    // 공을 100x100 크기로 그리기
     ctx.save();
     ctx.translate(x + 50, y + 50);
     ctx.rotate(rotation);
     ctx.drawImage(imgBall, -50, -50, 100, 100);
     ctx.restore();
   
-    // 고양이가 캔버스를 벗어나지 않도록 제한
     const catWidth = cat.offsetWidth;
     const catHeight = cat.offsetHeight;
     const catX = Math.max(0, Math.min(x, canvas.width - catWidth));
