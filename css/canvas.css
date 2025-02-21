@@ -13,7 +13,7 @@ width: 50px;
 height: 50px;
 background-image: url('../image/cat.png'); /* 고양이 이미지 경로 */
 background-size: cover;
-transition: all 0.1s ease;
+/* transition: all 0.1s ease; */
 pointer-events: none;  /* 캔버스를 클릭할 때 고양이 요소가 방해되지 않게 */
 }
 
