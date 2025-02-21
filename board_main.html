@@ -73,6 +73,9 @@
         // console.log(data);
         // console.log(text);
 
+        data.sysdate = getDate();
+
+
         if (insert) {
             data.commentno = Number(data.commentno) + 1;
             window.module.new_addData("msgcomment",data); 
@@ -212,7 +215,6 @@
             fncomAdd : async function(){
                 let self = this;
 
-                self.commentData.sysdate = getDate();
                 
                 if (self.commentData.contents == '') {
                     swal_msg('내용 에러','내용을 입력해주세요.','error')

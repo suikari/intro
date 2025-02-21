@@ -1,89 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+<div class="content-wrap" id="app">
+  <canvas id="canvas" width="720" height="480">
+    <img src="../image/san1.jfif" id="img-ball" style="display: none"/>
+
+
+  </canvas>
+</div>
+
+
 <script>
-    // 1단계: 실행할 코드와 언어 설정
-const executeCode = async () => {
-  const apiUrl = 'https://ideone.com/api/1/service.json';
-  const apiKey = 'YOUR_API_KEY'; // 발급받은 API 키 입력
-  const language = 'java'; // Java 언어로 설정
-  const code = `
-    public class Main {
-        public static void main(String[] args) {
-            System.out.println("Hello, Ideone!");
-        }
-    }
-  `; // 실행할 코드
 
-  // 2단계: 코드 실행 요청
-  const executeResponse = await fetch(apiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      key: apiKey,
-      source: code,
-      language: language,
-      input: '', // 입력이 필요 없다면 빈 문자열
-    }),
-    mode :"cors"
-  });
 
-  const executeData = await executeResponse.json();
-  console.log('Execution started:', executeData);
+window.onload = function() {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
 
-  if (executeData.status === 'OK') {
-    const submissionId = executeData.link; // 실행한 코드의 submissionId
-    // 3단계: 결과 요청
-    await getExecutionResult(submissionId);
-  } else {
-    console.error('Error executing code:', executeData);
+  const imgBall = document.getElementById('img-ball');
+  ctx.drawImage(imgBall, 0, 0);
+
+let x = 0;  
+let y = 0;
+let speed = 0;
+let acceleration = 50;
+let angularVelocity = 0; // 각속도
+let rotation = 0; // 현재 회전 값
+const timeSpeed = 10;
+
+let lastTimestamp = null;
+
+function draw(timestamp) {
+  if (!lastTimestamp) lastTimestamp = timestamp;
+  let timeDiff = (timestamp - lastTimestamp) / 1000;
+  lastTimestamp = timestamp;
+
+  timeDiff *= timeSpeed;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  speed += acceleration * timeDiff;
+  y += speed * timeDiff;
+  rotation += angularVelocity * timeDiff;
+
+  if (y > canvas.height - imgBall.height) {
+    y = canvas.height - imgBall.height;
+    speed = -speed * 0.7;
   }
-};
 
-// 3단계: 실행 결과 확인
-const getExecutionResult = async (submissionId) => {
-  const apiUrl = 'https://ideone.com/api/1/service.json';
-  const apiKey = 'YOUR_API_KEY'; // 발급받은 API 키 입력
+  ctx.save();
+  // 아래 drawImage에서
+  // -imgBall.width / 2, -imgBall.height / 2 한 것을 보정해서 translate합니다.
+  ctx.translate( Math.random(719)  + imgBall.width / 2, y + imgBall.height / 2);
+  ctx.rotate(rotation);
+  ctx.drawImage(imgBall, -imgBall.width / 2, -imgBall.height / 2);
+  ctx.restore();
 
-  let status = '';
-  let output = '';
-  
-  // 결과 상태가 COMPLETED가 될 때까지 폴링
-  while (status !== 'COMPLETED') {
-    const resultResponse = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        key: apiKey,
-        action: 'getSubmissionStatus',
-        link: submissionId,
-      }),
-      mode :"cors"
-    });
+  window.requestAnimationFrame(draw);
+}
 
-    const resultData = await resultResponse.json();
-    status = resultData.status;
-    console.log('Current status:', status);
+window.requestAnimationFrame(draw);
 
-    if (status === 'COMPLETED') {
-      output = resultData.output; // 실행 결과
-      console.log('Execution Result:', output);
-    } else {
-      console.log('Waiting for result...');
-      await new Promise(resolve => setTimeout(resolve, 2000)); // 2초마다 폴링
-    }
-  }
-};
+canvas.addEventListener('click', (e) => {
+  speed = -150;
+  angularVelocity = Math.random() - 0.5; // -0.5 ~ 0.5 사이의 임의의 각속도를 설정합니다
+});
 
-// 코드 실행
-executeCode();
+}
+
+
 
 </script>
