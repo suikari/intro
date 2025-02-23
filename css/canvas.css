@@ -17,7 +17,7 @@ background-size: cover;
 pointer-events: none;  /* 캔버스를 클릭할 때 고양이 요소가 방해되지 않게 */
 }
 
-#img-ball {
+/* #img-ball {
 width: 100px;
 height: 100px;
-}
+} */
