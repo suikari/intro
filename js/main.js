@@ -2,7 +2,7 @@ window.onload = () => {
 
 	ajtest();
 
-	for (let i = 0; i < 125; i++) {
+	for (let i = 0; i < 100; i++) {
 		const snow = document.createElement("div");
 		snow.className = "snow";
 		snow.style.opacity = Math.random(); 
