@@ -76,7 +76,7 @@
   window.requestAnimationFrame(draw);
 
   canvas.addEventListener("click", (e) => {
-    speedY = -150;
-    speedX = (Math.random() - 0.5) * 300;
+    speedY = - 100;
+    speedX = (Math.random() - 0.5) * 150;
     angularVelocity = Math.random() - 0.5;
   });
