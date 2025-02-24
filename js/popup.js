@@ -98,7 +98,7 @@ document.addEventListener('mousemove', (e) => {
     if (event.button === 3) {
       history.pushState(null, null, "#noback");
       event.preventDefault(); //
-      console.log("3","3");
+      //console.log("3","3");
       prev_pagemove();
     
     }
@@ -106,7 +106,7 @@ document.addEventListener('mousemove', (e) => {
     else if (event.button === 4) {
       history.pushState(null, null, "#noback");
       event.preventDefault(); //
-      console.log("4","4");
+      //console.log("4","4");
       next_pagemove();
     }
 });
