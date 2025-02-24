@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'wonchu';
+  src: url('../common/fonts/wonchu.ttf') format('truetype');
+}
+
+
+body {
+font-family: 'wonchu';
+}
+
+
 
 div{ 
   -webkit-touch-callout: none;
