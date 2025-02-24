@@ -113,7 +113,7 @@
     board_app = Vue.createApp({
         data() {
             return {
-              author : '', // 로그인에 사용할 username
+              author : log_nickname, // 로그인에 사용할 username
               title: '',  // 로그인에 사용할 password
               content : '',
               num     : '',
@@ -129,7 +129,7 @@
                 contents: "",
                 sysdate: "",
                 like: 0,
-                userid: "익명",
+                userid: log_nickname,
               },
             };
         },
@@ -164,7 +164,7 @@
                 var self =  this;
 
                 var data = await commentModule(self.num ); 
-                console.log(data);
+                //console.log(data);
 
                 self.rewrite_index = -1 ;
                 self.re_comment = '';

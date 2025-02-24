@@ -35,14 +35,14 @@
     dark_toggle();
     dark_toggle();
 
-    
+    //console.log(log_nickname);
 
     async function number_chk( data ) {
         if (typeof data.num == "undefined" || data.num == null || data.num == "") {
           data.num = await window.module.countdata('apptest','num');
         }
         
-        console.log(data);
+        //console.log(data);
 
         if (!(typeof board_id == "undefined" || board_id == null || board_id == "")) {
           //window.module.setdata(parseInt(num),title,writer,sysdate,0,content,board_id); 
@@ -70,7 +70,7 @@
               boardData : {
                 num: "",
                 title: "",
-                writer: "",
+                writer: log_nickname,
                 sysdate: "",
                 view: 0,
                 content: "",
