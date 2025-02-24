@@ -96,7 +96,7 @@ document.addEventListener('mousemove', (e) => {
   $(document).on('mousedown', function(event) {
     // XButton1 (뒤로가기)
     if (event.button === 3) {
-      history.pushState(null, null, "#noback");
+      history.pushState(null, null, "#"); //noback
       event.preventDefault(); //
       //console.log("3","3");
       prev_pagemove();
@@ -104,7 +104,7 @@ document.addEventListener('mousemove', (e) => {
     }
     // XButton2 (앞으로가기)
     else if (event.button === 4) {
-      history.pushState(null, null, "#noback");
+      history.pushState(null, null, "#");
       event.preventDefault(); //
       //console.log("4","4");
       next_pagemove();
