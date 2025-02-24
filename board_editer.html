@@ -13,7 +13,7 @@
 
       <div class="board_form-group">
           <label for="author" class="board_form-label">작성자</label>
-          <input v-if="viewFlg" type="text" v-model="boardData.writer"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
+          <input v-if="viewFlg && boardData.writer == '' " type="text" v-model="boardData.writer"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" required>
           <input v-else type="text" v-model="boardData.writer"  id="author" name="author" class="board_form-input" placeholder="작성자를 입력하세요" disabled required>
 
       </div>
