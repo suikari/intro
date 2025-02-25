@@ -50,6 +50,10 @@ function member_join() {
 
 function mem_login(){
 
+    if(log_nickname != "") {
+        return;
+    }
+
         html = '<div class="mem_body">' +
        ' <div class="mem_container">' +
        ' <h2 class="mem_title">로그인</h2>' +
@@ -79,7 +83,7 @@ function mem_login(){
 }
 
 function handleKeyPress(event) {
-    if (event.keyCode === 13) { // 13은 엔터 키의 키코드입니다.
+    if (event.keyCode === 13) { // 
         mem_Login();
     }
 }
@@ -174,6 +178,8 @@ async function LoginModule(userid,pwd) {
 }
 
 function mem_Login () {
+
+
     userid = $('#mem_userid').val();
     pwd = $('#mem_userpwd').val();
 

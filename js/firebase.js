@@ -298,6 +298,8 @@
     logoutButton.addEventListener("click", async () => {
       await signOut(auth);
       localStorage.removeItem("nickname"); // 로컬 스토리지에서 닉네임 삭제
+     
+      log_nickname = localStorage.getItem("nickname") || "";
       user_login(); // 로그아웃 후 상태 업데이트
     });
 
@@ -321,6 +323,7 @@
 
 
     function user_login() {
+      log_nickname = localStorage.getItem("nickname") || "";
 
       onAuthStateChanged(auth, (user) => {
         
