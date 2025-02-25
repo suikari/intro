@@ -8,7 +8,7 @@ var todayFormat = today.getFullYear() + ('0' + (today.getMonth() + 1)).slice(-2)
 
 function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
 	var i;
-	console.log(xmlDOM);
+	//console.log(xmlDOM);
 
 	var table = "";//"<tr><th> </th></tr>";
 	//var row = xmlDOM.getElementsByTagName("itme");
@@ -61,7 +61,7 @@ function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
 			
 		} // end for
 	} else {
-		document.querySelector('.weather-info').innerHTML = "<td> 공공API데이터 불러오기 실패 </br> 잠시후 다시 시도해주세요.  </td>";
+		document.querySelector('.weather-info').innerHTML = "API데이터 로딩 실패 </br> 잠시후 시도해주세요. ";
 	}	
 	//document.getElementById('test1').innerHTML = table;
 	//document.getElementById("demoXML").innerHTML = table;
