@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+<script>
+
+// const url = 'https://developer-lostark.game.onstove.com/armories/characters/charmingdo/profiles';
+// const headers = {
+//   'Accept': 'application/json',
+//   'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAxNDYwNDMifQ.FeUkzJ3WUVU-og00syF7wiyER9jC8orpEFWDqxLPGBD5-3sAz-LQIu5rASx1aEa-mTu1IKfbvR0IPV-_D_Pugkuxeu9EtYX1S_QQ6iU4rokLTGjaVwRZKDsdaa8i7UU5A_FD0mfC8EBtW4doTHMKCELkxFOk60EHCOJZf397Z_xlA1mKRoY4Ykg9dRgeBNf4UQomRRyn7_a99gPTKSZXYFW65S-i7_dfWXJAjDJD57HtDc1IHAkyu40U2bcjpufOUhsUJZD1RQXCGnynekx5V5n8KgWtyqNTzRPPBjQuKXDWaJTTF0TxIQ0FomGBajvgBSC0BaWuesZQ8mVeEc7mYQ'
+// };
+
+// fetch(url, {
+//   method: 'GET',
+//   headers: headers
+// })
+// .then(response => response.json())
+// .then(data => {
+//   console.log(data); // Log the response data
+// })
+// .catch(error => {
+//   console.error('Error:', error); // Log any errors
+// });
+
+var code =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAxNDYwNDMifQ.FeUkzJ3WUVU-og00syF7wiyER9jC8orpEFWDqxLPGBD5-3sAz-LQIu5rASx1aEa-mTu1IKfbvR0IPV-_D_Pugkuxeu9EtYX1S_QQ6iU4rokLTGjaVwRZKDsdaa8i7UU5A_FD0mfC8EBtW4doTHMKCELkxFOk60EHCOJZf397Z_xlA1mKRoY4Ykg9dRgeBNf4UQomRRyn7_a99gPTKSZXYFW65S-i7_dfWXJAjDJD57HtDc1IHAkyu40U2bcjpufOUhsUJZD1RQXCGnynekx5V5n8KgWtyqNTzRPPBjQuKXDWaJTTF0TxIQ0FomGBajvgBSC0BaWuesZQ8mVeEc7mYQ"
+
+
+var xmlHttpRequest = new XMLHttpRequest();
+xmlHttpRequest.open("GET", "https://developer-lostark.game.onstove.com/armories/characters/coolguy/profiles", true);
+xmlHttpRequest.setRequestHeader('accept', 'application/json');
+xmlHttpRequest.setRequestHeader('authorization', code);
+xmlHttpRequest.onreadystatechange = () => { };
+
+xmlHttpRequest.onreadystatechange = function() {
+    if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+        console.log(xmlHttpRequest.responseText);
+    } else if (xmlHttpRequest.readyState == 4) {
+        console.error("Request failed with status: " + xmlHttpRequest.status);
+    }
+};
+
+console.log("123");
+
+xmlHttpRequest.send();
+</script>
