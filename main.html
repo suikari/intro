@@ -43,6 +43,8 @@
 <link href="css/member.css?ver=0.1" rel="stylesheet" type="text/css" />
 <link href="css/toastr.css?ver=0.1" rel="stylesheet" type="text/css" />
 <link href="css/git.css?ver=0.1" rel="stylesheet" type="text/css" />
+<link href="css/weather.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <link href="css/main_html.css?ver=1.9" rel="stylesheet" type="text/css" />
 <link href="css/jquery_ui.css?ver=0.6" rel="stylesheet" type="text/css" />
@@ -249,14 +251,41 @@
             </div>   -->
 
       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="city">
-        <span id="now_time"></span> </br> 현재 날씨
+        <span id="now_time"></span> 
       </div>
 
-      <div id="wicon" class="h5 mb-0 font-weight-bold text-gray-800 float-left">
+      <!-- <div id="wicon" class="h5 mb-0 font-weight-bold text-gray-800 float-left">
         <div id="ods" class="float-left"> </div>
         <div id="sds" class="float-left"> </div>
         <div id="fds" class="float-left"> </div>
-      </div>
+      </div> -->
+      <div class="weather-container">
+        <header>
+            <h2>부평</h2>
+        </header>
+
+        <section class="weather-current">
+            <div class="weather-info">
+                <!-- <i class="fas fa-sun weather-icon"></i>
+                <p class="weather-description">맑은 날</p> -->
+            </div>
+            <h2 class="weather-temperature">°C</h2>
+        </section>
+
+        <section class="weather-additional-info">
+            <div class="weather-info-item">
+                <div class="info-left">
+                    <span class="weather-label">습도</span>
+                    <span class="sds-value weather-value">%</span>
+                </div>
+                <div class="info-right">
+                    <span class="weather-label">풍속</span>
+                    <span class="fds-value weather-value">m/s</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
       <br>
       <div id="map" style="width:100%; height:150px;"></div>
       <div id="clickLatlng"></div>

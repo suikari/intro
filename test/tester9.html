@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 날씨 예보</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.weather-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 300px; /* 가로 길이 300px로 제한 */
+    height: 150px; /* 세로 길이 150px로 설정 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    font-size: 18px;
+    color: #333;
+}
+
+.weather-current {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-icon {
+    font-size: 24px; /* 아이콘 크기 축소 */
+    color: #ff6347;
+    margin-right: 5px;
+}
+
+.weather-description {
+    font-size: 14px; /* 텍스트 크기 축소 */
+    color: #555;
+}
+
+.weather-temperature {
+    font-size: 20px; /* 텍스트 크기 축소 */
+    color: #ff6347;
+    margin-top: 5px;
+}
+
+.weather-additional-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px; /* 텍스트 크기 축소 */
+    width: 100%;
+}
+
+.weather-info-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.info-left, .info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-info-item .weather-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.weather-info-item .weather-value {
+    color: #777;
+}
+
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <header>
+            <h1>서울</h1>
+        </header>
+
+        <section class="weather-current">
+            <div class="weather-info">
+                <i class="fas fa-sun weather-icon"></i>
+                <p class="weather-description">맑은 날</p>
+            </div>
+            <h2 class="weather-temperature">12°C</h2>
+        </section>
+
+        <section class="weather-additional-info">
+            <div class="weather-info-item">
+                <div class="info-left">
+                    <span class="weather-label">습도</span>
+                    <span class="weather-value">60%</span>
+                </div>
+                <div class="info-right">
+                    <span class="weather-label">풍속</span>
+                    <span class="weather-value">5 m/s</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

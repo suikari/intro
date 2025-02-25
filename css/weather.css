@@ -1,0 +1,78 @@
+/* 기본 스타일 */
+
+.weather-container {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 300px; /* 가로 길이 300px로 제한 */
+    height: 150px; /* 세로 길이 150px로 설정 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.weather-current {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-icon {
+    font-size: 24px; /* 아이콘 크기 축소 */
+    color: #ff6347;
+    margin-right: 5px;
+}
+
+.weather-description {
+    font-size: 14px; /* 텍스트 크기 축소 */
+    color: #555;
+}
+
+.weather-temperature {
+    font-size: 20px; /* 텍스트 크기 축소 */
+    color: #ff6347;
+    margin-top: 5px;
+}
+
+.weather-additional-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px; /* 텍스트 크기 축소 */
+    width: 100%;
+}
+
+.weather-info-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.info-left, .info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-info-item .weather-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.weather-info-item .weather-value {
+    color: #777;
+}
+
+
+.weather-container h2 {
+    margin: 0;
+}

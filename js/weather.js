@@ -8,7 +8,7 @@ var todayFormat = today.getFullYear() + ('0' + (today.getMonth() + 1)).slice(-2)
 
 function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
 	var i;
-	//console.log(xmlDOM);
+	console.log(xmlDOM);
 
 	var table = "";//"<tr><th> </th></tr>";
 	//var row = xmlDOM.getElementsByTagName("itme");
@@ -18,34 +18,50 @@ function parseXML(xmlDOM) { //나중에 양식맞춰서 수정 예정
     var category = xmlDOM.getElementsByTagName("category");
 	var	obsrValue =  xmlDOM.getElementsByTagName("obsrValue");
 
-	if ( parseInt(resultCode) != 3 || parseInt(resultCode) != 4  ) {
+	if ( parseInt(resultCode) == 0 	) {
 		for (i = 0; i < category.length; i++) {
 			if (category[i].childNodes[0].nodeValue == 'PTY' ) {
 				if (obsrValue[i].childNodes[0].nodeValue == 0 ) {
 					//table += "</br><image width='50px' height='50px' class="float-left" src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>";
-					document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>" +
-					document.getElementById('wicon').innerHTML;
+					// document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB01.png'>" +
+					// document.getElementById('wicon').innerHTML;
+					document.querySelector('.weather-info').innerHTML =  '<i class="fas fa-sun weather-icon"></i><p class="weather-description">맑음</p>';					
+
+				} else if (obsrValue[i].childNodes[0].nodeValue == 1) {
+					// document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
+					// document.getElementById('wicon').innerHTML;			
+					document.querySelector('.weather-info').innerHTML =  '<i class="fas fa-umbrella weather-icon"></i><p class="weather-description">비</p>';					
+	
+				} else if (obsrValue[i].childNodes[0].nodeValue == 2) {
+					// document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
+					// document.getElementById('wicon').innerHTML;			
+					document.querySelector('.weather-info').innerHTML =  '<i class="fas fa-snowflake weather-icon"></i><p class="weather-description">눈</p>';					
+	
 				} else {
-					document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
-					document.getElementById('wicon').innerHTML;				
+					// document.getElementById('wicon').innerHTML = "</br><image id='w_img' width='60px' height='60px' class='float-left' src='https://www.kma.go.kr/home/images/icon/NW/NB02.png'>" +
+					// document.getElementById('wicon').innerHTML;			
+					document.querySelector('.weather-info').innerHTML =  '<i class="fas fa-cloud weather-icon"></i><p class="weather-description">흐림</p>';					
+	
 				}
 			} else if (category[i].childNodes[0].nodeValue == 'REH' ) {
 				//table += "<td> 현재 습도 : " + obsrValue[i].childNodes[0].nodeValue + "%</td></br>";
-				document.getElementById('sds').innerHTML = "<td> 현재 습도 : " + obsrValue[i].childNodes[0].nodeValue + "%</td></br>";
+				//document.getElementById('sds').innerHTML = "<td> 현재 습도 : " + obsrValue[i].childNodes[0].nodeValue + "%</td></br>";
+				document.querySelector('.sds-value').innerHTML =  obsrValue[i].childNodes[0].nodeValue + "%";
 			} else if (category[i].childNodes[0].nodeValue == 'T1H' ) {
 				//table += "<td> 현재 온도 : " + obsrValue[i].childNodes[0].nodeValue + "º</td></br>";	
-				document.getElementById('ods').innerHTML = "<td> 현재 온도 : " + obsrValue[i].childNodes[0].nodeValue + "º</td></br>";		
+				//document.getElementById('ods').innerHTML = "<td> 현재 온도 : " + obsrValue[i].childNodes[0].nodeValue + "º</td></br>";		
+				document.querySelector('.weather-temperature').innerHTML =  obsrValue[i].childNodes[0].nodeValue + "°C"
 			} else if (category[i].childNodes[0].nodeValue == 'WSD' ) {
 				//table += "<td> 현재 풍속 : " + obsrValue[i].childNodes[0].nodeValue + "(m/s)</td></br>";	
-				document.getElementById('fds').innerHTML = "<td> 현재 풍속 : " + obsrValue[i].childNodes[0].nodeValue + "(m/s)</td></br>";
-			
+				//document.getElementById('fds').innerHTML = "<td> 현재 풍속 : " + obsrValue[i].childNodes[0].nodeValue + "(m/s)</td></br>";
+				document.querySelector('.fds-value').innerHTML =  obsrValue[i].childNodes[0].nodeValue + "m/s"
 			} 
 			
 			
 			
 		} // end for
 	} else {
-		document.getElementById('wicon').innerHTML = "<td> 공공API데이터 불러오기 실패 </br> 잠시후 다시 시도해주세요.  </td>";
+		document.querySelector('.weather-info').innerHTML = "<td> 공공API데이터 불러오기 실패 </br> 잠시후 다시 시도해주세요.  </td>";
 	}	
 	//document.getElementById('test1').innerHTML = table;
 	//document.getElementById("demoXML").innerHTML = table;
